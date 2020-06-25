@@ -4,6 +4,7 @@ const CreateNewTodo = () => {
    return (
       <>
          <div>createNewTodo</div>
+         <input type="text" />
       </>
    );
 };
