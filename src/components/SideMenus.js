@@ -1,15 +1,29 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const SideMenus = () => { 
+const SideMenus = () => {
    return (
-      <>
-         <div>sideMenu</div>
-         <div>sideMenu</div>
-         <div>sideMenu</div>
-         <div>sideMenu</div>
-         <div>sideMenu</div>
-      </>
-   )
- }
+      // <>
+      <Wrapper>
+         <SideMenu>sideMenu</SideMenu>
+         <SideMenu>sideMenu</SideMenu>
+         <SideMenu>sideMenu</SideMenu>
+         <SideMenu>sideMenu</SideMenu>
+         <SideMenu>sideMenu</SideMenu>
+      </Wrapper>
+      // </>
+   );
+};
 
-export default SideMenus
+const Wrapper = styled.div`
+   color: aqua;
+   position: fixed;
+   width: 22%;
+   margin: 64px 0 0 3%;
+`;
+const SideMenu = styled.div`
+   font-size: 24px;
+   margin: 0;
+`;
+
+export default SideMenus;

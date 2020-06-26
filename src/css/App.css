@@ -1,0 +1,11 @@
+.body {
+   display: grid;
+   /* grid-area: .sideMenus; */
+}
+
+.sideMenus {
+   color: aqua;
+}
+.class1 {
+   background-color: white;
+}
