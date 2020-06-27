@@ -3,7 +3,7 @@ import AppContext from '../contexts/AppContext';
 
 import SideMenus from './SideMenus';
 import Header from './Header';
-import TodoLists from './TodoLists';
+import TodoList from './TodoList';
 import CreateNewTodo from './CreateNewTodo';
 
 import styled from 'styled-components';
@@ -11,9 +11,7 @@ import styled from 'styled-components';
 import '../css/App.css';
 const App = () => {
    const [state, setState] = useState({
-      todoLists: [
-      //    {title: '', isDone: false, }
-      ],
+      todoList: [],
    });
    return (
       <>
@@ -22,7 +20,7 @@ const App = () => {
                <SideMenus />
                <Container>
                   <Header />
-                  <TodoLists />
+                  <TodoList />
                   <CreateNewTodo />
                </Container>
             </Wrapper>

@@ -16,7 +16,6 @@ const SideMenus = () => {
 };
 
 const Wrapper = styled.div`
-   color: aqua;
    position: fixed;
    width: 22%;
    margin: 64px 0 0 3%;

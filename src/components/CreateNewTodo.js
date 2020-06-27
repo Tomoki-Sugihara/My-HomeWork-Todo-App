@@ -12,7 +12,7 @@ const CreateNewTodo = () => {
       }
       const newState = {
          ...state,
-         todoLists: [...state.todoLists, { title, isDone: false }],
+         todoList: [...state.todoList, { title, isDone: false }],
       };
       setState(newState);
       setTitle('');
