@@ -10,9 +10,14 @@ import styled from 'styled-components';
 
 import '../css/App.css';
 const App = () => {
+   const demoTodoList = [
+      { title: 'abc', isDone: false },
+      { title: 'xyz', isDone: true },
+   ];
    const [state, setState] = useState({
-      todoList: [],
+      todoList: demoTodoList,
    });
+
    return (
       <>
          <AppContext.Provider value={{ state, setState }}>
@@ -43,7 +48,7 @@ const Wrapper = styled.div`
 const Container = styled.div`
    position: relative;
    grid-area: container;
-   width: 80%;
+   width: 100%;
    height: 100%;
 `;
 

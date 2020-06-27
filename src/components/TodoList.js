@@ -11,14 +11,11 @@ const TodoList = () => {
       return <TodoItem todo={todo} key={index} />;
    });
 
-   return (
-      <Wrapper>
-         <ul>{todos}</ul>
-      </Wrapper>
-   );
+   return <Wrapper>{todos}</Wrapper>;
 };
 
 const Wrapper = styled.div`
    margin: 68px 0 30px 2px;
+   width: 100%;
 `;
 export default TodoList;

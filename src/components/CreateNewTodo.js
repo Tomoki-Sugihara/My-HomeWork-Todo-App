@@ -49,7 +49,7 @@ const Wrapper = styled.div`
 const Form = styled.form``;
 const InputOfTitle = styled.input`
    width: 70%;
-   background-color: dimgray;
-   height: 10%;
+   background-color: rgb(43, 43, 43);
+   border-style: none;
 `;
 export default CreateNewTodo;

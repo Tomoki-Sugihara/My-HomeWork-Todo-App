@@ -25,7 +25,6 @@ const TitleBar = styled.div`
    position: fixed;
    background-color: rgba(33, 33, 33, 0.95);
    width: 70%;
-   color: aqua;
 `;
 
 // const theme = createMuiTheme({
