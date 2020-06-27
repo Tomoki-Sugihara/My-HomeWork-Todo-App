@@ -6,14 +6,18 @@ import Header from './Header';
 import TodoLists from './TodoLists';
 import CreateNewTodo from './CreateNewTodo';
 
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import '../css/App.css';
 const App = () => {
-   const [state, setState] = useState({ todoList: [] });
+   const [state, setState] = useState({
+      todoLists: [
+      //    {title: '', isDone: false, }
+      ],
+   });
    return (
       <>
-         <AppContext.Provider value={{ state }}>
+         <AppContext.Provider value={{ state, setState }}>
             <Wrapper>
                <SideMenus />
                <Container>
