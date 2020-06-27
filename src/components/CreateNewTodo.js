@@ -43,13 +43,18 @@ const Wrapper = styled.div`
    color: red;
    background-color: rgba(33, 33, 33, 0.95);
    width: 100%;
+   height: 7%;
    padding: 0.5% 0 1% 0;
 `;
 
-const Form = styled.form``;
+const Form = styled.form`
+   height: 100%;
+`;
 const InputOfTitle = styled.input`
    width: 70%;
+   height: 100%;
    background-color: rgb(43, 43, 43);
+   color: white;
    border-style: none;
 `;
 export default CreateNewTodo;
