@@ -15,14 +15,6 @@ const TodoItem = props => {
       newState.todoList[props.index].isDone = !newState.todoList[props.index]
          .isDone;
       setState(newState);
-
-      // setState((prevState) => {
-      //    return ({...prevState, props.todo.isDone: !prevIsDone})
-      // })
-
-      // setState((prevState) => {
-      //    return ({...prevState, [...prevState.todoList, ]})
-      // })
    };
    return (
       <Wrapper>
