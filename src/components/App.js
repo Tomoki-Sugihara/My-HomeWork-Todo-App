@@ -39,7 +39,7 @@ const Wrapper = styled.div`
       ' ... ...... ... ' 0px
       ' ... container ... ' 1fr
       ' ... ...... ... ' 10px
-      / 25% 70% 5%;
+      / 25% 69% 5%;
    height: 100%;
    width: 100%;
 `;

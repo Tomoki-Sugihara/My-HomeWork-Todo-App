@@ -23,7 +23,7 @@ const Header = () => {
 
 const TitleBar = styled.div`
    position: fixed;
-   background-color: rgba(33, 33, 33, 0.95);
+   background-color: rgba(33, 33, 33, 0.96);
    width: 70%;
 `;
 
