@@ -8,7 +8,7 @@ const TodoList = () => {
    const { state } = useContext(AppContext);
 
    const todos = state.todoList.map((todo, index) => {
-      return <TodoItem todo={todo} key={index} />;
+      return <TodoItem todo={todo} key={index} index={index} />;
    });
 
    return <Wrapper>{todos}</Wrapper>;
