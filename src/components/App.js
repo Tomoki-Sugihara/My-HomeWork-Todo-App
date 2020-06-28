@@ -8,7 +8,6 @@ import CreateNewTodoItem from './CreateNewTodoItem';
 
 import styled from 'styled-components';
 
-import '../css/App.css';
 const App = () => {
    const demoTodoList = [
       { title: 'abc', isDone: false, isImportant: false },
