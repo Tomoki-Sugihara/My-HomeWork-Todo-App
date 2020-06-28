@@ -2,17 +2,20 @@ import React, { useState, useContext } from 'react';
 import AppContext from '../contexts/AppContext';
 import styled from 'styled-components';
 
-const CreateNewTodo = () => {
+const CreateNewTodoItem = () => {
    const { state, setState } = useContext(AppContext);
    const [title, setTitle] = useState('');
 
-   const addNewTitle = () => {
+   const createTodo = () => {
       if (title.trim() === '') {
          return;
       }
       const newState = {
          ...state,
-         todoList: [...state.todoList, { title, isDone: false }],
+         todoList: [
+            ...state.todoList,
+            { title, isDone: false, isImportant: false },
+         ],
       };
       setState(newState);
       setTitle('');
@@ -22,7 +25,7 @@ const CreateNewTodo = () => {
          <Form
             onSubmit={e => {
                e.preventDefault();
-               addNewTitle();
+               createTodo();
             }}
          >
             <InputOfTitle
@@ -57,4 +60,4 @@ const InputOfTitle = styled.input`
    color: white;
    border-style: none;
 `;
-export default CreateNewTodo;
+export default CreateNewTodoItem;

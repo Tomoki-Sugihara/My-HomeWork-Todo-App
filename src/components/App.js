@@ -4,15 +4,15 @@ import AppContext from '../contexts/AppContext';
 import SideMenus from './SideMenus';
 import Header from './Header';
 import TodoList from './TodoList';
-import CreateNewTodo from './CreateNewTodo';
+import CreateNewTodoItem from './CreateNewTodoItem';
 
 import styled from 'styled-components';
 
 import '../css/App.css';
 const App = () => {
    const demoTodoList = [
-      { title: 'abc', isDone: false },
-      { title: 'xyz', isDone: true },
+      { title: 'abc', isDone: false, isImportant: false },
+      { title: 'xyz', isDone: true, isImportant: true },
    ];
    const [state, setState] = useState({
       todoList: demoTodoList,
@@ -26,7 +26,7 @@ const App = () => {
                <Container>
                   <Header />
                   <TodoList />
-                  <CreateNewTodo />
+                  <CreateNewTodoItem />
                </Container>
             </Wrapper>
          </AppContext.Provider>
