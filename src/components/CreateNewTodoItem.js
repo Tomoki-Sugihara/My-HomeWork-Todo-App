@@ -29,11 +29,12 @@ const CreateNewTodoItem = () => {
       setState(newState);
       setItem(initialItem);
    };
-   const handleChangeIsImportant = () => {
+   const handleClickIsImportant = () => {
       setItem(prevItem => {
          return { ...prevItem, isImportant: !prevItem.isImportant };
       });
    };
+
    return (
       <Wrapper>
          <Form
@@ -60,7 +61,7 @@ const CreateNewTodoItem = () => {
                checkedIcon={<StarIcon color="primary" />}
                color="primary"
                checked={item.isImportant}
-               onChange={handleChangeIsImportant}
+               onClick={handleClickIsImportant}
             />
          </Form>
       </Wrapper>
@@ -84,7 +85,7 @@ const Form = styled.form`
    border-radius: 5px;
 `;
 const InputOfTitle = styled.input`
-   width: 85%;
+   width: 90%;
    height: 100%;
    margin-left: 4px;
    background-color: rgb(43, 43, 43);

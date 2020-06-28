@@ -12,7 +12,7 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 
 const TodoItem = props => {
    const { state, setState } = useContext(AppContext);
-   const handleChangeIsDone = () => {
+   const handleClickIsDone = () => {
       const newState = {
          ...state,
       };
@@ -20,7 +20,7 @@ const TodoItem = props => {
          .isDone;
       setState(newState);
    };
-   const handleChangeIsImportant = () => {
+   const handleClickIsImportant = () => {
       const newState = {
          ...state,
       };
@@ -36,6 +36,7 @@ const TodoItem = props => {
       newState.todoList.splice(props.index, 1);
       setState(newState);
    };
+
    return (
       <Wrapper>
          <Checkbox
@@ -43,8 +44,8 @@ const TodoItem = props => {
             checkedIcon={<CheckCircleOutlineIcon color="primary" />}
             color="primary"
             checked={props.todo.isDone}
-            onChange={e => {
-               handleChangeIsDone();
+            onClick={e => {
+               handleClickIsDone();
             }}
          />
          <Li>{props.todo.title}</Li>
@@ -54,8 +55,8 @@ const TodoItem = props => {
             checkedIcon={<StarIcon color="primary" />}
             color="primary"
             checked={props.todo.isImportant}
-            onChange={e => {
-               handleChangeIsImportant(e.target.checked);
+            onClick={e => {
+               handleClickIsImportant(e.target.checked);
             }}
          />
          <DeleteIcon onClick={deleteTodo}>
