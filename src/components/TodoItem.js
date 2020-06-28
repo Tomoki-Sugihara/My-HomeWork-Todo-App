@@ -18,6 +18,13 @@ const TodoItem = props => {
          .isDone;
       setState(newState);
    };
+   const deleteTodo = () => {
+      const newState = {
+         ...state,
+      };
+      newState.todoList.splice(props.todo.index, 1);
+      setState(newState);
+   };
    return (
       <Wrapper>
          <Checkbox
@@ -31,11 +38,11 @@ const TodoItem = props => {
             }}
          />
          <Li>{props.todo.title}</Li>
-         <Icon>
+         <DeleteIcon onClick={deleteTodo}>
             <IconButton color="primary">
                <DeleteOutlineOutlinedIcon color="primary"></DeleteOutlineOutlinedIcon>
             </IconButton>
-         </Icon>
+         </DeleteIcon>
       </Wrapper>
    );
 };
@@ -53,7 +60,7 @@ const Wrapper = styled.div`
 const Li = styled.li`
    margin: auto 0;
 `;
-const Icon = styled.div`
+const DeleteIcon = styled.div`
    margin-left: auto;
 `;
 export default TodoItem;
