@@ -22,7 +22,7 @@ const TodoItem = props => {
       const newState = {
          ...state,
       };
-      newState.todoList.splice(props.todo.index, 1);
+      newState.todoList.splice(props.index, 1);
       setState(newState);
    };
    return (
