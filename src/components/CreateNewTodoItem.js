@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import Checkbox from '@material-ui/core/Checkbox';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
+import IconButton from '@material-ui/core/IconButton';
+import AddIcon from '@material-ui/icons/Add';
 
 const CreateNewTodoItem = () => {
    const { state, setState } = useContext(AppContext);
@@ -41,9 +43,17 @@ const CreateNewTodoItem = () => {
             onSubmit={e => {
                e.preventDefault();
                createTodo();
-               console.log('ok');
             }}
          >
+            <IconButton
+               color="primary"
+               onClick={e => {
+                  e.preventDefault();
+                  createTodo();
+               }}
+            >
+               <AddIcon color="primary" />
+            </IconButton>
             <InputOfTitle
                type="text"
                placeholder="タスクを追加"
@@ -94,6 +104,9 @@ const InputOfTitle = styled.input`
    border-style: none;
    :focus {
       outline: 0;
+      ::placeholder {
+         color: transparent;
+      }
    }
 `;
 export default CreateNewTodoItem;
