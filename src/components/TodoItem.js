@@ -13,7 +13,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Zoom from '@material-ui/core/Zoom';
 
 const TodoItem = props => {
-   const { state, setState } = useContext(AppContext);
+   const { state, setState, setItem } = useContext(AppContext);
    const handleClickIsDone = () => {
       const newState = {
          ...state,
@@ -32,15 +32,37 @@ const TodoItem = props => {
       setState(newState);
    };
    const deleteTodo = () => {
-      const newState = {
-         ...state,
-      };
-      newState.todoList.splice(props.index, 1);
-      setState(newState);
+      if (state.noneItemIndex) {
+         const newState = {
+            ...state,
+         };
+         newState.todoList.splice(state.noneItemIndex, 1);
+         setState(newState);
+      }
+
+      setState(prevState => {
+         return { ...prevState, noneItemIndex: props.index };
+      });
+
+      setItem(prevItem => {
+         return {
+            ...prevItem,
+            cancelIsBlock: true,
+         };
+      });
+      setTimeout(() => {
+         setItem(prevItem => {
+            return { ...prevItem, cancelIsBlock: false };
+         });
+      }, 4000);
    };
 
    return (
-      <Wrapper>
+      <Wrapper
+         style={{
+            display: props.index === state.noneItemIndex ? 'none' : 'flex',
+         }}
+      >
          <Checkbox
             icon={<RadioButtonUncheckedIcon color="primary" />}
             checkedIcon={<CheckCircleOutlineIcon color="primary" />}
@@ -87,4 +109,5 @@ const Li = styled.li`
    margin: auto 0;
 `;
 const DeleteIcon = styled.div``;
+
 export default TodoItem;

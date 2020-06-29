@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import AppContext from '../contexts/AppContext';
+import { initialItem, initialState } from '../constant';
 
 import SideMenus from './SideMenus';
 import Header from './Header';
@@ -14,12 +15,14 @@ const App = () => {
       { title: 'xyz', isDone: true, isImportant: true },
    ];
    const [state, setState] = useState({
+      ...initialState,
       todoList: demoTodoList,
    });
+   const [item, setItem] = useState(initialItem);
 
    return (
       <>
-         <AppContext.Provider value={{ state, setState }}>
+         <AppContext.Provider value={{ state, setState, item, setItem }}>
             <Wrapper>
                <SideMenus />
                <Container>

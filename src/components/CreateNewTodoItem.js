@@ -1,6 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import AppContext from '../contexts/AppContext';
-import styled from 'styled-components';
+import { initialItem, todoListTemplate } from '../constant';
 
 import Checkbox from '@material-ui/core/Checkbox';
 import StarIcon from '@material-ui/icons/Star';
@@ -9,10 +9,10 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import AddIcon from '@material-ui/icons/Add';
 
+import styled from 'styled-components';
+
 const CreateNewTodoItem = () => {
-   const { state, setState } = useContext(AppContext);
-   const initialItem = { title: '', isImportant: false };
-   const [item, setItem] = useState(initialItem);
+   const { state, setState, item, setItem } = useContext(AppContext);
 
    const createTodo = () => {
       if (item.title.trim() === '') {
@@ -23,27 +23,50 @@ const CreateNewTodoItem = () => {
          todoList: [
             ...state.todoList,
             {
+               ...todoListTemplate,
                title: item.title,
-               isDone: false,
                isImportant: item.isImportant,
             },
          ],
       };
       setState(newState);
-      setItem(initialItem);
+      setItem(prevItem => {
+         return { ...initialItem, cancelIsBlock: prevItem.cancelIsBlock };
+      });
    };
    const handleClickIsImportant = () => {
       setItem(prevItem => {
          return { ...prevItem, isImportant: !prevItem.isImportant };
       });
    };
+   const handleClickCancelDelete = () => {
+      setState(prevState => {
+         return { ...prevState, noneItemIndex: undefined };
+      });
+      setItem(prevItem => {
+         return { ...prevItem, cancelIsBlock: false };
+      });
+   };
+   const handleClickCloseCancel = () => {
+      setItem(prevItem => {
+         return { ...prevItem, cancelIsBlock: false };
+      });
+   };
 
    return (
       <Wrapper>
-         <CancelDelete>
-            <p1>削除しました</p1>
-            <p2>元に戻す</p2>
-            <IconButton color="primary" style={{ marginLeft: 'auto' }}>
+         <CancelDelete
+            style={{ display: item.cancelIsBlock ? 'flex' : 'none' }}
+         >
+            <p className="text">削除しました</p>
+            <p className="button" onClick={handleClickCancelDelete}>
+               元に戻す
+            </p>
+            <IconButton
+               color="primary"
+               style={{ marginLeft: 'auto' }}
+               onClick={handleClickCloseCancel}
+            >
                <CloseIcon color="primary"></CloseIcon>
             </IconButton>
          </CancelDelete>
@@ -97,9 +120,8 @@ const Wrapper = styled.div`
 
 const CancelDelete = styled.div`
    position: fixed;
-   bottom: 9%;
+   bottom: 9.5%;
    left: 50%;
-   display: flex;
    align-items: center;
    justify-content: space-between;
 
@@ -108,11 +130,10 @@ const CancelDelete = styled.div`
    background-color: rgba(20, 20, 20);
    border-radius: 5px;
 
-   p1 {
+   p {
       margin-left: auto;
    }
-   p2 {
-      margin-left: auto;
+   .button {
       color: aqua;
       :hover {
          cursor: pointer;
