@@ -3,15 +3,15 @@ import styled from 'styled-components';
 
 const SideMenus = () => {
    return (
-      // <>
-      <Wrapper>
-         <SideMenu>sideMenu</SideMenu>
-         <SideMenu>sideMenu</SideMenu>
-         <SideMenu>sideMenu</SideMenu>
-         <SideMenu>sideMenu</SideMenu>
-         <SideMenu>sideMenu</SideMenu>
-      </Wrapper>
-      // </>
+      <>
+         <Wrapper>
+            <SideMenu>sideMenu</SideMenu>
+            <SideMenu>sideMenu</SideMenu>
+            <SideMenu>sideMenu</SideMenu>
+            <SideMenu>sideMenu</SideMenu>
+            <SideMenu>sideMenu</SideMenu>
+         </Wrapper>
+      </>
    );
 };
 

@@ -9,6 +9,8 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
+import Tooltip from '@material-ui/core/Tooltip';
+import Zoom from '@material-ui/core/Zoom';
 
 const TodoItem = props => {
    const { state, setState } = useContext(AppContext);
@@ -44,9 +46,7 @@ const TodoItem = props => {
             checkedIcon={<CheckCircleOutlineIcon color="primary" />}
             color="primary"
             checked={props.todo.isDone}
-            onClick={e => {
-               handleClickIsDone();
-            }}
+            onClick={handleClickIsDone}
          />
          <Li>{props.todo.title}</Li>
          <Checkbox
@@ -55,15 +55,20 @@ const TodoItem = props => {
             checkedIcon={<StarIcon color="primary" />}
             color="primary"
             checked={props.todo.isImportant}
-            onClick={e => {
-               handleClickIsImportant(e.target.checked);
-            }}
+            onClick={handleClickIsImportant}
          />
-         <DeleteIcon onClick={deleteTodo}>
-            <IconButton color="secondary" style={{ height: '100%' }}>
-               <DeleteOutlineOutlinedIcon color="secondary"></DeleteOutlineOutlinedIcon>
-            </IconButton>
-         </DeleteIcon>
+         <Tooltip
+            title="delete"
+            enterDelay={600}
+            leaveDelay={100}
+            TransitionComponent={Zoom}
+         >
+            <DeleteIcon onClick={deleteTodo}>
+               <IconButton color="secondary" style={{ height: '100%' }}>
+                  <DeleteOutlineOutlinedIcon color="secondary"></DeleteOutlineOutlinedIcon>
+               </IconButton>
+            </DeleteIcon>
+         </Tooltip>
       </Wrapper>
    );
 };
