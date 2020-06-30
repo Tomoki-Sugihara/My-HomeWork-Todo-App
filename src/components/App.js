@@ -42,7 +42,7 @@ const Wrapper = styled.div`
       ' ... ...... ... ' 0px
       ' ... container ... ' 1fr
       ' ... ...... ... ' 10px
-      / 25% 69% 5%;
+      / 300px 1fr 5%;
    height: 100%;
    width: 100%;
 `;
@@ -50,7 +50,6 @@ const Wrapper = styled.div`
 const Container = styled.div`
    position: relative;
    grid-area: container;
-   width: 100%;
    height: 100%;
 `;
 

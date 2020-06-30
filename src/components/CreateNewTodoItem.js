@@ -84,9 +84,10 @@ const Wrapper = styled.div`
    position: fixed;
    bottom: 0;
    background-color: rgba(33, 33, 33, 0.95);
-   width: 70%;
+   width: calc(95% - 300px);
    height: 9%;
    padding: 0.5% 0 1% 0;
+   /* margin-right: 5%; */
 `;
 
 const Form = styled.form`

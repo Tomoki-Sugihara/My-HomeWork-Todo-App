@@ -17,8 +17,8 @@ const SideMenus = () => {
 
 const Wrapper = styled.div`
    position: fixed;
-   width: 22%;
-   margin: 64px 0 0 3%;
+   width: 300px;
+   margin-top: 64px;
 `;
 const SideMenu = styled.div`
    font-size: 24px;
