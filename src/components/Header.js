@@ -8,11 +8,11 @@ const Header = () => {
    return (
       <>
          <Wrapper>
-            {/* <TitleBar> */}
+            <TitleBar>
                <Toolbar>
                   <h2>My HomeWork</h2>
                </Toolbar>
-            {/* </TitleBar> */}
+            </TitleBar>
          </Wrapper>
       </>
    );
