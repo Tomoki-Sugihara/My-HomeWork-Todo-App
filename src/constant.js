@@ -1,4 +1,4 @@
-export const initialState = { todoList: [], noneItemIndex: undefined };
+export const initialState = { todoList: [] };
 
 export const todoListTemplate = {
    title: '',
@@ -9,5 +9,4 @@ export const todoListTemplate = {
 export const initialItem = {
    title: '',
    isImportant: false,
-   cancelIsBlock: false,
 };

@@ -6,7 +6,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
 import AddIcon from '@material-ui/icons/Add';
 
 import styled from 'styled-components';
@@ -39,37 +38,9 @@ const CreateNewTodoItem = () => {
          return { ...prevItem, isImportant: !prevItem.isImportant };
       });
    };
-   const handleClickCancelDelete = () => {
-      setState(prevState => {
-         return { ...prevState, noneItemIndex: undefined };
-      });
-      setItem(prevItem => {
-         return { ...prevItem, cancelIsBlock: false };
-      });
-   };
-   const handleClickCloseCancel = () => {
-      setItem(prevItem => {
-         return { ...prevItem, cancelIsBlock: false };
-      });
-   };
 
    return (
       <Wrapper>
-         <CancelDelete
-            style={{ display: item.cancelIsBlock ? 'flex' : 'none' }}
-         >
-            <p className="text">削除しました</p>
-            <p className="button" onClick={handleClickCancelDelete}>
-               元に戻す
-            </p>
-            <IconButton
-               color="primary"
-               style={{ marginLeft: 'auto' }}
-               onClick={handleClickCloseCancel}
-            >
-               <CloseIcon color="primary"></CloseIcon>
-            </IconButton>
-         </CancelDelete>
          <Form
             onSubmit={e => {
                e.preventDefault();
@@ -116,30 +87,6 @@ const Wrapper = styled.div`
    width: 70%;
    height: 9%;
    padding: 0.5% 0 1% 0;
-`;
-
-const CancelDelete = styled.div`
-   position: fixed;
-   bottom: 9.5%;
-   left: 50%;
-   align-items: center;
-   justify-content: space-between;
-
-   width: 260px;
-   height: 6%;
-   background-color: rgba(20, 20, 20);
-   border-radius: 5px;
-
-   p {
-      margin-left: auto;
-   }
-   .button {
-      color: aqua;
-      :hover {
-         cursor: pointer;
-         opacity: 0.8;
-      }
-   }
 `;
 
 const Form = styled.form`
