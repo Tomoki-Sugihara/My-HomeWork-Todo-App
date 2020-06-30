@@ -40,18 +40,18 @@ const App = () => {
 const Wrapper = styled.div`
    display: grid;
    grid-template:
-      ' ... ...... ... ' 0px
-      ' ... container ... ' 1fr
-      ' ... ...... ... ' 10px
-      / 300px 1fr 5%;
+      ' ... ... ...... ... ' 0px
+      ' ... ... container ... ' 1fr
+      ' ... ... ...... ... ' 10px
+      / 350px 4% 1fr 4%;
    height: 100%;
    width: 100%;
-   ${media.lessThan('medium')`
+   ${media.lessThan('large')`
    grid-template:
       ' ... ...... ... ' 0px
       ' ... container ... ' 1fr
       ' ... ...... ... ' 10px
-      / 5% 1fr 5%;
+      / 3% 1fr 3%;
     
   `}
 `;

@@ -8,11 +8,11 @@ const Header = () => {
    return (
       <>
          <Wrapper>
-            <TitleBar>
+            {/* <TitleBar> */}
                <Toolbar>
                   <h2>My HomeWork</h2>
                </Toolbar>
-            </TitleBar>
+            {/* </TitleBar> */}
          </Wrapper>
       </>
    );
@@ -20,9 +20,11 @@ const Header = () => {
 
 const Wrapper = styled.div`
    position: fixed;
-   width: calc(95% - 300px);
-   ${media.lessThan('medium')`
-   width: 90%;
+   width: calc(92% - 350px);
+   height: 64px;
+   ${media.lessThan('large')`
+   width: 94%;
+   height: 56px;
   `}
 `;
 

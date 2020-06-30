@@ -3,6 +3,7 @@ import TodoItem from './TodoItem';
 import AppContext from '../contexts/AppContext';
 
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 const TodoList = () => {
    const { state } = useContext(AppContext);
@@ -15,7 +16,10 @@ const TodoList = () => {
 };
 
 const Wrapper = styled.div`
-   margin: 68px 0 30px 0;
+   margin: 64px 0 30px 0;
    width: 100%;
+   ${media.lessThan('large')`
+   margin-top: 56px;
+  `}
 `;
 export default TodoList;

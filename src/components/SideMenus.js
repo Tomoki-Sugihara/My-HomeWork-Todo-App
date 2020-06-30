@@ -18,11 +18,14 @@ const SideMenus = () => {
 
 const Wrapper = styled.div`
    position: fixed;
-   width: 300px;
-   margin-top: 64px;
-
-   ${media.lessThan('medium')`
+   width: 350px;
+   height: 100%;
+   /* margin-top: 64px; */
+   padding-right: 5%;
+   background-color: rgb(43, 43, 43);
+   ${media.lessThan('large')`
     display: none;
+    /* margin-top: 56px; */
   `}
 `;
 const SideMenu = styled.div`

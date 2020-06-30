@@ -85,22 +85,23 @@ const Wrapper = styled.div`
    position: fixed;
    bottom: 0;
    background-color: rgba(33, 33, 33, 0.95);
-   width: calc(95% - 300px);
+   width: calc(92% - 350px);
    height: 9%;
-   padding: 0.5% 0 1% 0;
+   padding: 10px 0 10px 0;
    margin-right: 5%;
-   ${media.lessThan('medium')`
-   width: 90%;
+   ${media.lessThan('large')`
+   width: 94%;
+   margin-right: 3%;
   `}
 `;
 
 const Form = styled.form`
    display: flex;
-   height: 90%;
+   height: 100%;
    width: 100%;
    background-color: rgb(43, 43, 43);
    border-radius: 5px;
-   ${media.lessThan('medium')`
+   ${media.lessThan('large')`
   `}
 `;
 const InputOfTitle = styled.input`
@@ -117,5 +118,8 @@ const InputOfTitle = styled.input`
          color: transparent;
       }
    }
+   ${media.lessThan('large')`
+   margin: 0;
+  `}
 `;
 export default CreateNewTodoItem;
