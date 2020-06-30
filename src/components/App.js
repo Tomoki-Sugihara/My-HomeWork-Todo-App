@@ -8,6 +8,7 @@ import TodoList from './TodoList';
 import CreateNewTodoItem from './CreateNewTodoItem';
 
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 const App = () => {
    const demoTodoList = [
@@ -45,6 +46,14 @@ const Wrapper = styled.div`
       / 300px 1fr 5%;
    height: 100%;
    width: 100%;
+   ${media.lessThan('medium')`
+   grid-template:
+      ' ... ...... ... ' 0px
+      ' ... container ... ' 1fr
+      ' ... ...... ... ' 10px
+      / 5% 1fr 5%;
+    
+  `}
 `;
 
 const Container = styled.div`

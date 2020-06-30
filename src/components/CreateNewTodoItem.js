@@ -9,6 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 const CreateNewTodoItem = () => {
    const { state, setState, item, setItem } = useContext(AppContext);
@@ -87,7 +88,10 @@ const Wrapper = styled.div`
    width: calc(95% - 300px);
    height: 9%;
    padding: 0.5% 0 1% 0;
-   /* margin-right: 5%; */
+   margin-right: 5%;
+   ${media.lessThan('medium')`
+   width: 90%;
+  `}
 `;
 
 const Form = styled.form`
@@ -96,6 +100,8 @@ const Form = styled.form`
    width: 100%;
    background-color: rgb(43, 43, 43);
    border-radius: 5px;
+   ${media.lessThan('medium')`
+  `}
 `;
 const InputOfTitle = styled.input`
    width: 90%;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 const SideMenus = () => {
    return (
@@ -19,6 +20,10 @@ const Wrapper = styled.div`
    position: fixed;
    width: 300px;
    margin-top: 64px;
+
+   ${media.lessThan('medium')`
+    display: none;
+  `}
 `;
 const SideMenu = styled.div`
    font-size: 24px;

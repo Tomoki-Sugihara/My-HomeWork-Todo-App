@@ -2,6 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 import { Toolbar } from '@material-ui/core';
+import media from 'styled-media-query';
 
 const Header = () => {
    return (
@@ -20,6 +21,9 @@ const Header = () => {
 const Wrapper = styled.div`
    position: fixed;
    width: calc(95% - 300px);
+   ${media.lessThan('medium')`
+   width: 90%;
+  `}
 `;
 
 const TitleBar = styled.div`
