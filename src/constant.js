@@ -1,4 +1,4 @@
-export const initialState = { todoList: [] };
+export const initialState = { todoList: [], subjectList: [] };
 
 export const todoListTemplate = {
    title: '',
@@ -6,7 +6,12 @@ export const todoListTemplate = {
    isImportant: false,
 };
 
+export const subjectListTemplate = {
+   title: '',
+};
+
 export const initialItem = {
    title: '',
    isImportant: false,
+   sideMenuTitle: '',
 };

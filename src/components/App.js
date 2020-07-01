@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import AppContext from '../contexts/AppContext';
-import { initialItem, initialState } from '../constant';
+import { initialItem, initialState} from '../constant';
 
 import SideMenus from './SideMenus';
 import Header from './Header';
@@ -15,9 +15,15 @@ const App = () => {
       { title: 'abc', isDone: false, isImportant: false },
       { title: 'xyz', isDone: true, isImportant: true },
    ];
+   const demoSubjectList = [
+      { title: 'English' },
+      { title: 'Science' },
+      { title: 'Computer Science' },
+   ];
    const [state, setState] = useState({
       ...initialState,
       todoList: demoTodoList,
+      subjectList: demoSubjectList,
    });
    const [item, setItem] = useState(initialItem);
 
