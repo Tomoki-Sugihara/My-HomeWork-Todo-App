@@ -26,6 +26,7 @@ const CreateNewTodoItem = () => {
                ...todoListTemplate,
                title: item.title,
                isImportant: item.isImportant,
+               subjectIndex: state.displaySubjectIndex,
             },
          ],
       };

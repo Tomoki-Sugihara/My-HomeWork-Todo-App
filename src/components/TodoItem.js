@@ -79,7 +79,7 @@ const Wrapper = styled.div`
    display: flex;
    height: 60px;
    list-style: none;
-   font-size: 25px;
+   font-size: 22px;
    background-color: rgba(43, 43, 43);
    border-radius: 5px;
    margin: 5px 0;
@@ -88,7 +88,7 @@ const Wrapper = styled.div`
    }
 `;
 const Li = styled.li`
-   margin: auto 0;
+   margin: auto 0 auto 5px;
 `;
 const DeleteIcon = styled.div``;
 

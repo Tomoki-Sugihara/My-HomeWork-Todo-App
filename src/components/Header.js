@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import AppContext from '../contexts/AppContext';
 
 import styled from 'styled-components';
 import { Toolbar } from '@material-ui/core';
 import media from 'styled-media-query';
 
 const Header = () => {
+   const { state } = useContext(AppContext);
    return (
       <>
          <Wrapper>
             <TitleBar>
                <Toolbar>
-                  <h2>My HomeWork</h2>
+                  <h2>{state.subjectList[state.displaySubjectIndex].title}</h2>
                </Toolbar>
             </TitleBar>
          </Wrapper>
