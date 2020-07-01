@@ -44,11 +44,20 @@ const TodoItem = props => {
       newState.todoList.splice(props.index, 1);
       setState(newState);
    };
+   const isThisDisplayed = () => {
+      if (state.activeSubjectIndex === undefined) {
+         return true;
+      } else if (state.activeSubjectIndex === props.todo.subjectIndex) {
+         return true;
+      } else {
+         return false;
+      }
+   };
 
    return (
       <Wrapper
          style={{
-            display: 'flex',
+            display: isThisDisplayed() ? 'flex' : 'none',
          }}
       >
          <Checkbox

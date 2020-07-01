@@ -8,17 +8,9 @@ import media from 'styled-media-query';
 const TodoList = () => {
    const { state } = useContext(AppContext);
 
-   const todos = state.todoList
-      .filter(element => {
-         if (state.activeSubjectIndex === undefined) {
-            return true;
-         } else {
-            return element.subjectIndex === state.activeSubjectIndex;
-         }
-      })
-      .map((todo, index) => {
-         return <TodoItem todo={todo} key={index} index={index} />;
-      });
+   const todos = state.todoList.map((todo, index) => {
+      return <TodoItem todo={todo} key={index} index={index} />;
+   });
 
    return <Wrapper>{todos}</Wrapper>;
 };
