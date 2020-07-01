@@ -74,7 +74,7 @@ const Wrapper = styled.div`
    position: fixed;
    width: 350px;
    height: 100%;
-   padding-right: 5%;
+   /* padding-right: 5%; */
    background-color: rgb(43, 43, 43);
    ${media.lessThan('large')`
     display: none;
@@ -83,10 +83,14 @@ const Wrapper = styled.div`
 const SubjectList = styled.div``;
 const Form = styled.form`
    display: flex;
-   height: 8%;
+   height: 48px;
    width: 100%;
+   margin-top: 20px;
    background-color: rgb(43, 43, 43);
    border-radius: 5px;
+   :hover {
+      background-color: rgb(50, 50, 50);
+   }
    ${media.lessThan('large')`
   `}
 `;
@@ -94,10 +98,14 @@ const InputOfTitle = styled.input`
    width: 90%;
    height: 100%;
    margin-left: 4px;
+   font-size: 18px;
    background-color: rgb(43, 43, 43);
    border-radius: 5px;
    color: white;
    border-style: none;
+   :hover {
+      background-color: rgb(50, 50, 50);
+   }
    :focus {
       outline: 0;
       ::placeholder {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import AppContext from '../contexts/AppContext';
-import { initialItem, initialState} from '../constant';
+import { initialItem, initialState } from '../constant';
 
 import SideMenus from './SideMenus';
 import Header from './Header';
@@ -12,8 +12,8 @@ import media from 'styled-media-query';
 
 const App = () => {
    const demoTodoList = [
-      { title: 'abc', isDone: false, isImportant: false },
-      { title: 'xyz', isDone: true, isImportant: true },
+      { title: 'Abc', isDone: false, isImportant: false },
+      { title: 'Xyz', isDone: true, isImportant: true },
    ];
    const demoSubjectList = [
       { title: 'English' },

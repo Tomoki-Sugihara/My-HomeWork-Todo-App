@@ -86,7 +86,7 @@ const Wrapper = styled.div`
    bottom: 0;
    background-color: rgba(33, 33, 33, 0.95);
    width: calc(92% - 350px);
-   height: 9%;
+   height: 78px;
    padding: 10px 0 10px 0;
    margin-right: 5%;
    ${media.lessThan('large')`
@@ -101,6 +101,9 @@ const Form = styled.form`
    width: 100%;
    background-color: rgb(43, 43, 43);
    border-radius: 5px;
+   :hover {
+      background-color: rgb(50, 50, 50);
+   }
    ${media.lessThan('large')`
   `}
 `;
@@ -108,10 +111,14 @@ const InputOfTitle = styled.input`
    width: 90%;
    height: 100%;
    margin-left: 4px;
+   font-size: 18px;
    background-color: rgb(43, 43, 43);
    border-radius: 5px;
    color: white;
    border-style: none;
+   :hover {
+      background-color: rgb(50, 50, 50);
+   }
    :focus {
       outline: 0;
       ::placeholder {

@@ -13,5 +13,5 @@ export const subjectListTemplate = {
 export const initialItem = {
    title: '',
    isImportant: false,
-   sideMenuTitle: '',
+   subjectTitle: '',
 };

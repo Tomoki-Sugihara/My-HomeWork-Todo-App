@@ -77,13 +77,15 @@ const TodoItem = props => {
 
 const Wrapper = styled.div`
    display: flex;
-   height: 6.5vh;
-   line-height: 100%;
+   height: 60px;
    list-style: none;
-   font-size: 22px;
+   font-size: 25px;
    background-color: rgba(43, 43, 43);
    border-radius: 5px;
    margin: 5px 0;
+   :hover {
+      background-color: rgb(50, 50, 50);
+   }
 `;
 const Li = styled.li`
    margin: auto 0;
