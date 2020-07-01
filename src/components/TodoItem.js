@@ -59,19 +59,17 @@ const TodoItem = props => {
             onClick={handleClickIsDone}
          />
          <Li>{props.todo.title}</Li>
-         <SubjectName>
+         <SubjectName
+            style={{
+               display:
+                  state.activeSubjectIndex === undefined ? 'flex' : 'none',
+            }}
+         >
             <KeyboardArrowRightIcon
                fontSize="small"
                style={{ margin: 'auto 0' }}
             ></KeyboardArrowRightIcon>
-            <li
-               style={{
-                  display:
-                     state.activeSubjectIndex === undefined ? 'block' : 'none',
-               }}
-            >
-               {displaySubjectName()}
-            </li>
+            <li>{displaySubjectName()}</li>
          </SubjectName>
          <Checkbox
             style={{ marginLeft: 'auto' }}
@@ -113,7 +111,6 @@ const Li = styled.li`
    font-size: 22px;
 `;
 const SubjectName = styled.div`
-   display: flex;
    width: auto;
    font-size: 15px;
    margin: auto 0 auto 20px;
