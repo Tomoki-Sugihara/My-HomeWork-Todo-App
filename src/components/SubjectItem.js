@@ -10,20 +10,20 @@ const SubjectItem = props => {
       setState(prevState => {
          return {
             ...prevState,
-            displaySubjectIndex: props.index,
+            activeSubjectIndex: props.index,
          };
       });
    };
    return (
       <>
-         <Wrapper onClick={handleClickSetDisplaySubjectIndex}>
-            <Li>{props.subject.title}</Li>
-         </Wrapper>
+         <SubjectMenuItem onClick={handleClickSetDisplaySubjectIndex}>
+            <li>{props.subject.title}</li>
+         </SubjectMenuItem>
       </>
    );
 };
 
-const Wrapper = styled.div`
+export const SubjectMenuItem = styled.div`
    display: flex;
    height: 50px;
    width: 100%;
@@ -33,9 +33,9 @@ const Wrapper = styled.div`
       background-color: rgb(50, 50, 50);
       cursor: pointer;
    }
-`;
-const Li = styled.li`
-   margin: auto 0 auto 20px;
+   li {
+      margin: auto 0 auto 20px;
+   }
 `;
 
 export default SubjectItem;

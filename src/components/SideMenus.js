@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import AppContext from '../contexts/AppContext';
 import { subjectListTemplate } from '../constant';
-import SubjectItem from './SubjectItem';
+import SubjectItem, { SubjectMenuItem } from './SubjectItem';
 
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
@@ -14,6 +14,16 @@ const SideMenus = () => {
    const subjects = state.subjectList.map((subject, index) => {
       return <SubjectItem subject={subject} key={index} index={index} />;
    });
+
+   const handleClickDisplayAllTodo = () => {
+      setState(prevState => {
+         return {
+            ...prevState,
+            activeSubjectIndex: undefined,
+         };
+      });
+      console.log(state.activeSubjectIndex);
+   };
 
    const createSubject = () => {
       if (item.subjectTitle.trim() === '') {
@@ -37,6 +47,9 @@ const SideMenus = () => {
    return (
       <>
          <Wrapper>
+            <SubjectMenuItem onClick={handleClickDisplayAllTodo}>
+               <li>すべて</li>
+            </SubjectMenuItem>
             <SubjectList>{subjects}</SubjectList>
             <Form
                onSubmit={e => {
@@ -74,7 +87,6 @@ const Wrapper = styled.div`
    position: fixed;
    width: 350px;
    height: 100%;
-   /* padding-right: 5%; */
    background-color: rgb(43, 43, 43);
    ${media.lessThan('large')`
     display: none;

@@ -20,7 +20,7 @@ const App = () => {
       ...initialState,
       todoList: demoTodoList,
       subjectList: demoSubjectList,
-      displaySubjectIndex: 0,
+      activeSubjectIndex: undefined,
    });
    const [item, setItem] = useState(initialItem);
 

@@ -7,12 +7,19 @@ import media from 'styled-media-query';
 
 const Header = () => {
    const { state } = useContext(AppContext);
+   const displayTitleName = () => {
+      if (state.activeSubjectIndex === undefined) {
+         return 'My HomeWork Todo';
+      } else {
+         return state.subjectList[state.activeSubjectIndex].title;
+      }
+   };
    return (
       <>
          <Wrapper>
             <TitleBar>
                <Toolbar>
-                  <h2>{state.subjectList[state.displaySubjectIndex].title}</h2>
+                  <h2>{displayTitleName()}</h2>
                </Toolbar>
             </TitleBar>
          </Wrapper>

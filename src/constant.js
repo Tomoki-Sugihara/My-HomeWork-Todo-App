@@ -1,4 +1,8 @@
-export const initialState = { todoList: [], subjectList: [] , displaySubjectIndex: undefined};
+export const initialState = {
+   todoList: [],
+   subjectList: [],
+   activeSubjectIndex: undefined,
+};
 
 export const todoListTemplate = {
    title: '',
