@@ -32,7 +32,7 @@ export const demoTodoList = [
 ];
 export const demoSubjectList = [
    { title: 'English' },
-   { title: 'Science' },
+   { title: '理科' },
    { title: 'Computer Science' },
 ];
 

@@ -11,6 +11,7 @@ import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import Tooltip from '@material-ui/core/Tooltip';
 import Zoom from '@material-ui/core/Zoom';
+import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 
 const TodoItem = props => {
    const { state, setState } = useContext(AppContext);
@@ -21,6 +22,13 @@ const TodoItem = props => {
       newState.todoList[props.index].isDone = !newState.todoList[props.index]
          .isDone;
       setState(newState);
+   };
+   const displaySubjectName = () => {
+      if (props.todo.subjectIndex === undefined) {
+         return 'Task';
+      } else {
+         return state.subjectList[props.todo.subjectIndex].title;
+      }
    };
    const handleClickIsImportant = () => {
       const newState = {
@@ -51,6 +59,20 @@ const TodoItem = props => {
             onClick={handleClickIsDone}
          />
          <Li>{props.todo.title}</Li>
+         <SubjectName>
+            <KeyboardArrowRightIcon
+               fontSize="small"
+               style={{ margin: 'auto 0' }}
+            ></KeyboardArrowRightIcon>
+            <li
+               style={{
+                  display:
+                     state.activeSubjectIndex === undefined ? 'block' : 'none',
+               }}
+            >
+               {displaySubjectName()}
+            </li>
+         </SubjectName>
          <Checkbox
             style={{ marginLeft: 'auto' }}
             icon={<StarBorderIcon color="primary" />}
@@ -79,7 +101,6 @@ const Wrapper = styled.div`
    display: flex;
    height: 60px;
    list-style: none;
-   font-size: 22px;
    background-color: rgba(43, 43, 43);
    border-radius: 5px;
    margin: 5px 0;
@@ -89,6 +110,13 @@ const Wrapper = styled.div`
 `;
 const Li = styled.li`
    margin: auto 0 auto 5px;
+   font-size: 22px;
+`;
+const SubjectName = styled.div`
+   display: flex;
+   width: auto;
+   font-size: 15px;
+   margin: auto 0 auto 20px;
 `;
 const DeleteIcon = styled.div``;
 
