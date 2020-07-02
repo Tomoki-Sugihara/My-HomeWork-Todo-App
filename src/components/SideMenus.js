@@ -58,13 +58,13 @@ const SideMenus = () => {
             <Container id="sideMenuContainer">
                <label id="firstLabel">
                   <SubjectMenuItem onClick={handleClickDisplayAllTodo}>
-                     <li>すべて</li>
+                     <p style={{ color: 'tomato' }}>すべて</p>
                   </SubjectMenuItem>
                   <SubjectList>{subjects}</SubjectList>
                </label>
                <label htmlFor="menu" id="secondLabel">
                   <SubjectMenuItem onClick={handleClickDisplayAllTodo}>
-                     <li>すべて</li>
+                     <p style={{ color: 'tomato' }}>すべて</p>
                   </SubjectMenuItem>
                   <SubjectList>{subjects}</SubjectList>
                </label>{' '}
@@ -145,6 +145,7 @@ const Container = styled.aside`
    z-index: 6;
    height: 100%;
    width: 230px;
+   padding-top: 48px;
    background-color: rgb(43, 43, 43);
    .close {
       display: none;

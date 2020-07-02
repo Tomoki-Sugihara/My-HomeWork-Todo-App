@@ -3,6 +3,8 @@ import AppContext from '../contexts/AppContext';
 
 import styled from 'styled-components';
 // import media from 'styled-media-query';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import IconButton from '@material-ui/core/IconButton';
 
 const SubjectItem = props => {
    const { setState } = useContext(AppContext);
@@ -16,24 +18,35 @@ const SubjectItem = props => {
    };
    return (
       <>
-         <SubjectMenuItem onClick={handleClickSetDisplaySubjectIndex}>
-            <li>{props.subject.title}</li>
-         </SubjectMenuItem>
+         <Wrapper>
+            <SubjectMenuItem onClick={handleClickSetDisplaySubjectIndex}>
+               <p>{props.subject.title}</p>
+            </SubjectMenuItem>
+            <IconButton color="primary" style={{ marginLeft: 'auto' }}>
+               <MoreVertIcon fontSize="small" color="primary"></MoreVertIcon>
+            </IconButton>
+         </Wrapper>
       </>
    );
 };
-
+const Wrapper = styled.div`
+   display: flex;
+   :hover {
+      background-color: rgb(50, 50, 50);
+      cursor: pointer;
+   }
+`;
 export const SubjectMenuItem = styled.div`
    display: flex;
    height: 37.5px;
    width: 100%;
    font-size: 15px;
-   list-style: none;
+   margin: auto 0;
    :hover {
       background-color: rgb(50, 50, 50);
       cursor: pointer;
    }
-   li {
+   p {
       margin: auto 0 auto 15px;
    }
 `;
