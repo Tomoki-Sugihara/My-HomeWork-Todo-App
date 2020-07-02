@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import AppContext from '../contexts/AppContext';
-import styled from 'styled-components';
 
 import Checkbox from '@material-ui/core/Checkbox';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
@@ -12,6 +11,9 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import Tooltip from '@material-ui/core/Tooltip';
 import Zoom from '@material-ui/core/Zoom';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
+
+import styled from 'styled-components';
+import media from 'styled-media-query';
 
 const TodoItem = props => {
    const { state, setState } = useContext(AppContext);
@@ -67,19 +69,21 @@ const TodoItem = props => {
             checked={props.todo.isDone}
             onClick={handleClickIsDone}
          />
-         <Li>{props.todo.title}</Li>
-         <SubjectName
-            style={{
-               display:
-                  state.activeSubjectIndex === undefined ? 'flex' : 'none',
-            }}
-         >
-            <KeyboardArrowRightIcon
-               fontSize="small"
-               style={{ margin: 'auto 0' }}
-            ></KeyboardArrowRightIcon>
-            <li>{displaySubjectName()}</li>
-         </SubjectName>
+         <div>
+            <Li>{props.todo.title}</Li>
+            <SubjectName
+               style={{
+                  display:
+                     state.activeSubjectIndex === undefined ? 'flex' : 'none',
+               }}
+            >
+               <KeyboardArrowRightIcon
+                  fontSize="small"
+                  style={{ margin: 'auto 0' }}
+               ></KeyboardArrowRightIcon>
+               <li>{displaySubjectName()}</li>
+            </SubjectName>
+         </div>
          <Checkbox
             style={{ marginLeft: 'auto' }}
             icon={<StarBorderIcon color="primary" />}
@@ -113,6 +117,12 @@ const Wrapper = styled.div`
    margin: 5px 0;
    :hover {
       background-color: rgb(50, 50, 50);
+   }
+   div {
+      display: flex;
+      ${media.lessThan('medium')`
+      display: block;
+  `}
    }
 `;
 const Li = styled.li`
