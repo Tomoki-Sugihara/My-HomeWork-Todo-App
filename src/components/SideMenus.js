@@ -24,7 +24,6 @@ const SideMenus = () => {
             activeSubjectIndex: undefined,
          };
       });
-      console.log(state.activeSubjectIndex);
    };
 
    const createSubject = () => {
@@ -108,14 +107,14 @@ const Wrapper = styled.div`
    background-color: rgb(43, 43, 43);
 
    input[type='checkbox'] {
-      position: absolute;
+      position: fixed;
       left: -200%;
       :checked ~ #sideMenuContainer {
          left: 0;
       }
 
       :checked ~ .back {
-         position: absolute;
+         position: fixed;
          width: 100%;
          height: 100%;
          background: rgba(0, 0, 0, 0.8);
@@ -124,6 +123,10 @@ const Wrapper = styled.div`
    }
    .open {
       display: none;
+      position: fixed;
+      left: 3%;
+      top: 0;
+      z-index: 3;
       width: 48px;
       height: 48px;
       border-radius: 50%;
@@ -134,15 +137,11 @@ const Wrapper = styled.div`
       }
       ${media.lessThan('medium')`
       display: flex;
-      position: absolute;
-      left: 3%;
-      top: 0;
-      z-index: 3;
   `}
    }
 `;
 const Container = styled.aside`
-   position: absolute;
+   position: fixed;
    z-index: 6;
    height: 100%;
    width: 230px;

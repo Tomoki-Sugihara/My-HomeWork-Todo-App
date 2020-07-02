@@ -29,6 +29,7 @@ const Wrapper = styled.div`
    display: flex;
    width: calc(92% - 230px);
    height: 48px;
+   background-color: rgba(33, 33, 33, 0.96);
    ${media.lessThan('medium')`
    width: 94%;
   `}
