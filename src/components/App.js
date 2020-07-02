@@ -46,10 +46,10 @@ const Wrapper = styled.div`
       ' ... ... ...... ... ' 0px
       ' ... ... container ... ' 1fr
       ' ... ... ...... ... ' 10px
-      / 350px 4% 1fr 4%;
+      / 230px 4% 1fr 4%;
    height: 100%;
    width: 100%;
-   ${media.lessThan('large')`
+   ${media.lessThan('medium')`
    grid-template:
       ' ... ...... ... ' 0px
       ' ... container ... ' 1fr

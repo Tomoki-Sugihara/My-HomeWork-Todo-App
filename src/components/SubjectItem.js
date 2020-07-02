@@ -25,16 +25,16 @@ const SubjectItem = props => {
 
 export const SubjectMenuItem = styled.div`
    display: flex;
-   height: 50px;
+   height: 37.5px;
    width: 100%;
-   font-size: 20px;
+   font-size: 15px;
    list-style: none;
    :hover {
       background-color: rgb(50, 50, 50);
       cursor: pointer;
    }
    li {
-      margin: auto 0 auto 20px;
+      margin: auto 0 auto 15px;
    }
 `;
 

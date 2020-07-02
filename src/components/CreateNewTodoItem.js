@@ -86,11 +86,11 @@ const Wrapper = styled.div`
    position: fixed;
    bottom: 0;
    background-color: rgba(33, 33, 33, 0.95);
-   width: calc(92% - 350px);
-   height: 78px;
-   padding: 10px 0 10px 0;
+   width: calc(92% - 230px);
+   height: 58.5px;
+   padding: 7.5px 0 7.5px 0;
    margin-right: 5%;
-   ${media.lessThan('large')`
+   ${media.lessThan('medium')`
    width: 94%;
    margin-right: 3%;
   `}
@@ -105,14 +105,14 @@ const Form = styled.form`
    :hover {
       background-color: rgb(50, 50, 50);
    }
-   ${media.lessThan('large')`
+   ${media.lessThan('medium')`
   `}
 `;
 const InputOfTitle = styled.input`
    width: 90%;
    height: 100%;
-   margin-left: 4px;
-   font-size: 18px;
+   margin-left: 3px;
+   font-size: 13.5px;
    background-color: rgb(43, 43, 43);
    border-radius: 5px;
    color: white;
@@ -126,7 +126,7 @@ const InputOfTitle = styled.input`
          color: transparent;
       }
    }
-   ${media.lessThan('large')`
+   ${media.lessThan('medium')`
    margin: 0;
   `}
 `;

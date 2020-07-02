@@ -51,7 +51,9 @@ const SideMenus = () => {
          <Wrapper>
             <input id="menu" type="checkbox" />
             <label htmlFor="menu" className="open">
-               <MenuIcon></MenuIcon>
+               <p>
+                  <MenuIcon className="menuIcon"></MenuIcon>
+               </p>
             </label>
             <label htmlFor="menu" className="back"></label>
             <Container id="sideMenuContainer">
@@ -101,7 +103,7 @@ const SideMenus = () => {
    );
 };
 const Wrapper = styled.div`
-   width: 350px;
+   width: 300px;
    height: 100%;
    background-color: rgb(43, 43, 43);
 
@@ -122,11 +124,19 @@ const Wrapper = styled.div`
    }
    .open {
       display: none;
-      ${media.lessThan('large')`
-      display: block;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      p {
+         width: 24px;
+         height: 24px;
+         margin: auto;
+      }
+      ${media.lessThan('medium')`
+      display: flex;
       position: absolute;
-      left: calc(3% + 8px);
-      top: 17px;
+      left: 3%;
+      top: 0;
       z-index: 3;
   `}
    }
@@ -135,52 +145,53 @@ const Container = styled.aside`
    position: absolute;
    z-index: 6;
    height: 100%;
+   width: 230px;
    background-color: rgb(43, 43, 43);
    .close {
       display: none;
       width: 24px;
       margin-left: auto;
-      ${media.lessThan('large')`
+      ${media.lessThan('medium')`
       display: block;
   `}
    }
    #firstLabel {
       display: block;
-      ${media.lessThan('large')`
+      ${media.lessThan('medium')`
       display: none;
   `}
    }
    #secondLabel {
       display: none;
-      ${media.lessThan('large')`
+      ${media.lessThan('medium')`
       display: block;
   `}
    }
 
-   ${media.lessThan('large')`
-    left: -350px;
+   ${media.lessThan('medium')`
+    left: -300px;
     transition: all 0.2s;
   `}
 `;
 const SubjectList = styled.div``;
 const Form = styled.form`
    display: flex;
-   height: 48px;
+   height: 36px;
    width: 100%;
-   margin-top: 20px;
+   margin-top: 15px;
    background-color: rgb(43, 43, 43);
    border-radius: 5px;
    :hover {
       background-color: rgb(50, 50, 50);
    }
-   ${media.lessThan('large')`
+   ${media.lessThan('medium')`
   `}
 `;
 const InputOfTitle = styled.input`
    width: 90%;
    height: 100%;
-   margin-left: 4px;
-   font-size: 18px;
+   margin-left: 3px;
+   font-size: 13.5px;
    background-color: rgb(43, 43, 43);
    border-radius: 5px;
    color: white;
@@ -194,7 +205,7 @@ const InputOfTitle = styled.input`
          color: transparent;
       }
    }
-   ${media.lessThan('large')`
+   ${media.lessThan('medium')`
    margin: 0;
   `}
 `;

@@ -1,9 +1,6 @@
 import React, { useContext } from 'react';
 import AppContext from '../contexts/AppContext';
 
-import { Toolbar } from '@material-ui/core';
-// import MenuIcon from '@material-ui/icons/Menu';
-
 import styled from 'styled-components';
 import media from 'styled-media-query';
 
@@ -20,9 +17,7 @@ const Header = () => {
       <>
          <Wrapper>
             <TitleBar>
-               <Toolbar>
-                  <h2>{displayTitleName()}</h2>
-               </Toolbar>
+               <h3>{displayTitleName()}</h3>
             </TitleBar>
          </Wrapper>
       </>
@@ -32,20 +27,24 @@ const Header = () => {
 const Wrapper = styled.div`
    position: fixed;
    display: flex;
-   width: calc(92% - 350px);
-   height: 64px;
-   ${media.lessThan('large')`
+   width: calc(92% - 230px);
+   height: 48px;
+   ${media.lessThan('medium')`
    width: 94%;
-   height: 56px;
   `}
 `;
 
 const TitleBar = styled.div`
+   display: flex;
+
    background-color: rgba(33, 33, 33, 0.96);
-   margin-left: 22px;
-   ${media.lessThan('medium')`
+   margin-left: 45px;
+   ${media.lessThan('small')`
       margin: 0 auto;
   `}
+   h3 {
+      margin: auto 0;
+   }
 `;
 
 // const theme = createMuiTheme({

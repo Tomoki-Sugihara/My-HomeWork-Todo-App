@@ -110,29 +110,32 @@ const TodoItem = props => {
 
 const Wrapper = styled.div`
    display: flex;
-   height: 60px;
+   height: 45px;
    list-style: none;
    background-color: rgba(43, 43, 43);
    border-radius: 5px;
-   margin: 5px 0;
+   margin: 3.5px 0;
    :hover {
       background-color: rgb(50, 50, 50);
    }
    div {
       display: flex;
-      ${media.lessThan('medium')`
-      display: block;
+      ${media.lessThan('small')`
+      display: flex;
   `}
    }
 `;
 const Li = styled.li`
-   margin: auto 0 auto 5px;
-   font-size: 22px;
+   margin: auto 0 auto 3.5px;
+   font-size: 16.5px;
 `;
 const SubjectName = styled.div`
    width: auto;
-   font-size: 15px;
-   margin: auto 0 auto 20px;
+   font-size: 12px;
+   margin: auto 0 auto 15px;
+   li {
+      margin-top: 2px;
+   }
 `;
 const DeleteIcon = styled.div``;
 
