@@ -10,7 +10,7 @@ import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import Tooltip from '@material-ui/core/Tooltip';
 import Zoom from '@material-ui/core/Zoom';
-import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
+// import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 
 import styled from 'styled-components';
 import media from 'styled-media-query';
@@ -25,13 +25,13 @@ const TodoItem = props => {
          .isDone;
       setState(newState);
    };
-   const displaySubjectName = () => {
-      if (props.todo.subjectIndex === undefined) {
-         return 'Task';
-      } else {
-         return state.subjectList[props.todo.subjectIndex].title;
-      }
-   };
+   // const displaySubjectName = () => {
+   //    if (props.todo.subjectIndex === undefined) {
+   //       return 'Task';
+   //    } else {
+   //       return state.subjectList[props.todo.subjectIndex].title;
+   //    }
+   // };
    const handleClickIsImportant = () => {
       const newState = {
          ...state,
@@ -70,8 +70,8 @@ const TodoItem = props => {
             onClick={handleClickIsDone}
          />
          <div>
-            <Li>{props.todo.title}</Li>
-            <SubjectName
+            <P>{props.todo.title}</P>
+            {/* <SubjectName
                style={{
                   display:
                      state.activeSubjectIndex === undefined ? 'flex' : 'none',
@@ -82,7 +82,7 @@ const TodoItem = props => {
                   style={{ margin: 'auto 0' }}
                ></KeyboardArrowRightIcon>
                <li>{displaySubjectName()}</li>
-            </SubjectName>
+            </SubjectName> */}
          </div>
          <Checkbox
             style={{ marginLeft: 'auto' }}
@@ -120,23 +120,24 @@ const Wrapper = styled.div`
    }
    div {
       display: flex;
-      ${media.lessThan('small')`
-      display: flex;
-  `}
+      /* ${media.lessThan('small')`
+      display: block;
+  `} */
    }
 `;
-const Li = styled.li`
+const P = styled.p`
    margin: auto 0 auto 3.5px;
    font-size: 16.5px;
 `;
-const SubjectName = styled.div`
-   width: auto;
-   font-size: 12px;
-   margin: auto 0 auto 15px;
-   li {
-      margin-top: 2px;
-   }
-`;
+// const SubjectName = styled.div`
+//    width: auto;
+//    font-size: 12px;
+//    margin: auto 0 auto 15px;
+
+//    li {
+//       margin-top: 2px;
+//    }
+// `;
 const DeleteIcon = styled.div``;
 
 export default TodoItem;
