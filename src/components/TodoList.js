@@ -19,8 +19,7 @@ const Wrapper = styled.div`
    margin: 64px 0 30px 0;
    width: 100%;
    ${media.lessThan('medium')`
-   margin-top: 56px;                 //Toolbarを使うと勝手にheightを変えられる
-
+   margin-top: 56px;                 /*Toolbarを使うと勝手にheightを変えられる*/
   `}
 `;
 export default TodoList;

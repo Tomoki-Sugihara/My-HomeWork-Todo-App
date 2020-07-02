@@ -5,7 +5,7 @@ import SubjectItem, { SubjectMenuItem } from './SubjectItem';
 
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
-import CloseIcon from '@material-ui/icons/Close';
+// import CloseIcon from '@material-ui/icons/Close';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import styled from 'styled-components';

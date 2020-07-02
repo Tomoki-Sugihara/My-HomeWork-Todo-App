@@ -2,10 +2,10 @@ import React, { useContext } from 'react';
 import AppContext from '../contexts/AppContext';
 
 import styled from 'styled-components';
-import media from 'styled-media-query';
+// import media from 'styled-media-query';
 
 const SubjectItem = props => {
-   const { state, setState } = useContext(AppContext);
+   const { setState } = useContext(AppContext);
    const handleClickSetDisplaySubjectIndex = () => {
       setState(prevState => {
          return {
