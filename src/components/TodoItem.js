@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import AppContext from '../contexts/AppContext';
 
 import styled from 'styled-components';
-// import media from 'styled-media-query';
+import media from 'styled-media-query';
 
 import Checkbox from '@material-ui/core/Checkbox';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
@@ -13,7 +13,7 @@ import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import Tooltip from '@material-ui/core/Tooltip';
 import Zoom from '@material-ui/core/Zoom';
-// import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
+import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 
 const TodoItem = props => {
    const { state, setState } = useContext(AppContext);
@@ -25,13 +25,13 @@ const TodoItem = props => {
          .isDone;
       setState(newState);
    };
-   // const displaySubjectName = () => {
-   //    if (props.todo.subjectIndex === undefined) {
-   //       return 'Task';
-   //    } else {
-   //       return state.subjectList[props.todo.subjectIndex].title;
-   //    }
-   // };
+   const displaySubjectName = () => {
+      if (props.todo.subjectIndex === undefined) {
+         return 'Task';
+      } else {
+         return state.subjectList[props.todo.subjectIndex].title;
+      }
+   };
    const handleClickIsImportant = () => {
       const newState = {
          ...state,
@@ -73,7 +73,7 @@ const TodoItem = props => {
          />
          <div>
             <P>{props.todo.title}</P>
-            {/* <SubjectName
+            <SubjectName
                style={{
                   display:
                      state.activeSubjectIndex === undefined ? 'flex' : 'none',
@@ -83,8 +83,8 @@ const TodoItem = props => {
                   fontSize="small"
                   style={{ margin: 'auto 0' }}
                ></KeyboardArrowRightIcon>
-               <li>{displaySubjectName()}</li>
-            </SubjectName> */}
+               <p>{displaySubjectName()}</p>
+            </SubjectName>
          </div>
          <Checkbox
             style={{ marginLeft: 'auto' }}
@@ -127,23 +127,30 @@ const Wrapper = styled.div`
    :hover {
       background-color: rgb(50, 50, 50);
    }
-   div {
+   > div {
       display: flex;
+      ${media.lessThan('small')`
+      flex-direction: column;
+  `}
    }
 `;
 const P = styled.p`
    margin: auto 0 auto 3.5px;
    font-size: 16.5px;
 `;
-// const SubjectName = styled.div`
-//    width: auto;
-//    font-size: 12px;
-//    margin: auto 0 auto 15px;
+const SubjectName = styled.div`
+   width: auto;
+   font-size: 11px;
+   margin: auto 0 auto 15px;
+   ${media.lessThan('small')`
+   flex-direction: row;
+   margin: auto 0 auto 6px;
+  `}
 
-//    li {
-//       margin-top: 2px;
-//    }
-// `;
+   >p {
+      margin-top: 2px;
+   }
+`;
 const DeleteIcon = styled.div``;
 
 export default TodoItem;
