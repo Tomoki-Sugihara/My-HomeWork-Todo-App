@@ -1,4 +1,4 @@
-↓アプリURL
+アプリURL
 [https://sugihara10969.github.io/My-HomeWork-Todo-App/][2ef1da8c]
 
   [2ef1da8c]: https://sugihara10969.github.io/My-HomeWork-Todo-App/ "https://sugihara10969.github.io/My-HomeWork-Todo-App/"
