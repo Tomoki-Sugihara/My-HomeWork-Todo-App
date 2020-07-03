@@ -4,8 +4,8 @@ import AppContext from '../contexts/AppContext';
 import styled from 'styled-components';
 // import media from 'styled-media-query';
 
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import IconButton from '@material-ui/core/IconButton';
+// import MoreVertIcon from '@material-ui/icons/MoreVert';
+// import IconButton from '@material-ui/core/IconButton';
 
 const SubjectItem = props => {
    const { setState } = useContext(AppContext);
@@ -23,9 +23,9 @@ const SubjectItem = props => {
             <SubjectMenuItem onClick={handleClickSetActiveSubjectIndex}>
                <p>{props.subject.title}</p>
             </SubjectMenuItem>
-            <IconButton color="primary" style={{ marginLeft: 'auto' }}>
+            {/* <IconButton color="primary" style={{ marginLeft: 'auto' }}>
                <MoreVertIcon fontSize="small" color="primary"></MoreVertIcon>
-            </IconButton>
+            </IconButton> */}
          </Wrapper>
       </>
    );
