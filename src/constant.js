@@ -14,6 +14,7 @@ export const todoListTemplate = {
 export const subjectListTemplate = {
    title: '',
 };
+
 export const demoTodoList = [
    {
       title: 'JavaScript',
@@ -30,6 +31,7 @@ export const demoTodoList = [
    },
    { title: 'Python', isDone: false, isImportant: false, subjectIndex: 2 },
 ];
+
 export const demoSubjectList = [
    { title: 'English' },
    { title: '理科' },

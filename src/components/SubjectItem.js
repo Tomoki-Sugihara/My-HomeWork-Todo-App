@@ -3,12 +3,13 @@ import AppContext from '../contexts/AppContext';
 
 import styled from 'styled-components';
 // import media from 'styled-media-query';
+
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import IconButton from '@material-ui/core/IconButton';
 
 const SubjectItem = props => {
    const { setState } = useContext(AppContext);
-   const handleClickSetDisplaySubjectIndex = () => {
+   const handleClickSetActiveSubjectIndex = () => {
       setState(prevState => {
          return {
             ...prevState,
@@ -19,7 +20,7 @@ const SubjectItem = props => {
    return (
       <>
          <Wrapper>
-            <SubjectMenuItem onClick={handleClickSetDisplaySubjectIndex}>
+            <SubjectMenuItem onClick={handleClickSetActiveSubjectIndex}>
                <p>{props.subject.title}</p>
             </SubjectMenuItem>
             <IconButton color="primary" style={{ marginLeft: 'auto' }}>

@@ -3,13 +3,14 @@ import AppContext from '../contexts/AppContext';
 import { subjectListTemplate } from '../constant';
 import SubjectItem, { SubjectMenuItem } from './SubjectItem';
 
+import styled from 'styled-components';
+import media from 'styled-media-query';
+
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 // import CloseIcon from '@material-ui/icons/Close';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import styled from 'styled-components';
-import media from 'styled-media-query';
 const SideMenus = () => {
    const { state, setState, item, setItem } = useContext(AppContext);
 
@@ -30,17 +31,18 @@ const SideMenus = () => {
       if (item.subjectTitle.trim() === '') {
          return;
       }
-      const newState = {
-         ...state,
-         subjectList: [
-            ...state.subjectList,
-            {
-               ...subjectListTemplate,
-               title: item.subjectTitle,
-            },
-         ],
-      };
-      setState(newState);
+      setState(prevState => {
+         return {
+            ...prevState,
+            subjectList: [
+               ...prevState.subjectList,
+               {
+                  ...subjectListTemplate,
+                  title: item.subjectTitle,
+               },
+            ],
+         };
+      });
       setItem(prevItem => {
          return { ...prevItem, subjectTitle: '' };
       });
@@ -68,7 +70,7 @@ const SideMenus = () => {
                   </SubjectMenuItem>
                   <SubjectList>{subjects}</SubjectList>
                </label>{' '}
-               {/*ダサすぎる */}
+               {/*↑ダサすぎる */}
                <Form
                   onSubmit={e => {
                      e.preventDefault();
@@ -145,7 +147,7 @@ const Container = styled.aside`
    z-index: 6;
    height: 100%;
    width: 230px;
-   padding-top: 48px;
+   padding-top: 10px;
    background-color: rgb(43, 43, 43);
    .close {
       display: none;

@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
 import AppContext from '../contexts/AppContext';
 
+import styled from 'styled-components';
+// import media from 'styled-media-query';
+
 import Checkbox from '@material-ui/core/Checkbox';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
@@ -11,9 +14,6 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import Tooltip from '@material-ui/core/Tooltip';
 import Zoom from '@material-ui/core/Zoom';
 // import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
-
-import styled from 'styled-components';
-import media from 'styled-media-query';
 
 const TodoItem = props => {
    const { state, setState } = useContext(AppContext);
@@ -63,8 +63,10 @@ const TodoItem = props => {
          }}
       >
          <Checkbox
-            icon={<RadioButtonUncheckedIcon color="primary" />}
-            checkedIcon={<CheckCircleOutlineIcon color="primary" />}
+            icon={<RadioButtonUncheckedIcon color="primary" fontSize="small" />}
+            checkedIcon={
+               <CheckCircleOutlineIcon color="primary" fontSize="small" />
+            }
             color="primary"
             checked={props.todo.isDone}
             onClick={handleClickIsDone}
@@ -86,8 +88,8 @@ const TodoItem = props => {
          </div>
          <Checkbox
             style={{ marginLeft: 'auto' }}
-            icon={<StarBorderIcon color="primary" />}
-            checkedIcon={<StarIcon color="primary" />}
+            icon={<StarBorderIcon color="primary" fontSize="small" />}
+            checkedIcon={<StarIcon color="primary" fontSize="small" />}
             color="primary"
             checked={props.todo.isImportant}
             onClick={handleClickIsImportant}
@@ -99,8 +101,15 @@ const TodoItem = props => {
             TransitionComponent={Zoom}
          >
             <DeleteIcon onClick={deleteTodo}>
-               <IconButton color="secondary" style={{ height: '100%' }}>
-                  <DeleteOutlineOutlinedIcon color="secondary"></DeleteOutlineOutlinedIcon>
+               <IconButton
+                  color="secondary"
+                  fontSize="small"
+                  style={{ height: '100%' }}
+               >
+                  <DeleteOutlineOutlinedIcon
+                     color="secondary"
+                     fontSize="small"
+                  ></DeleteOutlineOutlinedIcon>
                </IconButton>
             </DeleteIcon>
          </Tooltip>
@@ -120,9 +129,6 @@ const Wrapper = styled.div`
    }
    div {
       display: flex;
-      /* ${media.lessThan('small')`
-      display: block;
-  `} */
    }
 `;
 const P = styled.p`

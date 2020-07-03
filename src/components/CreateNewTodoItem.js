@@ -2,35 +2,35 @@ import React, { useContext } from 'react';
 import AppContext from '../contexts/AppContext';
 import { initialItem, todoListTemplate } from '../constant';
 
+import styled from 'styled-components';
+import media from 'styled-media-query';
+
 import Checkbox from '@material-ui/core/Checkbox';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 
-import styled from 'styled-components';
-import media from 'styled-media-query';
-
 const CreateNewTodoItem = () => {
    const { state, setState, item, setItem } = useContext(AppContext);
-
    const createTodo = () => {
       if (item.title.trim() === '') {
          return;
       }
-      const newState = {
-         ...state,
-         todoList: [
-            ...state.todoList,
-            {
-               ...todoListTemplate,
-               title: item.title,
-               isImportant: item.isImportant,
-               subjectIndex: state.activeSubjectIndex,
-            },
-         ],
-      };
-      setState(newState);
+      setState(prevState => {
+         return {
+            ...prevState,
+            todoList: [
+               ...prevState.todoList,
+               {
+                  ...todoListTemplate,
+                  title: item.title,
+                  isImportant: item.isImportant,
+                  subjectIndex: state.activeSubjectIndex,
+               },
+            ],
+         };
+      });
       setItem(prevItem => {
          return { ...initialItem, cancelIsBlock: prevItem.cancelIsBlock };
       });
@@ -108,6 +108,7 @@ const Form = styled.form`
    ${media.lessThan('medium')`
   `}
 `;
+
 const InputOfTitle = styled.input`
    width: 90%;
    height: 100%;
@@ -130,4 +131,5 @@ const InputOfTitle = styled.input`
    margin: 0;
   `}
 `;
+
 export default CreateNewTodoItem;

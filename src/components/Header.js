@@ -45,16 +45,8 @@ const TitleBar = styled.div`
   `}
    h3 {
       margin: auto 0;
+      user-select: none;
    }
 `;
-
-// const theme = createMuiTheme({
-//    typography: {
-//       fontFamily: ['Noto Sans', 'sans-serif'].join(','),
-//    },
-//    overrides: {
-//       MuiTypography: {},
-//    },
-// });
 
 export default Header;
