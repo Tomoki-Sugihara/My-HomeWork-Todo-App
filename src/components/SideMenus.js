@@ -50,13 +50,13 @@ const SideMenus = () => {
    return (
       <>
          <Wrapper>
-            <input id="menu" type="checkbox" />
-            <label htmlFor="menu" className="open">
-               <p>
+            <input id="clickSidebar" type="checkbox" />
+            <label htmlFor="clickSidebar" className="open">
+               <div>
                   <MenuIcon className="menuIcon"></MenuIcon>
-               </p>
+               </div>
             </label>
-            <label htmlFor="menu" className="back"></label>
+            <label htmlFor="clickSidebar" className="back"></label>
             <Container id="sideMenuContainer">
                <label id="firstLabel">
                   <SubjectMenuItem onClick={handleClickDisplayAllTodo}>
@@ -64,7 +64,7 @@ const SideMenus = () => {
                   </SubjectMenuItem>
                   <SubjectList>{subjects}</SubjectList>
                </label>
-               <label htmlFor="menu" id="secondLabel">
+               <label htmlFor="clickSidebar" id="secondLabel">
                   <SubjectMenuItem onClick={handleClickDisplayAllTodo}>
                      <p style={{ color: 'tomato' }}>すべて</p>
                   </SubjectMenuItem>
@@ -132,7 +132,7 @@ const Wrapper = styled.div`
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      p {
+      > div {
          width: 24px;
          height: 24px;
          margin: auto;
