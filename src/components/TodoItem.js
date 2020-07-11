@@ -95,7 +95,7 @@ const TodoItem = props => {
             onClick={handleClickIsImportant}
          />
          <Tooltip
-            title="delete"
+            title="Delete"
             enterDelay={600}
             leaveDelay={100}
             TransitionComponent={Zoom}

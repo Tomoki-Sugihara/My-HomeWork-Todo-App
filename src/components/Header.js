@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import AppContext from '../contexts/AppContext';
+import MenuWindow from './MenuWindow';
 
 import styled from 'styled-components';
 import media from 'styled-media-query';
@@ -29,7 +30,9 @@ const Header = () => {
                </IconButton>
                <input type="checkbox" id="menu" />
                <label htmlFor="menu" className="back"></label>
-               <div className="menuWindow">delete</div>
+               <div className="menuWindow">
+                  <MenuWindow />
+               </div>
             </SettingMenu>
          </Wrapper>
       </>
@@ -39,6 +42,7 @@ const Header = () => {
 const Wrapper = styled.div`
    position: fixed;
    display: flex;
+   z-index: 1;
    width: calc(92% - 230px);
    height: 48px;
    background-color: rgba(33, 33, 33, 0.96);
@@ -76,9 +80,11 @@ const SettingMenu = styled.div`
       top: 45px;
       right: 3%;
       display: none;
-      width: 210px;
-      height: 50px;
-      background-color: rgb(30, 30, 30);
+      z-index: 11;
+      width: 180px;
+      height: auto;
+      border: 0.1px solid rgb(50, 50, 50);
+      background-color: rgb(32, 32, 32);
    }
    input[type='checkbox'] {
       position: fixed;
