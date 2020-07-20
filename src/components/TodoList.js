@@ -3,11 +3,10 @@ import TodoItem from './TodoItem';
 import AppContext from '../contexts/AppContext';
 
 import styled from 'styled-components';
-// import media from 'styled-media-query';
-
 const TodoList = () => {
    const { state } = useContext(AppContext);
 
+   console.log(state);
    const todos = state.todoList.map((todo, index) => {
       return <TodoItem todo={todo} key={index} index={index} />;
    });

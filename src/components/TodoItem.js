@@ -121,7 +121,7 @@ const Wrapper = styled.div`
    display: flex;
    height: 45px;
    list-style: none;
-   background-color: rgba(43, 43, 43);
+   background-color: rgb(43, 43, 43);
    border-radius: 5px;
    margin: 3.5px 0;
    :hover {

@@ -49,6 +49,8 @@ const Wrapper = styled.div`
       / 230px 4% 1fr 4%;
    height: 100%;
    width: 100%;
+   background-color: rgb(33, 33, 33);
+   color: rgb(228, 226, 226);
    ${media.lessThan('medium')`
    grid-template:
       ' ... ...... ... ' 0px

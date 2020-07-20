@@ -128,7 +128,7 @@ const Wrapper = styled.div`
       position: fixed;
       left: 3%;
       top: 0;
-      z-index: 3;
+      z-index: 5;
       width: 48px;
       height: 48px;
       border-radius: 50%;

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import AppContext from '../contexts/AppContext';
 import { initialItem, todoListTemplate } from '../constant';
+import { BLACKOFBACKGROUND096 } from '../color';
 
 import styled from 'styled-components';
 import media from 'styled-media-query';
@@ -85,7 +86,7 @@ const CreateNewTodoItem = () => {
 const Wrapper = styled.div`
    position: fixed;
    bottom: 0;
-   background-color: rgba(33, 33, 33, 0.95);
+   background-color: ${BLACKOFBACKGROUND096};
    width: calc(92% - 230px);
    height: 58.5px;
    padding: 7.5px 0 7.5px 0;
