@@ -8,7 +8,7 @@ export const todoListTemplate = {
    title: '',
    isDone: false,
    isImportant: false,
-   subjectIndex: undefined,
+   // subjectIndex: undefined,
 };
 
 export const subjectListTemplate = {

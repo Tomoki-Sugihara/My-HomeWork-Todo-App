@@ -43,20 +43,20 @@ const App = () => {
 const Wrapper = styled.div`
    display: grid;
    grid-template:
-      ' ... ... ...... ... ' 0px
-      ' ... ... container ... ' 1fr
-      ' ... ... ...... ... ' 10px
-      / 230px 4% 1fr 4%;
+      ' ..... ... ......... ... ' 0px
+      ' ..... ... container ... ' 1fr
+      ' ..... ... ......... ... ' 0px
+      / 230px 4%     1fr    4%;
    height: 100%;
    width: 100%;
    background-color: rgb(33, 33, 33);
    color: rgb(228, 226, 226);
    ${media.lessThan('medium')`
    grid-template:
-      ' ... ...... ... ' 0px
+      ' ... ......... ... ' 0px
       ' ... container ... ' 1fr
-      ' ... ...... ... ' 10px
-      / 3% 1fr 3%;
+      ' ... ......... ... ' 0px
+      / 3%     1fr    3%;
     
   `}
 `;
