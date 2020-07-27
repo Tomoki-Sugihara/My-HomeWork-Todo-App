@@ -12,7 +12,6 @@ import SideMenus from './SideMenus';
 import Header from './Header';
 import TodoList from './TodoList';
 import CreateNewTodoItem from './CreateNewTodoItem';
-
 import styled from 'styled-components';
 import media from 'styled-media-query';
 
