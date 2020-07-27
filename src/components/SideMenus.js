@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import AppContext from '../contexts/AppContext';
 import { subjectListTemplate } from '../constant';
+import { c } from '../color';
 import SubjectItem, { SubjectMenuItem } from './SubjectItem';
 
 import styled from 'styled-components';
@@ -106,7 +107,7 @@ const SideMenus = () => {
 const Wrapper = styled.div`
    width: 300px;
    height: 100%;
-   background-color: rgb(43, 43, 43);
+   background-color: ${c.grayOfForm};
 
    input[type='checkbox'] {
       position: fixed;
@@ -148,7 +149,7 @@ const Container = styled.aside`
    height: 100%;
    width: 230px;
    padding-top: 10px;
-   background-color: rgb(43, 43, 43);
+   background-color: ${c.grayOfForm};
    .close {
       display: none;
       width: 24px;
@@ -181,10 +182,10 @@ const Form = styled.form`
    height: 36px;
    width: 100%;
    margin-top: 15px;
-   background-color: rgb(43, 43, 43);
+   background-color: ${c.grayOfForm};
    border-radius: 5px;
    :hover {
-      background-color: rgb(50, 50, 50);
+      background-color: ${c.grayOfHoverForm};
    }
    ${media.lessThan('medium')`
   `}
@@ -194,12 +195,12 @@ const InputOfTitle = styled.input`
    height: 100%;
    margin-left: 3px;
    font-size: 13.5px;
-   background-color: rgb(43, 43, 43);
+   background-color: ${c.grayOfForm};
    border-radius: 5px;
    color: white;
    border-style: none;
    :hover {
-      background-color: rgb(50, 50, 50);
+      background-color: ${c.grayOfHoverForm};
    }
    :focus {
       outline: 0;

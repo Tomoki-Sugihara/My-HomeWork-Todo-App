@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import TodoItem from './TodoItem';
 import AppContext from '../contexts/AppContext';
+// import { c } from '../color';
 
 import styled from 'styled-components';
 const TodoList = () => {

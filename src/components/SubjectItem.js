@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import AppContext from '../contexts/AppContext';
+import { c } from '../color';
 
 import styled from 'styled-components';
 // import media from 'styled-media-query';
@@ -7,7 +8,8 @@ import styled from 'styled-components';
 // import Badge from '@material-ui/core/Badge';
 
 const SubjectItem = props => {
-   const { state, setState } = useContext(AppContext);
+   const { setState } = useContext(AppContext);
+   // const { state, setState } = useContext(AppContext);
    // const handleMouseDown = e => {
    //    e.preventDefault();
    //    const isRight = e.nativeEvent.which === 3;
@@ -59,7 +61,7 @@ const Wrapper = styled.div`
    position: relative;
    height: auto;
    :hover {
-      background-color: rgb(50, 50, 50);
+      background-color: ${c.grayOfHoverItem};
       cursor: pointer;
    }
 `;
@@ -70,7 +72,7 @@ export const SubjectMenuItem = styled.div`
    font-size: 15px;
    margin: auto 0;
    :hover {
-      background-color: rgb(50, 50, 50);
+      background-color: ${c.grayOfHoverItem};
       cursor: pointer;
    }
    p {

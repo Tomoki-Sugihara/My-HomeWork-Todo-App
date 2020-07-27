@@ -7,7 +7,7 @@ import media from 'styled-media-query';
 
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import IconButton from '@material-ui/core/IconButton';
-import { BLACKOFBACKGROUND, BLACKOFBACKGROUND096 } from '../color';
+import { c, length } from '../color';
 
 const Header = () => {
    const { state } = useContext(AppContext);
@@ -45,8 +45,8 @@ const Wrapper = styled.div`
    display: flex;
    z-index: 1;
    width: calc(92% - 230px);
-   height: 48px;
-   background-color: ${BLACKOFBACKGROUND096};
+   height: ${length.header};
+   background-color: ${c.blackOfMenuBackground(0.96)};
    ${media.lessThan('medium')`
    width: 94%;
   `}
@@ -54,7 +54,7 @@ const Wrapper = styled.div`
 
 const TitleBar = styled.div`
    display: flex;
-   background-color: ${BLACKOFBACKGROUND096};
+   background-color: ${c.blackOfMenuBackground(0.96)};
    margin-left: 45px;
    ${media.lessThan('small')`
       margin: 0 auto;
@@ -84,9 +84,7 @@ const SettingMenu = styled.div`
       width: 180px;
       height: auto;
       border: 0.1px solid rgb(50, 50, 50);
-      background-color: ${BLACKOFBACKGROUND};
-      /* background-color: BLACKOFBACKGROUND; */
-      /* background-color: rgb(32, 32, 32); */
+      background-color: ${c.blackOfMenuBackground};
    }
    input[type='checkbox'] {
       position: fixed;

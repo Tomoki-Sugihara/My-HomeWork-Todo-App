@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import AppContext from '../contexts/AppContext';
+// import { c } from '../color';
 
 import styled from 'styled-components';
 // import media from 'styled-media-query';

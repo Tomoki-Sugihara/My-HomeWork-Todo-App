@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import AppContext from '../contexts/AppContext';
+import { c } from '../color';
 
 import styled from 'styled-components';
 import media from 'styled-media-query';
@@ -121,11 +122,11 @@ const Wrapper = styled.div`
    display: flex;
    height: 45px;
    list-style: none;
-   background-color: rgb(43, 43, 43);
+   background-color: ${c.grayOfItem};
    border-radius: 5px;
    margin: 3.5px 0;
    :hover {
-      background-color: rgb(50, 50, 50);
+      background-color: ${c.grayOfHoverItem};
    }
    > div {
       display: flex;

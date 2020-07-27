@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import AppContext from '../contexts/AppContext';
 import { initialItem, todoListTemplate } from '../constant';
-import { BLACKOFBACKGROUND096 } from '../color';
+import { c } from '../color';
 
 import styled from 'styled-components';
 import media from 'styled-media-query';
@@ -86,7 +86,7 @@ const CreateNewTodoItem = () => {
 const Wrapper = styled.div`
    position: fixed;
    bottom: 0;
-   background-color: ${BLACKOFBACKGROUND096};
+   background-color: ${c.blackOfBackground(0.96)};
    width: calc(92% - 230px);
    height: 58.5px;
    padding: 7.5px 0 7.5px 0;
@@ -101,10 +101,10 @@ const Form = styled.form`
    display: flex;
    height: 100%;
    width: 100%;
-   background-color: rgb(43, 43, 43);
+   background-color: ${c.grayOfForm};
    border-radius: 5px;
    :hover {
-      background-color: rgb(50, 50, 50);
+      background-color: ${c.grayOfHoverForm};
    }
    ${media.lessThan('medium')`
   `}
@@ -115,12 +115,12 @@ const InputOfTitle = styled.input`
    height: 100%;
    margin-left: 3px;
    font-size: 13.5px;
-   background-color: rgb(43, 43, 43);
+   background-color: ${c.grayOfForm};
    border-radius: 5px;
    color: white;
    border-style: none;
    :hover {
-      background-color: rgb(50, 50, 50);
+      background-color: ${c.grayOfHoverForm};
    }
    :focus {
       outline: 0;

@@ -6,6 +6,7 @@ import {
    demoSubjectList,
    demoTodoList,
 } from '../constant';
+import { c } from '../color';
 
 import SideMenus from './SideMenus';
 import Header from './Header';
@@ -46,10 +47,10 @@ const Wrapper = styled.div`
       ' ..... ... ......... ... ' 0px
       ' ..... ... container ... ' 1fr
       ' ..... ... ......... ... ' 0px
-      / 230px 4%     1fr    4%;
+      / 230px 4% 1fr 4%;
    height: 100%;
    width: 100%;
-   background-color: rgb(33, 33, 33);
+   background-color: ${c.BlackOfBackground};
    color: rgb(228, 226, 226);
    ${media.lessThan('medium')`
    grid-template:
