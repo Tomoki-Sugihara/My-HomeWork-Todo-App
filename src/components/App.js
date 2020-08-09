@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
+import reducer from '../reducers'
 import AppContext from '../contexts/AppContext';
 import {
    initialItem,
-   initialState,
-   demoSubjectList,
-   demoTodoList,
+   demoState
 } from '../constant';
 
 import SideMenus from './SideMenus';
@@ -16,17 +15,13 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 
 const App = () => {
-   const [state, setState] = useState({
-      ...initialState,
-      todoList: demoTodoList,
-      subjectList: demoSubjectList,
-      activeSubjectIndex: undefined,
-   });
+   const [state, dispatch] = useReducer(reducer, demoState);
+   const [activeSubjectIndex, setActiveSubjectIndex] = useState(undefined);
    const [item, setItem] = useState(initialItem);
 
    return (
       <>
-         <AppContext.Provider value={{ state, setState, item, setItem }}>
+         <AppContext.Provider value={{ state, dispatch,activeSubjectIndex, setActiveSubjectIndex, item, setItem }}>
             <Wrapper>
                <SideMenus />
                <Container>
@@ -39,6 +34,8 @@ const App = () => {
       </>
    );
 };
+
+
 
 const Wrapper = styled.div`
    display: grid;

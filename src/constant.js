@@ -1,7 +1,13 @@
 export const initialState = {
    todoList: [],
    subjectList: [],
-   activeSubjectIndex: undefined,
+   // activeSubjectIndex: undefined,
+};
+
+export const initialItem = {
+   title: '',
+   isImportant: false,
+   subjectTitle: '',
 };
 
 export const todoListTemplate = {
@@ -15,7 +21,7 @@ export const subjectListTemplate = {
    title: '',
 };
 
-export const demoTodoList = [
+const demoTodoList = [
    {
       title: 'JavaScript',
       isDone: false,
@@ -32,14 +38,15 @@ export const demoTodoList = [
    { title: 'Python', isDone: false, isImportant: false, subjectIndex: 2 },
 ];
 
-export const demoSubjectList = [
+const demoSubjectList = [
    { title: 'English' },
    { title: '理科' },
    { title: 'Computer Science' },
 ];
 
-export const initialItem = {
-   title: '',
-   isImportant: false,
-   subjectTitle: '',
-};
+export const demoState = {
+   ...initialState,
+   todoList: demoTodoList,
+   subjectList: demoSubjectList,
+   // activeSubjectIndex: undefined,
+}
