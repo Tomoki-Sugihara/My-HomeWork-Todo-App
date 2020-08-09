@@ -31,9 +31,10 @@ const CreateNewTodoItem = () => {
             ],
          };
       });
-      setItem(prevItem => {
-         return { ...initialItem, cancelIsBlock: prevItem.cancelIsBlock };
-      });
+      setItem(initialItem);
+      // setItem(prevItem => {
+      //    return { ...initialItem, cancelIsBlock: prevItem.cancelIsBlock };
+      // });
    };
    const handleClickIsImportant = () => {
       setItem(prevItem => {
