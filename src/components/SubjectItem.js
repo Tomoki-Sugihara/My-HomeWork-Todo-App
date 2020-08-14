@@ -8,14 +8,15 @@ import styled from 'styled-components';
 // import IconButton from '@material-ui/core/IconButton';
 
 const SubjectItem = props => {
-   const { setState } = useContext(AppContext);
+   const { setActiveSubjectIndex } = useContext(AppContext);
    const handleClickSetActiveSubjectIndex = () => {
-      setState(prevState => {
-         return {
-            ...prevState,
-            activeSubjectIndex: props.index,
-         };
-      });
+      // setState(prevState => {
+      //    return {
+      //       ...prevState,
+      //       activeSubjectIndex: props.index,
+      //    };
+      // });
+      setActiveSubjectIndex(props.index)
    };
    return (
       <>

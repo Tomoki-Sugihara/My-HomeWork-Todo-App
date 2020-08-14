@@ -1,7 +1,7 @@
 export const initialState = {
    todoList: [],
    subjectList: [],
-   // activeSubjectIndex: undefined,
+   // activeSubjectIndex: -1,
 };
 
 export const initialItem = {
@@ -14,7 +14,7 @@ export const todoListTemplate = {
    title: '',
    isDone: false,
    isImportant: false,
-   subjectIndex: undefined,
+   subjectIndex: -1,
 };
 
 export const subjectListTemplate = {
@@ -45,8 +45,8 @@ const demoSubjectList = [
 ];
 
 export const demoState = {
-   ...initialState,
+   // ...initialState,
    todoList: demoTodoList,
    subjectList: demoSubjectList,
-   // activeSubjectIndex: undefined,
-}
+   // activeSubjectIndex: -1,
+};

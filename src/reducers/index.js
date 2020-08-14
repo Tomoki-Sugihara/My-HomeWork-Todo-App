@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import todoLists from './todoLists';
-import subjectLists from './subjectLists';
+import todoList from './todoList';
+import subjectList from './subjectList';
 
-export default combineReducers({todoLists, subjectLists});
+export default combineReducers({ todoList, subjectList });

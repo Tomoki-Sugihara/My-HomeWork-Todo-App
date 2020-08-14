@@ -5,12 +5,12 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 
 const Header = () => {
-   const { state } = useContext(AppContext);
+   const { state, activeSubjectIndex } = useContext(AppContext);
    const displayTitleName = () => {
-      if (state.activeSubjectIndex === undefined) {
+      if (activeSubjectIndex === -1) {
          return 'My HomeWork Todo';
       } else {
-         return state.subjectList[state.activeSubjectIndex].title;
+         return state.subjectList[activeSubjectIndex].title;
       }
    };
    return (

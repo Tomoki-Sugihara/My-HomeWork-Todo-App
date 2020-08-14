@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import AppContext from '../contexts/AppContext';
 import { initialItem, todoListTemplate } from '../constant';
+import { CREATE_TODO_ITEM } from '../actions/index';
 
 import styled from 'styled-components';
 import media from 'styled-media-query';
@@ -12,29 +13,35 @@ import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 
 const CreateNewTodoItem = () => {
-   const { state, setState, item, setItem } = useContext(AppContext);
+   const { state, dispatch, activeSubjectIndex, item, setItem } = useContext(
+      AppContext
+   );
+
    const createTodo = () => {
       if (item.title.trim() === '') {
          return;
       }
-      setState(prevState => {
-         return {
-            ...prevState,
-            todoList: [
-               ...prevState.todoList,
-               {
-                  ...todoListTemplate,
-                  title: item.title,
-                  isImportant: item.isImportant,
-                  subjectIndex: state.activeSubjectIndex,
-               },
-            ],
-         };
+      dispatch({
+         type: CREATE_TODO_ITEM,
+         title: item.title,
+         isImportant: item.isImportant,
+         subjectIndex: activeSubjectIndex,
       });
-      setItem(initialItem);
-      // setItem(prevItem => {
-      //    return { ...initialItem, cancelIsBlock: prevItem.cancelIsBlock };
+      // setState(prevState => {
+      //    return {
+      //       ...prevState,
+      //       todoList: [
+      //          ...prevState.todoList,
+      //          {
+      //             ...todoListTemplate,
+      //             title: item.title,
+      //             isImportant: item.isImportant,
+      //             subjectIndex: activeSubjectIndex,
+      //          },
+      //       ],
+      //    };
       // });
+      setItem(initialItem);
    };
    const handleClickIsImportant = () => {
       setItem(prevItem => {

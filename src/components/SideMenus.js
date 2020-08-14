@@ -10,39 +10,49 @@ import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 // import CloseIcon from '@material-ui/icons/Close';
 import MenuIcon from '@material-ui/icons/Menu';
+import { CREATE_SUBJECT } from '../actions';
 
 const SideMenus = () => {
-   const { state, setState, item, setItem } = useContext(AppContext);
+   const { state, dispatch, setActiveSubjectIndex, item, setItem } = useContext(
+      AppContext
+   );
 
    const subjects = state.subjectList.map((subject, index) => {
       return <SubjectItem subject={subject} key={index} index={index} />;
    });
 
    const handleClickDisplayAllTodo = () => {
-      setState(prevState => {
-         return {
-            ...prevState,
-            activeSubjectIndex: undefined,
-         };
-      });
+      // setState(prevState => {
+      //    return {
+      //       ...prevState,
+      //       activeSubjectIndex: -1,
+      //    };
+      // });
+      setActiveSubjectIndex(-1);
    };
 
    const createSubject = () => {
       if (item.subjectTitle.trim() === '') {
          return;
       }
-      setState(prevState => {
-         return {
-            ...prevState,
-            subjectList: [
-               ...prevState.subjectList,
-               {
-                  ...subjectListTemplate,
-                  title: item.subjectTitle,
-               },
-            ],
-         };
+
+      dispatch({
+         type: CREATE_SUBJECT,
+         title: item.subjectTitle,
       });
+
+      // setState(prevState => {
+      //    return {
+      //       ...prevState,
+      //       subjectList: [
+      //          ...prevState.subjectList,
+      //          {
+      //             ...subjectListTemplate,
+      //             title: item.subjectTitle,
+      //          },
+      //       ],
+      //    };
+      // });
       setItem(prevItem => {
          return { ...prevItem, subjectTitle: '' };
       });

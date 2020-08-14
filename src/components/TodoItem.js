@@ -14,42 +14,56 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import Tooltip from '@material-ui/core/Tooltip';
 import Zoom from '@material-ui/core/Zoom';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
+import {
+   TOGGLE_IS_DONE,
+   TOGGLE_IS_IMPORTANT,
+   DELETE_TODO_ITEM,
+} from '../actions';
 
 const TodoItem = props => {
-   const { state, setState } = useContext(AppContext);
+   const { state, dispatch, activeSubjectIndex } = useContext(AppContext);
    const handleClickIsDone = () => {
-      const newState = {
-         ...state,
-      };
-      newState.todoList[props.index].isDone = !newState.todoList[props.index]
-         .isDone;
-      setState(newState);
+      // const newState = {
+      //    ...state,
+      // };
+      // newState.todoList[props.index].isDone = !newState.todoList[props.index]
+      //    .isDone;
+      // setState(newState);
+
+      dispatch({
+         type: TOGGLE_IS_DONE,
+         index: props.index,
+      });
    };
    const displaySubjectName = () => {
-      if (props.todo.subjectIndex === undefined) {
+      if (props.todo.subjectIndex === -1) {
          return 'Task';
       } else {
          return state.subjectList[props.todo.subjectIndex].title;
       }
    };
    const handleClickIsImportant = () => {
-      const newState = {
-         ...state,
-      };
-      newState.todoList[props.index].isImportant = !newState.todoList[
-         props.index
-      ].isImportant;
-      setState(newState);
+      // const newState = {
+      //    ...state,
+      // };
+      // newState.todoList[props.index].isImportant = !newState.todoList[
+      //    props.index
+      // ].isImportant;
+      // setState(newState);
+
+      dispatch({ type: TOGGLE_IS_IMPORTANT, index: props.index });
    };
    const deleteTodo = () => {
-      const newState = { ...state };
-      newState.todoList.splice(props.index, 1);
-      setState(newState);
+      // const newState = { ...state };
+      // newState.todoList.splice(props.index, 1);
+      // setState(newState);
+
+      dispatch({ type: DELETE_TODO_ITEM, index: props.index });
    };
    const isThisDisplayed = () => {
-      if (state.activeSubjectIndex === undefined) {
+      if (activeSubjectIndex === -1) {
          return true;
-      } else if (state.activeSubjectIndex === props.todo.subjectIndex) {
+      } else if (activeSubjectIndex === props.todo.subjectIndex) {
          return true;
       } else {
          return false;
@@ -75,8 +89,7 @@ const TodoItem = props => {
             <P>{props.todo.title}</P>
             <SubjectName
                style={{
-                  display:
-                     state.activeSubjectIndex === undefined ? 'flex' : 'none',
+                  display: activeSubjectIndex === -1 ? 'flex' : 'none',
                }}
             >
                <KeyboardArrowRightIcon
