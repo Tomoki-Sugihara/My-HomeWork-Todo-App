@@ -10,12 +10,6 @@ import styled from 'styled-components';
 const SubjectItem = props => {
    const { setActiveSubjectIndex } = useContext(AppContext);
    const handleClickSetActiveSubjectIndex = () => {
-      // setState(prevState => {
-      //    return {
-      //       ...prevState,
-      //       activeSubjectIndex: props.index,
-      //    };
-      // });
       setActiveSubjectIndex(props.index)
    };
    return (

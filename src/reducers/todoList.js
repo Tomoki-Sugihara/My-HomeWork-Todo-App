@@ -31,8 +31,7 @@ const todoList = (state = [], action) => {
 
       case TOGGLE_IS_DONE: {
          const newState = [...state];
-         newState[action.index].isDone = !newState[action.index]
-            .isDone;
+         newState[action.index].isDone = !newState[action.index].isDone;
          return newState;
       }
 

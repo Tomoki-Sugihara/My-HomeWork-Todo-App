@@ -27,20 +27,6 @@ const CreateNewTodoItem = () => {
          isImportant: item.isImportant,
          subjectIndex: activeSubjectIndex,
       });
-      // setState(prevState => {
-      //    return {
-      //       ...prevState,
-      //       todoList: [
-      //          ...prevState.todoList,
-      //          {
-      //             ...todoListTemplate,
-      //             title: item.title,
-      //             isImportant: item.isImportant,
-      //             subjectIndex: activeSubjectIndex,
-      //          },
-      //       ],
-      //    };
-      // });
       setItem(initialItem);
    };
    const handleClickIsImportant = () => {

@@ -22,8 +22,6 @@ const App = () => {
          <AppContext.Provider
             value={{
                state,
-               // todoList,
-               // subjectList,
                dispatch,
                activeSubjectIndex,
                setActiveSubjectIndex,

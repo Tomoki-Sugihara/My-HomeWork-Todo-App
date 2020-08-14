@@ -22,12 +22,6 @@ const SideMenus = () => {
    });
 
    const handleClickDisplayAllTodo = () => {
-      // setState(prevState => {
-      //    return {
-      //       ...prevState,
-      //       activeSubjectIndex: -1,
-      //    };
-      // });
       setActiveSubjectIndex(-1);
    };
 
@@ -41,18 +35,6 @@ const SideMenus = () => {
          title: item.subjectTitle,
       });
 
-      // setState(prevState => {
-      //    return {
-      //       ...prevState,
-      //       subjectList: [
-      //          ...prevState.subjectList,
-      //          {
-      //             ...subjectListTemplate,
-      //             title: item.subjectTitle,
-      //          },
-      //       ],
-      //    };
-      // });
       setItem(prevItem => {
          return { ...prevItem, subjectTitle: '' };
       });

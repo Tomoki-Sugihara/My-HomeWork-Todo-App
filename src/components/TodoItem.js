@@ -23,13 +23,6 @@ import {
 const TodoItem = props => {
    const { state, dispatch, activeSubjectIndex } = useContext(AppContext);
    const handleClickIsDone = () => {
-      // const newState = {
-      //    ...state,
-      // };
-      // newState.todoList[props.index].isDone = !newState.todoList[props.index]
-      //    .isDone;
-      // setState(newState);
-
       dispatch({
          type: TOGGLE_IS_DONE,
          index: props.index,
@@ -43,21 +36,9 @@ const TodoItem = props => {
       }
    };
    const handleClickIsImportant = () => {
-      // const newState = {
-      //    ...state,
-      // };
-      // newState.todoList[props.index].isImportant = !newState.todoList[
-      //    props.index
-      // ].isImportant;
-      // setState(newState);
-
       dispatch({ type: TOGGLE_IS_IMPORTANT, index: props.index });
    };
    const deleteTodo = () => {
-      // const newState = { ...state };
-      // newState.todoList.splice(props.index, 1);
-      // setState(newState);
-
       dispatch({ type: DELETE_TODO_ITEM, index: props.index });
    };
    const isThisDisplayed = () => {
