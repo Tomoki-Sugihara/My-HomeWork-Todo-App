@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import axios from 'axios';
 import AppContext from '../contexts/AppContext';
 import { initialItem, todoListTemplate } from '../constant';
 import { CREATE_TODO_ITEM } from '../actions/index';
@@ -13,7 +14,8 @@ import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 
 const CreateNewTodoItem = () => {
-   const { state, dispatch, activeSubjectIndex, item, setItem } = useContext(
+   const apiUrl = 'http://localhost:3001/api/todo_lists/';
+   const { dispatch, activeSubjectIndex, item, setItem } = useContext(
       AppContext
    );
 
@@ -27,6 +29,7 @@ const CreateNewTodoItem = () => {
          isImportant: item.isImportant,
          subjectIndex: activeSubjectIndex,
       });
+
       setItem(initialItem);
    };
    const handleClickIsImportant = () => {
@@ -45,10 +48,7 @@ const CreateNewTodoItem = () => {
          >
             <IconButton
                color="primary"
-               onClick={e => {
-                  e.preventDefault();
-                  createTodo();
-               }}
+               type="submit"
             >
                <AddIcon color="primary" />
             </IconButton>
@@ -109,7 +109,6 @@ const InputOfTitle = styled.input`
    margin-left: 3px;
    font-size: 13.5px;
    background-color: rgb(43, 43, 43);
-   border-radius: 5px;
    color: white;
    border-style: none;
    :hover {

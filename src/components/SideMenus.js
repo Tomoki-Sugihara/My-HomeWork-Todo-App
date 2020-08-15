@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import AppContext from '../contexts/AppContext';
-import { subjectListTemplate } from '../constant';
+// import { subjectListTemplate } from '../constant';
 import SubjectItem, { SubjectMenuItem } from './SubjectItem';
 
 import styled from 'styled-components';

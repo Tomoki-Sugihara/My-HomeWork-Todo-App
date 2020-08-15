@@ -1,4 +1,4 @@
-import { initialState } from '../constant';
+// import { initialState } from '../constant';
 import { CREATE_SUBJECT } from '../actions/index';
 
 const subjectList = (state = [], action) => {
