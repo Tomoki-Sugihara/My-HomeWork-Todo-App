@@ -14,7 +14,6 @@ import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 
 const CreateNewTodoItem = () => {
-   const apiUrl = 'http://localhost:3001/api/todo_lists/';
    const { dispatch, activeSubjectIndex, item, setItem } = useContext(
       AppContext
    );
@@ -46,10 +45,7 @@ const CreateNewTodoItem = () => {
                createTodo();
             }}
          >
-            <IconButton
-               color="primary"
-               type="submit"
-            >
+            <IconButton color="primary" type="submit">
                <AddIcon color="primary" />
             </IconButton>
             <InputOfTitle
