@@ -10,6 +10,7 @@ export const initialItem = {
 };
 
 export const todoListTemplate = {
+   key: '',
    title: '',
    isDone: false,
    isImportant: false,

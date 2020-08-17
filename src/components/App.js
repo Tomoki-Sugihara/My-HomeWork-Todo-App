@@ -1,7 +1,7 @@
 import React, { useState, useReducer, useEffect } from 'react';
 import reducer from '../reducers';
 import AppContext from '../contexts/AppContext';
-import { initialItem, demoState, initialState } from '../constant';
+import { initialItem, demoState} from '../constant';
 import axios from 'axios';
 
 import SideMenus from './SideMenus';
@@ -13,9 +13,7 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 
 const App = () => {
-   const apiUrl = 'http://localhost:3001/api/todo_lists/';
    const [state, dispatch] = useReducer(reducer, demoState);
-   // const [{ todoList, subjectList }, dispatch] = useReducer(reducer, demoState);
    const [activeSubjectIndex, setActiveSubjectIndex] = useState(-1);
    const [item, setItem] = useState(initialItem);
    // useEffect(() => {
