@@ -1,8 +1,8 @@
-import React, { useState, useReducer, useEffect } from 'react';
+import React, { useState, useReducer } from 'react';
 import reducer from '../reducers';
 import AppContext from '../contexts/AppContext';
-import { initialItem, demoState} from '../constant';
-import axios from 'axios';
+import { initialItem, demoState } from '../constant';
+// import axios from 'axios';
 
 import SideMenus from './SideMenus';
 import Header from './Header';

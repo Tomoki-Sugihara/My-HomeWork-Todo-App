@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import AppContext from '../contexts/AppContext';
-import { initialItem, todoListTemplate } from '../constant';
+import { initialItem } from '../constant';
 import { CREATE_TODO_ITEM } from '../actions/index';
 
 import styled from 'styled-components';
