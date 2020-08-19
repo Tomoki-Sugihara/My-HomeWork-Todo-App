@@ -1,4 +1,3 @@
-// import { initialState } from '../constant';
 import { CREATE_SUBJECT, MOUNT_SUBJECT_LIST } from '../actions/index';
 import axios from 'axios';
 

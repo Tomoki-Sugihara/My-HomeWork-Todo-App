@@ -1,7 +1,7 @@
 import React, { useState, useReducer, useEffect } from 'react';
 import reducer from '../reducers';
 import AppContext from '../contexts/AppContext';
-import { initialItem, demoState, initialState } from '../constant';
+import { initialItem,  initialState } from '../constant';
 import axios from 'axios';
 
 import SideMenus from './SideMenus';

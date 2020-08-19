@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-// import axios from 'axios';
 import AppContext from '../contexts/AppContext';
 import { initialItem } from '../constant';
 import { CREATE_TODO_ITEM } from '../actions/index';

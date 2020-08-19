@@ -8,7 +8,6 @@ import media from 'styled-media-query';
 
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
-// import CloseIcon from '@material-ui/icons/Close';
 import MenuIcon from '@material-ui/icons/Menu';
 import { CREATE_SUBJECT } from '../actions';
 

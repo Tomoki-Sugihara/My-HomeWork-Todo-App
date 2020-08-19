@@ -21,20 +21,6 @@ const todoList = (state = [], action) => {
             isDone: false,
             subjectIndex: action.subjectIndex,
          };
-
-         // axios.post(apiUrl, { ...newTodoItem }).then(todo => {
-         //    console.log(todo.data);
-         //    return [...state, todo.data];
-         // });
-
-         // const todo = {};
-         // async function callApi() {
-         //    const res = await axios.post(apiUrl, { ...newTodoItem });
-         //    todo = await res.data;
-         //    return [...state, todo]
-         // }
-         // callApi();
-
          axios.post(apiUrl, newTodoItem).then(res => {
             console.log(res);
          });
