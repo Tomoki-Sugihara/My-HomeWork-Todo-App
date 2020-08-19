@@ -1,8 +1,8 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState, useReducer, useEffect } from 'react';
 import reducer from '../reducers';
 import AppContext from '../contexts/AppContext';
-import { initialItem, demoState } from '../constant';
-// import axios from 'axios';
+import { initialItem, demoState, initialState } from '../constant';
+import axios from 'axios';
 
 import SideMenus from './SideMenus';
 import Header from './Header';
@@ -13,15 +13,31 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 
 const App = () => {
-   const [state, dispatch] = useReducer(reducer, demoState);
+   const [state, dispatch] = useReducer(reducer, initialState);
+   useEffect(() => {
+      let todoList;
+      let subjectList;
+      async function callState() {
+         const apiUrl = 'http://localhost:3001/api/';
+         await axios.get(apiUrl + 'subject_lists/').then(res => {
+            subjectList = res.data;
+         });
+         await axios.get(apiUrl + 'todo_lists/').then(res => {
+            todoList = res.data;
+         });
+         await dispatch({
+            type: 'MOUNT_SUBJECT_LIST',
+            data: subjectList,
+         });
+         await dispatch({
+            type: 'MOUNT_TODO_LIST',
+            data: todoList,
+         });
+      }
+      callState();
+   }, []);
    const [activeSubjectIndex, setActiveSubjectIndex] = useState(-1);
    const [item, setItem] = useState(initialItem);
-   // useEffect(() => {
-   //    axios.patch(apiUrl + 'update', state.todoList).then(res => {
-   //       console.log(res);
-   //    });
-   // }, []);
-
    return (
       <>
          <AppContext.Provider

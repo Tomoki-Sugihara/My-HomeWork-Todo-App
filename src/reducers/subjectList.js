@@ -1,5 +1,5 @@
 // import { initialState } from '../constant';
-import { CREATE_SUBJECT } from '../actions/index';
+import { CREATE_SUBJECT, MOUNT_SUBJECT_LIST } from '../actions/index';
 import axios from 'axios';
 
 const subjectList = (state = [], action) => {
@@ -14,10 +14,13 @@ const subjectList = (state = [], action) => {
             title: action.title,
          };
 
-         axios.post(apiUrl, newSubjectItem).then((res) => {
-            console.log(res)
-         })
+         axios.post(apiUrl, newSubjectItem).then(res => {
+            console.log(res);
+         });
          return [...state, newSubjectItem];
+      }
+      case MOUNT_SUBJECT_LIST: {
+         return action.data;
       }
       default: {
          return state;

@@ -3,6 +3,7 @@ import {
    DELETE_TODO_ITEM,
    TOGGLE_IS_IMPORTANT,
    TOGGLE_IS_DONE,
+   MOUNT_TODO_LIST,
 } from '../actions/index';
 import axios from 'axios';
 
@@ -34,7 +35,7 @@ const todoList = (state = [], action) => {
          // }
          // callApi();
 
-         axios.post(apiUrl, newTodoItem ).then(res => {
+         axios.post(apiUrl, newTodoItem).then(res => {
             console.log(res);
          });
 
@@ -76,6 +77,9 @@ const todoList = (state = [], action) => {
          });
 
          return newState;
+      }
+      case MOUNT_TODO_LIST: {
+         return action.data;
       }
 
       default: {
