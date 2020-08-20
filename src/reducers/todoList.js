@@ -9,7 +9,6 @@ import axios from 'axios';
 
 const todoList = (state = [], action) => {
    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/api/todo_lists/`;
-   // const apiUrl = 'http://localhost:3001/api/todo_lists/';
    switch (action.type) {
       case CREATE_TODO_ITEM: {
          const getUniqueKey = () => {

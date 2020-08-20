@@ -1,7 +1,7 @@
 import React, { useState, useReducer, useEffect } from 'react';
 import reducer from '../reducers';
 import AppContext from '../contexts/AppContext';
-import { initialItem,  initialState } from '../constant';
+import { initialItem, initialState } from '../constant';
 import axios from 'axios';
 
 import SideMenus from './SideMenus';
@@ -18,7 +18,6 @@ const App = () => {
       let todoList;
       let subjectList;
       async function callState() {
-         // const apiUrl = 'http://localhost:3001/api/';
          const apiUrl = `${process.env.REACT_APP_SERVER_URL}/api/`;
          await axios.get(apiUrl + 'subject_lists/').then(res => {
             subjectList = res.data;

@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const subjectList = (state = [], action) => {
    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/api/subject_lists/`;
-   // const apiUrl = 'http://localhost:3001/api/subject_lists/';
    switch (action.type) {
       case CREATE_SUBJECT: {
          const getUniqueKey = () => {
