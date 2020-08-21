@@ -19,11 +19,12 @@ const App = () => {
       let subjectList;
       async function callState() {
          const apiUrl = `${process.env.REACT_APP_SERVER_URL}api/`;
+         const sortFunc = (a, b) => (a.id > b.id ? 1 : -1);
          await axios.get(apiUrl + 'subject_lists/').then(res => {
-            subjectList = res.data;
+            subjectList = res.data.sort(sortFunc);
          });
          await axios.get(apiUrl + 'todo_lists/').then(res => {
-            todoList = res.data;
+            todoList = res.data.sort(sortFunc);
          });
          await dispatch({
             type: 'MOUNT_SUBJECT_LIST',
@@ -36,6 +37,7 @@ const App = () => {
       }
       callState();
    }, []);
+   
    const [activeSubjectIndex, setActiveSubjectIndex] = useState(-1);
    const [item, setItem] = useState(initialItem);
    return (
