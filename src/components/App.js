@@ -18,7 +18,7 @@ const App = () => {
       let todoList;
       let subjectList;
       async function callState() {
-         const apiUrl = `${process.env.REACT_APP_SERVER_URL}/api/`;
+         const apiUrl = `${process.env.REACT_APP_SERVER_URL}api/`;
          await axios.get(apiUrl + 'subject_lists/').then(res => {
             subjectList = res.data;
          });

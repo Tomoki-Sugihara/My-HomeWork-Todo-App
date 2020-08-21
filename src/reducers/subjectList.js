@@ -2,7 +2,7 @@ import { CREATE_SUBJECT, MOUNT_SUBJECT_LIST } from '../actions/index';
 import axios from 'axios';
 
 const subjectList = (state = [], action) => {
-   const apiUrl = `${process.env.REACT_APP_SERVER_URL}/api/subject_lists/`;
+   const apiUrl = `${process.env.REACT_APP_SERVER_URL}api/subject_lists/`;
    switch (action.type) {
       case CREATE_SUBJECT: {
          const getUniqueKey = () => {
