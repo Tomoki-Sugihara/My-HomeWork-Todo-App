@@ -1,6 +1,7 @@
 import React, { useContext,useState } from 'react';
 import AppContext from '../contexts/AppContext';
 // import { subjectListTemplate } from '../constant';
+import { c } from '../color';
 import SubjectItem, { SubjectMenuItem } from './SubjectItem';
 
 import styled from 'styled-components';
@@ -40,13 +41,13 @@ const SideMenus = () => {
    return (
       <>
          <Wrapper>
-            <input id="menu" type="checkbox" />
-            <label htmlFor="menu" className="open">
-               <p>
+            <input id="clickSidebar" type="checkbox" />
+            <label htmlFor="clickSidebar" className="open">
+               <div>
                   <MenuIcon className="menuIcon"></MenuIcon>
-               </p>
+               </div>
             </label>
-            <label htmlFor="menu" className="back"></label>
+            <label htmlFor="clickSidebar" className="back"></label>
             <Container id="sideMenuContainer">
                <label id="firstLabel">
                   <SubjectMenuItem onClick={handleClickDisplayAllTodo}>
@@ -54,7 +55,7 @@ const SideMenus = () => {
                   </SubjectMenuItem>
                   <SubjectList>{subjects}</SubjectList>
                </label>
-               <label htmlFor="menu" id="secondLabel">
+               <label htmlFor="clickSidebar" id="secondLabel">
                   <SubjectMenuItem onClick={handleClickDisplayAllTodo}>
                      <p style={{ color: 'tomato' }}>すべて</p>
                   </SubjectMenuItem>
@@ -94,7 +95,7 @@ const SideMenus = () => {
 const Wrapper = styled.div`
    width: 300px;
    height: 100%;
-   background-color: rgb(43, 43, 43);
+   background-color: ${c.grayOfForm};
 
    input[type='checkbox'] {
       position: fixed;
@@ -116,11 +117,11 @@ const Wrapper = styled.div`
       position: fixed;
       left: 3%;
       top: 0;
-      z-index: 3;
+      z-index: 5;
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      p {
+      > div {
          width: 24px;
          height: 24px;
          margin: auto;
@@ -136,7 +137,7 @@ const Container = styled.aside`
    height: 100%;
    width: 230px;
    padding-top: 10px;
-   background-color: rgb(43, 43, 43);
+   background-color: ${c.grayOfForm};
    .close {
       display: none;
       width: 24px;
@@ -169,10 +170,10 @@ const Form = styled.form`
    height: 36px;
    width: 100%;
    margin-top: 15px;
-   background-color: rgb(43, 43, 43);
+   background-color: ${c.grayOfForm};
    border-radius: 5px;
    :hover {
-      background-color: rgb(50, 50, 50);
+      background-color: ${c.grayOfHoverForm};
    }
    ${media.lessThan('medium')`
   `}
@@ -182,12 +183,12 @@ const InputOfTitle = styled.input`
    height: 100%;
    margin-left: 3px;
    font-size: 13.5px;
-   background-color: rgb(43, 43, 43);
+   background-color: ${c.grayOfForm};
    border-radius: 5px;
    color: white;
    border-style: none;
    :hover {
-      background-color: rgb(50, 50, 50);
+      background-color: ${c.grayOfHoverForm};
    }
    :focus {
       outline: 0;

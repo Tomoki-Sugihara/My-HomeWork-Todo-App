@@ -4,10 +4,11 @@ import {
    TOGGLE_IS_IMPORTANT,
    TOGGLE_IS_DONE,
    MOUNT_TODO_LIST,
+   PERGE_TODO_ITEM,
 } from '../actions/index';
 import axios from 'axios';
 
-const todoList = (state = [], action) => {
+const todoList = (todoList = [], action) => {
    const apiUrl = `${process.env.REACT_APP_SERVER_URL}api/todo_lists/`;
    switch (action.type) {
       case CREATE_TODO_ITEM: {
@@ -25,51 +26,67 @@ const todoList = (state = [], action) => {
             console.log(res);
          });
 
-         return [...state, newTodoItem];
+         return [...todoList, newTodoItem];
       }
       case DELETE_TODO_ITEM: {
-         const newState = [...state];
-         newState.splice(action.index, 1);
+         const newTodoList = [...todoList];
+         newTodoList.splice(action.index, 1);
 
-         const key = state[action.index].key;
+         const key = todoList[action.index].key;
          axios.delete(apiUrl, { data: { key } }).then(res => {
             console.log(res);
          });
 
-         return newState;
+         return newTodoList;
       }
 
       case TOGGLE_IS_IMPORTANT: {
          const index = action.index;
-         const newState = [...state];
-         newState[index].isImportant = !newState[index].isImportant;
+         const newTodoList = [...todoList];
+         newTodoList[index].isImportant = !newTodoList[index].isImportant;
 
-         const key = state[action.index].key;
+         const key = todoList[action.index].key;
          axios.patch(apiUrl + 'is_important/', { key }).then(res => {
             console.log(res);
          });
 
-         return newState;
+         return newTodoList;
       }
 
       case TOGGLE_IS_DONE: {
          const index = action.index;
-         const newState = [...state];
-         newState[index].isDone = !newState[index].isDone;
+         const newTodoList = [...todoList];
+         newTodoList[index].isDone = !newTodoList[index].isDone;
 
-         const key = state[action.index].key;
+         const key = todoList[action.index].key;
          axios.patch(apiUrl + 'is_done/', { key }).then(res => {
             console.log(res);
          });
 
-         return newState;
+         return newTodoList;
       }
       case MOUNT_TODO_LIST: {
          return action.data;
       }
 
+      case PERGE_TODO_ITEM: {
+         const newTodoList = todoList.filter(element => {
+            return element.subjectIndex !== action.subjectIndex;
+         });
+
+         axios
+            .post(apiUrl + 'delete_subject/', {
+               subjectIndex: action.subjectIndex,
+            })
+            .then(res => {
+               console.log(res);
+            });
+
+         return newTodoList;
+      }
+
       default: {
-         return state;
+         return todoList;
       }
    }
 };

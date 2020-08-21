@@ -3,6 +3,12 @@ export const initialState = {
    subjectList: [],
 };
 
+export const initialItem = {
+   title: '',
+   isImportant: false,
+   subjectTitle: '',
+};
+
 export const todoListTemplate = {
    key: '',
    title: '',
@@ -29,6 +35,22 @@ const demoTodoList = [
       isImportant: false,
       subjectIndex: 1,
    },
+   { title: 'Python', isDone: false, isImportant: false, subjectIndex: 2 },
+   { title: 'Python', isDone: false, isImportant: false, subjectIndex: 2 },
+   { title: 'Python', isDone: false, isImportant: false, subjectIndex: 2 },
+   { title: 'Python', isDone: false, isImportant: false, subjectIndex: 2 },
+   { title: 'Python', isDone: false, isImportant: false, subjectIndex: 2 },
+   { title: 'Python', isDone: false, isImportant: false, subjectIndex: 2 },
+   { title: 'Python', isDone: false, isImportant: false, subjectIndex: 2 },
+   { title: 'Python', isDone: false, isImportant: false, subjectIndex: 2 },
+   { title: 'Python', isDone: false, isImportant: false, subjectIndex: 2 },
+   { title: 'Python', isDone: false, isImportant: false, subjectIndex: 2 },
+   { title: 'Python', isDone: false, isImportant: false, subjectIndex: 2 },
+   { title: 'Python', isDone: false, isImportant: false, subjectIndex: 2 },
+   { title: 'Python', isDone: false, isImportant: false, subjectIndex: 2 },
+   { title: 'Python', isDone: false, isImportant: false, subjectIndex: 2 },
+   { title: 'Python', isDone: false, isImportant: false, subjectIndex: 2 },
+   { title: 'Python', isDone: false, isImportant: false, subjectIndex: 2 },
    { title: 'Python', isDone: false, isImportant: false, subjectIndex: 2 },
 ];
 
