@@ -3,12 +3,6 @@ export const initialState = {
    subjectList: [],
 };
 
-export const initialItem = {
-   title: '',
-   isImportant: false,
-   subjectTitle: '',
-};
-
 export const todoListTemplate = {
    key: '',
    title: '',

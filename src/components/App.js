@@ -1,7 +1,7 @@
 import React, { useState, useReducer, useEffect } from 'react';
 import reducer from '../reducers';
 import AppContext from '../contexts/AppContext';
-import { initialItem, initialState } from '../constant';
+import { initialState } from '../constant';
 import axios from 'axios';
 
 import SideMenus from './SideMenus';
@@ -14,6 +14,8 @@ import media from 'styled-media-query';
 
 const App = () => {
    const [state, dispatch] = useReducer(reducer, initialState);
+   const [activeSubjectIndex, setActiveSubjectIndex] = useState(-1);
+   
    useEffect(() => {
       let todoList;
       let subjectList;
@@ -37,9 +39,7 @@ const App = () => {
       }
       callState();
    }, []);
-   
-   const [activeSubjectIndex, setActiveSubjectIndex] = useState(-1);
-   const [item, setItem] = useState(initialItem);
+
    return (
       <>
          <AppContext.Provider
@@ -48,8 +48,6 @@ const App = () => {
                dispatch,
                activeSubjectIndex,
                setActiveSubjectIndex,
-               item,
-               setItem,
             }}
          >
             <Wrapper>

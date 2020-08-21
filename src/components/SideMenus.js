@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext,useState } from 'react';
 import AppContext from '../contexts/AppContext';
 // import { subjectListTemplate } from '../constant';
 import SubjectItem, { SubjectMenuItem } from './SubjectItem';
@@ -12,7 +12,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { CREATE_SUBJECT } from '../actions';
 
 const SideMenus = () => {
-   const { state, dispatch, setActiveSubjectIndex, item, setItem } = useContext(
+   const [title, setTitle] = useState('')
+   const { state, dispatch, setActiveSubjectIndex} = useContext(
       AppContext
    );
 
@@ -25,18 +26,16 @@ const SideMenus = () => {
    };
 
    const createSubject = () => {
-      if (item.subjectTitle.trim() === '') {
+      if (title.trim() === '') {
          return;
       }
 
       dispatch({
          type: CREATE_SUBJECT,
-         title: item.subjectTitle,
+         title,
       });
 
-      setItem(prevItem => {
-         return { ...prevItem, subjectTitle: '' };
-      });
+      setTitle(``);
    };
    return (
       <>
@@ -80,12 +79,10 @@ const SideMenus = () => {
                   <InputOfTitle
                      type="text"
                      placeholder="Subjectを追加"
-                     value={item.subjectTitle}
+                     value={title}
                      onChange={e => {
-                        const subjectTitle = e.target.value;
-                        setItem(prevItem => {
-                           return { ...prevItem, subjectTitle };
-                        });
+                        const inputTitle = e.target.value;
+                        setTitle(inputTitle);
                      }}
                   />
                </Form>

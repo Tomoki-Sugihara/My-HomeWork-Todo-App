@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import AppContext from '../contexts/AppContext';
-import { initialItem } from '../constant';
 import { CREATE_TODO_ITEM } from '../actions/index';
 
 import styled from 'styled-components';
@@ -13,27 +12,25 @@ import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 
 const CreateNewTodoItem = () => {
-   const { dispatch, activeSubjectIndex, item, setItem } = useContext(
-      AppContext
-   );
+   const [title, setTitle] = useState('');
+   const [isImportant, setIsImportant] = useState(false);
+   const { dispatch, activeSubjectIndex } = useContext(AppContext);
 
    const createTodo = () => {
-      if (item.title.trim() === '') {
+      if (title.trim() === '') {
          return;
       }
       dispatch({
          type: CREATE_TODO_ITEM,
-         title: item.title,
-         isImportant: item.isImportant,
+         title,
+         isImportant,
          subjectIndex: activeSubjectIndex,
       });
-
-      setItem(initialItem);
+      setTitle('');
+      setIsImportant(false);
    };
    const handleClickIsImportant = () => {
-      setItem(prevItem => {
-         return { ...prevItem, isImportant: !prevItem.isImportant };
-      });
+      setIsImportant(prev => !prev);
    };
 
    return (
@@ -50,12 +47,10 @@ const CreateNewTodoItem = () => {
             <InputOfTitle
                type="text"
                placeholder="タスクを追加"
-               value={item.title}
+               value={title}
                onChange={e => {
-                  const title = e.target.value;
-                  setItem(prevItem => {
-                     return { ...prevItem, title };
-                  });
+                  const inputTitle = e.target.value;
+                  setTitle(inputTitle);
                }}
             />
             <Checkbox
@@ -63,7 +58,7 @@ const CreateNewTodoItem = () => {
                icon={<StarBorderIcon color="primary" />}
                checkedIcon={<StarIcon color="primary" />}
                color="primary"
-               checked={item.isImportant}
+               checked={isImportant}
                onClick={handleClickIsImportant}
             />
          </Form>
