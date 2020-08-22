@@ -64,12 +64,12 @@ const Wrapper = styled.div`
 `;
 
 const TitleBar = styled.div`
-   max-width: 90%;
+   max-width: 75%;
    display: flex;
    background-color: ${c.blackOfMenuBackground(0.96)};
    margin-left: 45px;
    ${media.lessThan('small')`
-      margin: 0 auto;
+      margin: 0 0 0 45px;
   `}
    h3 {
       margin: auto 0;
@@ -82,7 +82,7 @@ const TitleBar = styled.div`
 
 const SettingMenu = styled.div`
    margin-left: auto;
-
+   display: flex;
    .open {
       display: block;
       position: fixed;
