@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/My-HomeWork-Todo-App/static/js/main.ba9b9b29.chunk.js",
-    "main.js.map": "/My-HomeWork-Todo-App/static/js/main.ba9b9b29.chunk.js.map",
+    "main.js": "/My-HomeWork-Todo-App/static/js/main.7c6a5495.chunk.js",
+    "main.js.map": "/My-HomeWork-Todo-App/static/js/main.7c6a5495.chunk.js.map",
     "runtime-main.js": "/My-HomeWork-Todo-App/static/js/runtime-main.869e7566.js",
     "runtime-main.js.map": "/My-HomeWork-Todo-App/static/js/runtime-main.869e7566.js.map",
     "static/js/2.5ba19b53.chunk.js": "/My-HomeWork-Todo-App/static/js/2.5ba19b53.chunk.js",
     "static/js/2.5ba19b53.chunk.js.map": "/My-HomeWork-Todo-App/static/js/2.5ba19b53.chunk.js.map",
     "index.html": "/My-HomeWork-Todo-App/index.html",
-    "precache-manifest.81dc11bff108e9be7c3646af761daee4.js": "/My-HomeWork-Todo-App/precache-manifest.81dc11bff108e9be7c3646af761daee4.js",
+    "precache-manifest.25783f1cfdff63541d3252398357c8fd.js": "/My-HomeWork-Todo-App/precache-manifest.25783f1cfdff63541d3252398357c8fd.js",
     "service-worker.js": "/My-HomeWork-Todo-App/service-worker.js",
     "static/js/2.5ba19b53.chunk.js.LICENSE.txt": "/My-HomeWork-Todo-App/static/js/2.5ba19b53.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.869e7566.js",
     "static/js/2.5ba19b53.chunk.js",
-    "static/js/main.ba9b9b29.chunk.js"
+    "static/js/main.7c6a5495.chunk.js"
   ]
 }
