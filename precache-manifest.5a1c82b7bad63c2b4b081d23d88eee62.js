@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "18cd90c62c4c24c295365eef5d3c02c6",
+    "revision": "0ce326668ecad9632012da725acee03e",
     "url": "/My-HomeWork-Todo-App/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/My-HomeWork-Todo-App/static/js/2.5ba19b53.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c3463b303bafd50338f0",
-    "url": "/My-HomeWork-Todo-App/static/js/main.7c6a5495.chunk.js"
+    "revision": "56702f05c31c4c3d60b1",
+    "url": "/My-HomeWork-Todo-App/static/js/main.6dbf79a0.chunk.js"
   },
   {
     "revision": "0aaba8f71c556e81335c",
