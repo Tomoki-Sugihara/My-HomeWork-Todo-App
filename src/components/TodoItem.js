@@ -105,7 +105,9 @@ const TodoItem = props => {
 
 const Wrapper = styled.div`
    display: flex;
-   height: 45px;
+   max-width: 100%;
+   min-height: 45px;
+   /* height: 45px; */
    list-style: none;
    background-color: ${c.grayOfItem};
    border-radius: 5px;
@@ -121,13 +123,28 @@ const Wrapper = styled.div`
    }
 `;
 const TodoTitle = styled.p`
+   /* max-width: 1fr; */
    margin: auto 0 auto 3.5px;
    font-size: 16.5px;
+   /* word-wrap: break-word; */
+   word-break: break-all;
+
+   /* white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis; */
+
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 2;
+   overflow: hidden;
+   ${media.lessThan('small')`
+      font-size: 15px;
+  `}
 `;
 const SubjectName = styled.div`
    width: auto;
    font-size: 11px;
-   margin: auto 0 auto 15px;
+   margin: auto 0 auto 8px;
    ${media.lessThan('small')`
    flex-direction: row;
    margin: auto 0 auto 6px;

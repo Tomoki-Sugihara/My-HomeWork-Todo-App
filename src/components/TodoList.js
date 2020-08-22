@@ -27,6 +27,9 @@ const TodoList = () => {
 const Wrapper = styled.div`
    margin: 48px 0 58.5px 0;
    width: 100%;
+   position: relative;
+   width: 100%;
+   /* width: calc(92% - 230px); */
 `;
 
 export default TodoList;

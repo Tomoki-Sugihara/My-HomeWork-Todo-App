@@ -58,6 +58,9 @@ export const SubjectMenuItem = styled.div`
    }
    p {
       margin: auto 0 auto 15px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
    }
 `;
 // const NumberOfTodo = styled.div`

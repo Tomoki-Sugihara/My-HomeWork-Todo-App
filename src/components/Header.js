@@ -64,6 +64,7 @@ const Wrapper = styled.div`
 `;
 
 const TitleBar = styled.div`
+   max-width: 90%;
    display: flex;
    background-color: ${c.blackOfMenuBackground(0.96)};
    margin-left: 45px;
@@ -73,6 +74,9 @@ const TitleBar = styled.div`
    h3 {
       margin: auto 0;
       user-select: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
    }
 `;
 
