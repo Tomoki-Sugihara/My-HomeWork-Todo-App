@@ -13,6 +13,7 @@ const TodoList = () => {
    });
 
    return <Wrapper>{todos}</Wrapper>;
+   // return <Wrapper>{todos === {} ? <p>タスクがありません</p> : todos}</Wrapper>;
 };
 
 const Wrapper = styled.div`

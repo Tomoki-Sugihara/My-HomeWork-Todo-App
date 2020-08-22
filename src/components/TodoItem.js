@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 
 import Checkbox from '@material-ui/core/Checkbox';
-import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
@@ -60,15 +60,19 @@ const TodoItem = props => {
       >
          <Checkbox
             icon={<RadioButtonUncheckedIcon color="primary" fontSize="small" />}
-            checkedIcon={
-               <CheckCircleOutlineIcon color="primary" fontSize="small" />
-            }
+            checkedIcon={<CheckCircleIcon color="primary" fontSize="small" />}
             color="primary"
             checked={props.todo.isDone}
             onClick={handleClickIsDone}
          />
          <div>
-            <P>{props.todo.title}</P>
+            <TodoTitle
+               style={{
+                  textDecoration: props.todo.isDone ? 'line-through' : 'none',
+               }}
+            >
+               {props.todo.title}
+            </TodoTitle>
             <SubjectName
                style={{
                   display: activeSubjectIndex === -1 ? 'flex' : 'none',
@@ -129,7 +133,7 @@ const Wrapper = styled.div`
   `}
    }
 `;
-const P = styled.p`
+const TodoTitle = styled.p`
    margin: auto 0 auto 3.5px;
    font-size: 16.5px;
 `;
