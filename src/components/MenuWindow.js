@@ -3,10 +3,9 @@ import AppContext from '../contexts/AppContext';
 // import { c } from '../color';
 import { PERGE_TODO_ITEM } from '../actions/index';
 
-import styled from 'styled-components';
-// import media from 'styled-media-query';
-
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
+
+import styled from 'styled-components';
 const MenuWindow = () => {
    const { dispatch, activeSubjectIndex, setActiveSubjectIndex } = useContext(
       AppContext
@@ -23,10 +22,12 @@ const MenuWindow = () => {
       });
       setActiveSubjectIndex(-1);
    };
+
+   const isThisDisplayed = () => activeSubjectIndex !== -1;
    return (
       <>
-         <Wrapper>
-            <MenuItem onClick={deleteSubject}>
+         <Wrapper style={{ display: isThisDisplayed() ? 'block' : 'none' }}>
+            <DeleteSubject onClick={deleteSubject}>
                <div className="container">
                   <DeleteIcon>
                      <DeleteOutlineOutlinedIcon
@@ -36,14 +37,15 @@ const MenuWindow = () => {
                   </DeleteIcon>
                   <p>このsubjectを削除</p>
                </div>
-            </MenuItem>
+            </DeleteSubject>
          </Wrapper>
       </>
    );
 };
 
 const Wrapper = styled.div``;
-const MenuItem = styled.div`
+const DeleteSubject = styled.div`
+   background-color: rgb(25, 25, 25);
    :hover {
       cursor: pointer;
       background-color: rgb(50, 50, 50);

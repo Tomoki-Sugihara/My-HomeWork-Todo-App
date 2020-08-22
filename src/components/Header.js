@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import AppContext from '../contexts/AppContext';
 import MenuWindow from './MenuWindow';
 
@@ -18,6 +18,13 @@ const Header = () => {
          return state.subjectList[activeSubjectIndex].title;
       }
    };
+   const isThisDisplayed = () => activeSubjectIndex !== -1;
+   useEffect(() => {
+      const checkbox = document.getElementById('menu');
+      if (checkbox.checked) {
+         checkbox.checked = false;
+      }
+   }, [activeSubjectIndex]);
    return (
       <>
          <Wrapper>
@@ -27,7 +34,11 @@ const Header = () => {
             <SettingMenu>
                <IconButton color="primary" style={{ position: 'relative' }}>
                   <MoreVertIcon color="primary" fontSize="small"></MoreVertIcon>
-                  <label htmlFor="menu" className="open"></label>
+                  <label
+                     htmlFor="menu"
+                     className="open"
+                     style={{ display: isThisDisplayed() ? 'block' : 'none' }}
+                  ></label>
                </IconButton>
                <input type="checkbox" id="menu" />
                <label htmlFor="menu" className="back"></label>
