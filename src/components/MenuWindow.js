@@ -7,23 +7,21 @@ import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined'
 
 import styled from 'styled-components';
 const MenuWindow = () => {
-   const { dispatch, activeSubjectIndex, setActiveSubjectIndex } = useContext(
-      AppContext
-   );
+   const { dispatch, activeIndex, setActiveIndex } = useContext(AppContext);
 
    const deleteSubject = () => {
       dispatch({
          type: PERGE_TODO_ITEM,
-         subjectIndex: activeSubjectIndex,
+         subjectIndex: activeIndex,
       });
       dispatch({
          type: 'DELETE_SUBJECT_ITEM',
-         subjectIndex: activeSubjectIndex,
+         subjectIndex: activeIndex,
       });
-      setActiveSubjectIndex(-1);
+      setActiveIndex(-1);
    };
 
-   const isThisDisplayed = () => activeSubjectIndex !== -1;
+   const isThisDisplayed = () => activeIndex !== -1;
    return (
       <>
          <Wrapper style={{ display: isThisDisplayed() ? 'block' : 'none' }}>

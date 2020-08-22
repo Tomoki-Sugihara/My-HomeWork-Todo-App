@@ -8,9 +8,9 @@ import styled from 'styled-components';
 // import Badge from '@material-ui/core/Badge';
 
 const SubjectItem = props => {
-   const { setActiveSubjectIndex } = useContext(AppContext);
+   const { setActiveIndex } = useContext(AppContext);
    const handleClickSetActiveSubjectIndex = () => {
-      setActiveSubjectIndex(props.index)
+      setActiveIndex(props.index);
    };
    // const displayEachNumberOfTodo = () => {
    //    let number = 0;

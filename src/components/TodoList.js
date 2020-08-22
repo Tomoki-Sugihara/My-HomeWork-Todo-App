@@ -5,12 +5,20 @@ import AppContext from '../contexts/AppContext';
 
 import styled from 'styled-components';
 const TodoList = () => {
-   const { state } = useContext(AppContext);
+   const { state, activeIndex } = useContext(AppContext);
 
-   // console.log(state);
-   const todos = state.todoList.map((todo, index) => {
-      return <TodoItem todo={todo} key={index} index={index} />;
-   });
+   const todos = state.todoList
+      .map((todo, index) => {
+         return <TodoItem todo={todo} key={index} index={index} />;
+      })
+      .filter(comp => {
+         const todo = comp.props.todo;
+         if (activeIndex === -1) {
+            return true;
+         } else {
+            return todo.subjectIndex === activeIndex;
+         }
+      });
 
    return <Wrapper>{todos}</Wrapper>;
    // return <Wrapper>{todos === {} ? <p>タスクがありません</p> : todos}</Wrapper>;

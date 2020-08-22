@@ -10,21 +10,21 @@ import IconButton from '@material-ui/core/IconButton';
 import { c, length } from '../color';
 
 const Header = () => {
-   const { state, activeSubjectIndex } = useContext(AppContext);
+   const { state, activeIndex } = useContext(AppContext);
    const displayTitleName = () => {
-      if (activeSubjectIndex === -1) {
+      if (activeIndex === -1) {
          return 'My HomeWork Todo';
       } else {
-         return state.subjectList[activeSubjectIndex].title;
+         return state.subjectList[activeIndex].title;
       }
    };
-   const isThisDisplayed = () => activeSubjectIndex !== -1;
+   const isThisDisplayed = () => activeIndex !== -1;
    useEffect(() => {
       const checkbox = document.getElementById('menu');
       if (checkbox.checked) {
          checkbox.checked = false;
       }
-   }, [activeSubjectIndex]);
+   }, [activeIndex]);
    return (
       <>
          <Wrapper>

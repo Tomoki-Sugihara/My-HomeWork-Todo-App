@@ -22,7 +22,7 @@ import {
 } from '../actions';
 
 const TodoItem = props => {
-   const { state, dispatch, activeSubjectIndex } = useContext(AppContext);
+   const { state, dispatch, activeIndex } = useContext(AppContext);
    const handleClickIsDone = () => {
       dispatch({
          type: TOGGLE_IS_DONE,
@@ -40,24 +40,11 @@ const TodoItem = props => {
       dispatch({ type: TOGGLE_IS_IMPORTANT, index: props.index });
    };
    const deleteTodo = () => {
-      dispatch({ type: DELETE_TODO_ITEM, index: props.index });
-   };
-   const isThisDisplayed = () => {
-      if (activeSubjectIndex === -1) {
-         return true;
-      } else if (activeSubjectIndex === props.todo.subjectIndex) {
-         return true;
-      } else {
-         return false;
-      }
+      dispatch({ type: DELETE_TODO_ITEM, index: props.index, activeIndex });
    };
 
    return (
-      <Wrapper
-         style={{
-            display: isThisDisplayed() ? 'flex' : 'none',
-         }}
-      >
+      <Wrapper>
          <Checkbox
             icon={<RadioButtonUncheckedIcon color="primary" fontSize="small" />}
             checkedIcon={<CheckCircleIcon color="primary" fontSize="small" />}
@@ -75,7 +62,7 @@ const TodoItem = props => {
             </TodoTitle>
             <SubjectName
                style={{
-                  display: activeSubjectIndex === -1 ? 'flex' : 'none',
+                  display: activeIndex === -1 ? 'flex' : 'none',
                }}
             >
                <KeyboardArrowRightIcon

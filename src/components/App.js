@@ -14,8 +14,8 @@ import media from 'styled-media-query';
 
 const App = () => {
    const [state, dispatch] = useReducer(reducer, initialState);
-   const [activeSubjectIndex, setActiveSubjectIndex] = useState(-1);
-   
+   const [activeIndex, setActiveIndex] = useState(-1);
+
    useEffect(() => {
       let todoList;
       let subjectList;
@@ -46,8 +46,8 @@ const App = () => {
             value={{
                state,
                dispatch,
-               activeSubjectIndex,
-               setActiveSubjectIndex,
+               activeIndex,
+               setActiveIndex,
             }}
          >
             <Wrapper>

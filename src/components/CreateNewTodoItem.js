@@ -15,7 +15,7 @@ import AddIcon from '@material-ui/icons/Add';
 const CreateNewTodoItem = () => {
    const [title, setTitle] = useState('');
    const [isImportant, setIsImportant] = useState(false);
-   const { dispatch, activeSubjectIndex } = useContext(AppContext);
+   const { dispatch, activeIndex } = useContext(AppContext);
 
    const createTodo = () => {
       if (title.trim() === '') {
@@ -25,7 +25,7 @@ const CreateNewTodoItem = () => {
          type: CREATE_TODO_ITEM,
          title,
          isImportant,
-         subjectIndex: activeSubjectIndex,
+         subjectIndex: activeIndex,
       });
       setTitle('');
       setIsImportant(false);

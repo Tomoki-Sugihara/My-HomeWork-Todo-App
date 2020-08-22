@@ -1,4 +1,4 @@
-import React, { useContext,useState } from 'react';
+import React, { useContext, useState } from 'react';
 import AppContext from '../contexts/AppContext';
 // import { subjectListTemplate } from '../constant';
 import { c } from '../color';
@@ -13,17 +13,15 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { CREATE_SUBJECT } from '../actions';
 
 const SideMenus = () => {
-   const [title, setTitle] = useState('')
-   const { state, dispatch, setActiveSubjectIndex} = useContext(
-      AppContext
-   );
+   const [title, setTitle] = useState('');
+   const { state, dispatch, setActiveIndex } = useContext(AppContext);
 
    const subjects = state.subjectList.map((subject, index) => {
       return <SubjectItem subject={subject} key={index} index={index} />;
    });
 
    const handleClickDisplayAllTodo = () => {
-      setActiveSubjectIndex(-1);
+      setActiveIndex(-1);
    };
 
    const createSubject = () => {
