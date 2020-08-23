@@ -142,16 +142,20 @@ const TodoTitle = styled.p`
   `}
 `;
 const SubjectName = styled.div`
-   width: auto;
+   max-width: 170px;
    font-size: 11px;
    margin: auto 0 auto 8px;
    ${media.lessThan('small')`
+   max-width: 160px;
    flex-direction: row;
    margin: auto 0 auto 6px;
   `}
 
    >p {
       margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
    }
 `;
 const DeleteIcon = styled.div``;
