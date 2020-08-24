@@ -14,10 +14,6 @@
 // export const GRAYOFITEM = GRAYTEMPLATE43;
 // export const GRAYOFITEMHOVER = GRAYTEMPLATE50;
 
-export const length = {
-   header: '48px',
-};
-
 const colorTemplate = {
    black: (opacity = 1) => {
       return `rgba(33,33,33,${opacity})`;

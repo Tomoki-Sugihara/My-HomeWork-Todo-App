@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import AppContext from '../contexts/AppContext';
 // import { c } from '../color';
-import { PERGE_TODO_ITEM } from '../actions/index';
+import { PERGE_TODO_ITEM, DELETE_SUBJECT_ITEM } from '../actions/index';
 
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 
@@ -15,7 +15,7 @@ const MenuWindow = () => {
          subjectIndex: activeIndex,
       });
       dispatch({
-         type: 'DELETE_SUBJECT_ITEM',
+         type: DELETE_SUBJECT_ITEM,
          subjectIndex: activeIndex,
       });
       setActiveIndex(-1);

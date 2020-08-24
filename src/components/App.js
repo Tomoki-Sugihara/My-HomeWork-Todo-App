@@ -17,9 +17,9 @@ const App = () => {
    const [activeIndex, setActiveIndex] = useState(-1);
 
    useEffect(() => {
-      let todoList;
-      let subjectList;
-      async function callState() {
+      (async () => {
+         let todoList;
+         let subjectList;
          const apiUrl = `${process.env.REACT_APP_SERVER_URL}api/`;
          const sortFunc = (a, b) => (a.id > b.id ? 1 : -1);
          await axios.get(apiUrl + 'subject_lists/').then(res => {
@@ -36,8 +36,7 @@ const App = () => {
             type: 'MOUNT_TODO_LIST',
             data: todoList,
          });
-      }
-      callState();
+      })();
    }, []);
 
    return (

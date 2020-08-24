@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import {
    CREATE_SUBJECT,
    MOUNT_SUBJECT_LIST,
@@ -31,7 +32,7 @@ const subjectList = (subjectList = [], action) => {
             console.log(res);
          });
 
-         const newSubjectList = [...subjectList];
+         const newSubjectList = _.cloneDeep(subjectList);
          newSubjectList.splice(action.subjectIndex, 1);
 
          return newSubjectList;

@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import {
    CREATE_TODO_ITEM,
    DELETE_TODO_ITEM,
@@ -29,7 +30,7 @@ const todoList = (todoList = [], action) => {
          return [...todoList, newTodoItem];
       }
       case DELETE_TODO_ITEM: {
-         const newTodoList = [...todoList];
+         const newTodoList = _.cloneDeep(todoList);
          newTodoList.splice(action.index, 1);
 
          const key = todoList[action.index].key;
@@ -41,11 +42,11 @@ const todoList = (todoList = [], action) => {
       }
 
       case TOGGLE_IS_IMPORTANT: {
-         const index = action.index;
-         const newTodoList = [...todoList];
-         newTodoList[index].isImportant = !newTodoList[index].isImportant;
+         const newTodoList = _.cloneDeep(todoList);
+         const focusedTodoItem = newTodoList[action.index]
+         focusedTodoItem.isImportant = !focusedTodoItem.isImportant;
 
-         const key = todoList[action.index].key;
+         const key = focusedTodoItem.key;
          axios.patch(apiUrl + 'is_important/', { key }).then(res => {
             console.log(res);
          });
@@ -54,11 +55,11 @@ const todoList = (todoList = [], action) => {
       }
 
       case TOGGLE_IS_DONE: {
-         const index = action.index;
-         const newTodoList = [...todoList];
-         newTodoList[index].isDone = !newTodoList[index].isDone;
+         const newTodoList = _.cloneDeep(todoList);
+         const focusedTodoItem = newTodoList[action.index]
+         focusedTodoItem.isDone = !focusedTodoItem.isDone;
 
-         const key = todoList[action.index].key;
+         const key = focusedTodoItem.key;
          axios.patch(apiUrl + 'is_done/', { key }).then(res => {
             console.log(res);
          });

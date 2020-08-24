@@ -7,7 +7,7 @@ import media from 'styled-media-query';
 
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import IconButton from '@material-ui/core/IconButton';
-import { c, length } from '../color';
+import { c } from '../color';
 
 const Header = () => {
    const { state, activeIndex } = useContext(AppContext);
@@ -56,7 +56,7 @@ const Wrapper = styled.div`
    display: flex;
    z-index: 1;
    width: calc(92% - 230px);
-   height: ${length.header};
+   height: 48px;
    background-color: ${c.blackOfMenuBackground(0.96)};
    ${media.lessThan('medium')`
    width: 94%;
