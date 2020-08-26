@@ -5,7 +5,7 @@ import media from 'styled-media-query';
 import { c } from '../color';
 import { CREATE_SUBJECT } from '../actions/index';
 
-import SubjectItem, { SubjectMenuItem } from './SubjectItem';
+import SubjectMenuList from './SubjectMenuList';
 
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
@@ -13,15 +13,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 const SideMenus = () => {
    const [title, setTitle] = useState('');
-   const { state, dispatch, setActiveIndex } = useContext(AppContext);
+   const { dispatch } = useContext(AppContext);
 
-   const subjects = state.subjectList.map((subject, index) => {
-      return <SubjectItem subject={subject} key={index} index={index} />;
-   });
-
-   const handleClickDisplayAllTodo = () => {
-      setActiveIndex(-1);
-   };
    const handleSubmitCreateSubject = e => {
       e.preventDefault();
       createSubject();
@@ -53,16 +46,10 @@ const SideMenus = () => {
             <label htmlFor="clickSidebar" className="back"></label>
             <Container id="sideMenuContainer">
                <label id="firstLabel">
-                  <SubjectMenuItem onClick={handleClickDisplayAllTodo}>
-                     <p style={{ color: 'tomato' }}>すべて</p>
-                  </SubjectMenuItem>
-                  {subjects}
+                  <SubjectMenuList />
                </label>
                <label htmlFor="clickSidebar" id="secondLabel">
-                  <SubjectMenuItem onClick={handleClickDisplayAllTodo}>
-                     <p style={{ color: 'tomato' }}>すべて</p>
-                  </SubjectMenuItem>
-                  {subjects}
+                  <SubjectMenuList />
                </label>
                {/*↑ダサすぎる */}
                <Form onSubmit={handleSubmitCreateSubject}>
@@ -153,6 +140,11 @@ const Container = styled.aside`
     transition: all 0.2s;
   `}
 `;
+// const SubjectMenuList = styled.div`
+//    .selected {
+//       background-color: ${c.grayOfSelectedItem};
+//    }
+// `;
 const Form = styled.form`
    display: flex;
    height: 36px;

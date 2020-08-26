@@ -8,12 +8,12 @@ import { initialState } from '../constant';
 import { c } from '../color';
 import { MOUNT_SUBJECT_LIST, MOUNT_TODO_LIST } from '../actions/index';
 
-import CircularProgress from '@material-ui/core/CircularProgress';
-
 import SideMenus from './SideMenus';
 import Header from './Header';
 import TodoList from './TodoList';
 import CreateNewTodoItem from './CreateNewTodoItem';
+
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const App = () => {
    const [state, dispatch] = useReducer(reducer, initialState);

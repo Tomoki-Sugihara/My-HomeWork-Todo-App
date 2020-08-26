@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
 import AppContext from '../contexts/AppContext';
 import styled from 'styled-components';
-// import media from 'styled-media-query';
 import { c } from '../color';
 
+import { SubjectMenuItem } from './SubjectMenuList';
+
 const SubjectItem = props => {
-   const { state, activeIndex, setActiveIndex } = useContext(AppContext);
+   const { activeIndex, setActiveIndex } = useContext(AppContext);
    const handleClickSetActiveIndex = () => {
       setActiveIndex(props.index);
    };
@@ -24,46 +25,33 @@ const SubjectItem = props => {
    // };
    return (
       <>
-         <Wrapper>
-            <SubjectMenuItem
-               onClick={handleClickSetActiveIndex}
-               className={isSelected() ? 'selected' : ''}
-            >
-               <p>{props.subject.title}</p>
-               {/* {displayEachNumberOfTodo()} */}
-            </SubjectMenuItem>
-         </Wrapper>
+         <SubjectMenuItem
+            onClick={handleClickSetActiveIndex}
+            className={isSelected() ? 'selected' : ''}
+         >
+            <p>{props.subject.title}</p>
+            {/* {displayEachNumberOfTodo()} */}
+         </SubjectMenuItem>
       </>
    );
 };
-const Wrapper = styled.div`
-   position: relative;
-   height: auto;
-   :hover {
-      background-color: ${c.grayOfHoverItem};
-      cursor: pointer;
-   }
-   .selected {
-      background-color: ${c.grayOfSelectedItem};
-   }
-`;
-export const SubjectMenuItem = styled.div`
-   display: flex;
-   height: 44px;
-   width: 100%;
-   font-size: 15px;
-   margin: auto 0;
-   :hover {
-      background-color: ${c.grayOfHoverItem};
-      cursor: pointer;
-   }
-   p {
-      margin: auto 0 auto 15px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-   }
-`;
+// export const SubjectMenuItem = styled.div`
+//    display: flex;
+//    height: 44px;
+//    width: 100%;
+//    font-size: 15px;
+//    margin: auto 0;
+//    :hover {
+//       background-color: ${c.grayOfHoverItem};
+//       cursor: pointer;
+//    }
+//    > p {
+//       margin: auto 0 auto 15px;
+//       white-space: nowrap;
+//       overflow: hidden;
+//       text-overflow: ellipsis;
+//    }
+// `;
 // const NumberOfTodo = styled.div`
 //    height: 44px;
 //    width: 44px;
