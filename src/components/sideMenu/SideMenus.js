@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
-import AppContext from '../contexts/AppContext';
+import AppContext from '../../contexts/AppContext';
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { c } from '../color';
-import { CREATE_SUBJECT } from '../actions/index';
+import { c } from '../../constant/color';
+import { CREATE_SUBJECT } from '../../actions/index';
 
 import SubjectMenuList from './SubjectMenuList';
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useContext } from 'react';
-import AppContext from '../contexts/AppContext';
+import AppContext from '../../contexts/AppContext';
 import styled from 'styled-components';
-import { c } from '../color';
+import { c } from '../../constant/color';
 
 import SubjectItem from './SubjectItem';
 

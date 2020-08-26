@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import TodoItem from './TodoItem';
-import AppContext from '../contexts/AppContext';
+import AppContext from '../../contexts/AppContext';
 import styled from 'styled-components';
 // import { c } from '../color';
+
+import TodoItem from './TodoItem';
 
 const TodoList = () => {
    const { state, activeIndex } = useContext(AppContext);

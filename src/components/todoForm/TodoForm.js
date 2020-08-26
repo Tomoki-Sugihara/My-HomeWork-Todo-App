@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react';
-import AppContext from '../contexts/AppContext';
+import AppContext from '../../contexts/AppContext';
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { CREATE_TODO_ITEM } from '../actions/index';
-import { c } from '../color';
+import { CREATE_TODO_ITEM } from '../../actions/index';
+import { c } from '../../constant/color';
 
 import Checkbox from '@material-ui/core/Checkbox';
 import StarIcon from '@material-ui/icons/Star';
@@ -11,7 +11,7 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 
-const CreateNewTodoItem = () => {
+const TodoForm = () => {
    const { dispatch, activeIndex } = useContext(AppContext);
    const [title, setTitle] = useState('');
    const [isImportant, setIsImportant] = useState(false);
@@ -115,4 +115,4 @@ const InputOfTitle = styled.input`
   `}
 `;
 
-export default CreateNewTodoItem;
+export default TodoForm;

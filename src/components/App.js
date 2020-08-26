@@ -4,14 +4,14 @@ import AppContext from '../contexts/AppContext';
 import axios from 'axios';
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { initialState } from '../constant';
-import { c } from '../color';
+import { initialState } from '../constant/constant';
+import { c } from '../constant/color';
 import { MOUNT_SUBJECT_LIST, MOUNT_TODO_LIST } from '../actions/index';
 
-import SideMenus from './SideMenus';
-import Header from './Header';
-import TodoList from './TodoList';
-import CreateNewTodoItem from './CreateNewTodoItem';
+import SideMenus from './sideMenu/SideMenus';
+import Header from './header/Header';
+import TodoList from './todoList/TodoList';
+import TodoForm from './todoForm/TodoForm';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -67,7 +67,7 @@ const App = () => {
                <Container>
                   <Header />
                   <TodoList />
-                  <CreateNewTodoItem />
+                  <TodoForm />
                </Container>
             </Wrapper>
          </AppContext.Provider>

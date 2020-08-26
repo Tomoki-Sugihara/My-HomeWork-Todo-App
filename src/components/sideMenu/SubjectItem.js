@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import AppContext from '../contexts/AppContext';
+import AppContext from '../../contexts/AppContext';
 // import styled from 'styled-components';
 // import { c } from '../color';
 
@@ -35,5 +35,16 @@ const SubjectItem = props => {
       </>
    );
 };
+
+// const NumberOfTodo = styled.div`
+//    height: 44px;
+//    width: 44px;
+//    display: flex;
+//    align-items: center;
+//    > p {
+//       color: royalblue;
+//       margin: 0 auto;
+//    }
+// `;
 
 export default SubjectItem;
