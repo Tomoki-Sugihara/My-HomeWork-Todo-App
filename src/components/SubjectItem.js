@@ -4,12 +4,13 @@ import styled from 'styled-components';
 // import media from 'styled-media-query';
 import { c } from '../color';
 
-// import Badge from '@material-ui/core/Badge';
-
 const SubjectItem = props => {
-   const { setActiveIndex } = useContext(AppContext);
-   const handleClickSetActiveSubjectIndex = () => {
+   const { state, activeIndex, setActiveIndex } = useContext(AppContext);
+   const handleClickSetActiveIndex = () => {
       setActiveIndex(props.index);
+   };
+   const isSelected = () => {
+      return props.index === activeIndex;
    };
    // const displayEachNumberOfTodo = () => {
    //    let number = 0;
@@ -18,17 +19,18 @@ const SubjectItem = props => {
    //          number++;
    //       }
    //    });
-   //    return number;
+   //    // return number;
+   //    return <p>{number}</p>;
    // };
    return (
       <>
          <Wrapper>
             <SubjectMenuItem
-               onClick={handleClickSetActiveSubjectIndex}
+               onClick={handleClickSetActiveIndex}
+               className={isSelected() ? 'selected' : ''}
             >
-               {/* <Badge badgeContent={displayEachNumberOfTodo()} fontSize="small"> */}
                <p>{props.subject.title}</p>
-               {/* </Badge> */}
+               {/* {displayEachNumberOfTodo()} */}
             </SubjectMenuItem>
          </Wrapper>
       </>
@@ -40,6 +42,9 @@ const Wrapper = styled.div`
    :hover {
       background-color: ${c.grayOfHoverItem};
       cursor: pointer;
+   }
+   .selected {
+      background-color: ${c.grayOfSelectedItem};
    }
 `;
 export const SubjectMenuItem = styled.div`

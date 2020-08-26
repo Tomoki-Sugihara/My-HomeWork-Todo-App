@@ -22,18 +22,24 @@ const SideMenus = () => {
    const handleClickDisplayAllTodo = () => {
       setActiveIndex(-1);
    };
+   const handleSubmitCreateSubject = e => {
+      e.preventDefault();
+      createSubject();
+   };
+   const handleChangeSetTitle = e => {
+      const inputTitle = e.target.value;
+      setTitle(inputTitle);
+   };
 
    const createSubject = () => {
       if (title.trim() === '') {
          return;
       }
-
       dispatch({
          type: CREATE_SUBJECT,
          title,
       });
-
-      setTitle(``);
+      setTitle('');
    };
    return (
       <>
@@ -50,38 +56,24 @@ const SideMenus = () => {
                   <SubjectMenuItem onClick={handleClickDisplayAllTodo}>
                      <p style={{ color: 'tomato' }}>すべて</p>
                   </SubjectMenuItem>
-                  <SubjectList>{subjects}</SubjectList>
+                  {subjects}
                </label>
                <label htmlFor="clickSidebar" id="secondLabel">
                   <SubjectMenuItem onClick={handleClickDisplayAllTodo}>
                      <p style={{ color: 'tomato' }}>すべて</p>
                   </SubjectMenuItem>
-                  <SubjectList>{subjects}</SubjectList>
-               </label>{' '}
+                  {subjects}
+               </label>
                {/*↑ダサすぎる */}
-               <Form
-                  onSubmit={e => {
-                     e.preventDefault();
-                     createSubject();
-                  }}
-               >
-                  <IconButton
-                     color="primary"
-                     onClick={e => {
-                        e.preventDefault();
-                        createSubject();
-                     }}
-                  >
+               <Form onSubmit={handleSubmitCreateSubject}>
+                  <IconButton color="primary" type="submit">
                      <AddIcon color="primary" />
                   </IconButton>
                   <InputOfTitle
                      type="text"
                      placeholder="Subjectを追加"
                      value={title}
-                     onChange={e => {
-                        const inputTitle = e.target.value;
-                        setTitle(inputTitle);
-                     }}
+                     onChange={handleChangeSetTitle}
                   />
                </Form>
             </Container>
@@ -92,7 +84,7 @@ const SideMenus = () => {
 const Wrapper = styled.div`
    width: 300px;
    height: 100%;
-   background-color: ${c.grayOfForm};
+   background-color: ${c.grayOfSideMenuBackground};
 
    input[type='checkbox'] {
       position: fixed;
@@ -134,7 +126,7 @@ const Container = styled.aside`
    height: 100%;
    width: 230px;
    padding-top: 10px;
-   background-color: ${c.grayOfForm};
+   background-color: ${c.grayOfSideMenuBackground};
    .close {
       display: none;
       width: 24px;
@@ -161,14 +153,12 @@ const Container = styled.aside`
     transition: all 0.2s;
   `}
 `;
-const SubjectList = styled.div``;
 const Form = styled.form`
    display: flex;
    height: 36px;
    width: 100%;
    margin-top: 15px;
    background-color: ${c.grayOfForm};
-   border-radius: 5px;
    :hover {
       background-color: ${c.grayOfHoverForm};
    }
@@ -181,7 +171,6 @@ const InputOfTitle = styled.input`
    margin-left: 3px;
    font-size: 13.5px;
    background-color: ${c.grayOfForm};
-   border-radius: 5px;
    color: white;
    border-style: none;
    :hover {

@@ -15,11 +15,10 @@
 // export const GRAYOFITEMHOVER = GRAYTEMPLATE50;
 
 const colorTemplate = {
-   black: (opacity = 1) => {
-      return `rgba(33,33,33,${opacity})`;
-   },
-   gray: 'rgb(43,43,43)',
-   lighterGray: 'rgba(50,50,50)',
+   black: (opacity = 1) => `rgba(33,33,33,${opacity})`,
+   gray43: 'rgb(43,43,43)',
+   gray50: 'rgba(50,50,50)',
+   gray53: 'rgba(53,53,53)',
 
    // gray: (opacity = 1) => {
    //    return `rgba(43,43,43,${opacity})`;
@@ -33,7 +32,10 @@ const colorTemplate = {
 export const c = {
    blackOfBackground: colorTemplate.black,
    blackOfMenuBackground: colorTemplate.black,
-   grayOfItem: colorTemplate.gray,
-   grayOfForm: colorTemplate.gray,
-   grayOfHoverForm: colorTemplate.lighterGray,
+   grayOfItem: colorTemplate.gray43,
+   grayOfForm: colorTemplate.gray43,
+   grayOfSideMenuBackground: colorTemplate.gray43,
+   grayOfSelectedItem: colorTemplate.gray50,
+   grayOfHoverItem: colorTemplate.gray53,
+   grayOfHoverForm: colorTemplate.gray53,
 };
