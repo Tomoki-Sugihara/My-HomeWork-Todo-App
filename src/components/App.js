@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 import { initialState } from '../constant';
 import { c } from '../color';
+import { MOUNT_SUBJECT_LIST, MOUNT_TODO_LIST } from '../actions/index';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -32,11 +33,11 @@ const App = () => {
             todoList = res.data.sort(sortFunc);
          });
          await dispatch({
-            type: 'MOUNT_SUBJECT_LIST',
+            type: MOUNT_SUBJECT_LIST,
             data: subjectList,
          });
          await dispatch({
-            type: 'MOUNT_TODO_LIST',
+            type: MOUNT_TODO_LIST,
             data: todoList,
          });
          await setIsLoading(false);
