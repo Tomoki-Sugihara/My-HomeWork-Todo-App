@@ -6,11 +6,13 @@ import { c } from '../color';
 
 import SubjectItem from './SubjectItem';
 
-
 const SubjectMenuList = () => {
-   const {state, activeIndex, setActiveIndex} = useContext(AppContext);
-   
+   const { state, activeIndex, setActiveIndex } = useContext(AppContext);
+
    const handleClickDisplayAllTodo = () => {
+      setActiveIndex(-1);
+   };
+   const handleClickDisplayTasks = () => {
       setActiveIndex(-1);
    };
    const isSelected = num => {
@@ -19,6 +21,7 @@ const SubjectMenuList = () => {
    const subjects = state.subjectList.map((subjectItem, index) => {
       return <SubjectItem subject={subjectItem} key={index} index={index} />;
    });
+   
    return (
       <Wrapper>
          <SubjectMenuItem
@@ -27,10 +30,16 @@ const SubjectMenuList = () => {
          >
             <p style={{ color: 'tomato' }}>すべて</p>
          </SubjectMenuItem>
+         <SubjectMenuItem
+            onClick={handleClickDisplayTasks}
+            className={isSelected(-2) ? 'selected' : ''}
+         >
+            <p style={{ color: '#20b2aa' }}>タスク</p>
+         </SubjectMenuItem>
          {subjects}
       </Wrapper>
    );
-}
+};
 
 const Wrapper = styled.div`
    .selected {
@@ -54,4 +63,4 @@ export const SubjectMenuItem = styled.div`
       text-overflow: ellipsis;
    }
 `;
-export default SubjectMenuList
+export default SubjectMenuList;

@@ -12,9 +12,9 @@ import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 
 const CreateNewTodoItem = () => {
+   const { dispatch, activeIndex } = useContext(AppContext);
    const [title, setTitle] = useState('');
    const [isImportant, setIsImportant] = useState(false);
-   const { dispatch, activeIndex } = useContext(AppContext);
 
    const createTodo = () => {
       if (title.trim() === '') {
