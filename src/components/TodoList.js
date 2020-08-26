@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import TodoItem from './TodoItem';
 import AppContext from '../contexts/AppContext';
+import styled from 'styled-components';
 // import { c } from '../color';
 
-import styled from 'styled-components';
 const TodoList = () => {
    const { state, activeIndex } = useContext(AppContext);
 
@@ -29,7 +29,6 @@ const Wrapper = styled.div`
    width: 100%;
    position: relative;
    width: 100%;
-   /* width: calc(92% - 230px); */
 `;
 
 export default TodoList;

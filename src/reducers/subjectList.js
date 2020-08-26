@@ -1,10 +1,10 @@
 import _ from 'lodash';
+import axios from 'axios';
 import {
    CREATE_SUBJECT,
    MOUNT_SUBJECT_LIST,
    DELETE_SUBJECT_ITEM,
 } from '../actions/index';
-import axios from 'axios';
 
 const subjectList = (subjectList = [], action) => {
    const apiUrl = `${process.env.REACT_APP_SERVER_URL}api/subject_lists/`;

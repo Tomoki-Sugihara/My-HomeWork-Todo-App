@@ -1,9 +1,13 @@
 import React, { useContext } from 'react';
 import AppContext from '../contexts/AppContext';
-import { c } from '../color';
-
 import styled from 'styled-components';
 import media from 'styled-media-query';
+import { c } from '../color';
+import {
+   TOGGLE_IS_DONE,
+   TOGGLE_IS_IMPORTANT,
+   DELETE_TODO_ITEM,
+} from '../actions/index';
 
 import Checkbox from '@material-ui/core/Checkbox';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
@@ -15,11 +19,6 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import Tooltip from '@material-ui/core/Tooltip';
 import Zoom from '@material-ui/core/Zoom';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
-import {
-   TOGGLE_IS_DONE,
-   TOGGLE_IS_IMPORTANT,
-   DELETE_TODO_ITEM,
-} from '../actions';
 
 const TodoItem = props => {
    const { state, dispatch, activeIndex } = useContext(AppContext);

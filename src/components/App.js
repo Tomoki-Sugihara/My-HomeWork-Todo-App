@@ -1,20 +1,23 @@
 import React, { useState, useReducer, useEffect } from 'react';
 import reducer from '../reducers';
 import AppContext from '../contexts/AppContext';
-import { initialState } from '../constant';
 import axios from 'axios';
+import styled from 'styled-components';
+import media from 'styled-media-query';
+import { initialState } from '../constant';
 import { c } from '../color';
+
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import SideMenus from './SideMenus';
 import Header from './Header';
 import TodoList from './TodoList';
 import CreateNewTodoItem from './CreateNewTodoItem';
-import styled from 'styled-components';
-import media from 'styled-media-query';
 
 const App = () => {
    const [state, dispatch] = useReducer(reducer, initialState);
    const [activeIndex, setActiveIndex] = useState(-1);
+   const [isLoading, setIsLoading] = useState(true);
 
    useEffect(() => {
       (async () => {
@@ -36,8 +39,17 @@ const App = () => {
             type: 'MOUNT_TODO_LIST',
             data: todoList,
          });
+         await setIsLoading(false);
       })();
    }, []);
+
+   if (isLoading) {
+      return (
+         <LoadingWindow>
+            <CircularProgress size="50px" />
+         </LoadingWindow>
+      );
+   }
 
    return (
       <>
@@ -61,6 +73,13 @@ const App = () => {
       </>
    );
 };
+const LoadingWindow = styled.div`
+   width: 100%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+`;
 
 const Wrapper = styled.div`
    display: grid;

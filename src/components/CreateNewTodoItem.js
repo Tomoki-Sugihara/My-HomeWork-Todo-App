@@ -1,10 +1,9 @@
 import React, { useState, useContext } from 'react';
 import AppContext from '../contexts/AppContext';
-import { CREATE_TODO_ITEM } from '../actions/index';
-import { c } from '../color';
-
 import styled from 'styled-components';
 import media from 'styled-media-query';
+import { CREATE_TODO_ITEM } from '../actions/index';
+import { c } from '../color';
 
 import Checkbox from '@material-ui/core/Checkbox';
 import StarIcon from '@material-ui/icons/Star';

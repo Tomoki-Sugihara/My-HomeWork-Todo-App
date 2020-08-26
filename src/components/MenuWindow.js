@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import AppContext from '../contexts/AppContext';
+import styled from 'styled-components';
 // import { c } from '../color';
 import { PERGE_TODO_ITEM, DELETE_SUBJECT_ITEM } from '../actions/index';
 
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 
-import styled from 'styled-components';
 const MenuWindow = () => {
    const { dispatch, activeIndex, setActiveIndex } = useContext(AppContext);
 

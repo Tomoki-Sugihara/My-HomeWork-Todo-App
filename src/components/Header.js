@@ -1,13 +1,13 @@
 import React, { useContext, useEffect } from 'react';
 import AppContext from '../contexts/AppContext';
-import MenuWindow from './MenuWindow';
-
 import styled from 'styled-components';
 import media from 'styled-media-query';
+import { c } from '../color';
+
+import MenuWindow from './MenuWindow';
 
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import IconButton from '@material-ui/core/IconButton';
-import { c } from '../color';
 
 const Header = () => {
    const { state, activeIndex } = useContext(AppContext);

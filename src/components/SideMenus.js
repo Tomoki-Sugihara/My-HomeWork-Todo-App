@@ -1,16 +1,15 @@
 import React, { useContext, useState } from 'react';
 import AppContext from '../contexts/AppContext';
-// import { subjectListTemplate } from '../constant';
-import { c } from '../color';
-import SubjectItem, { SubjectMenuItem } from './SubjectItem';
-
 import styled from 'styled-components';
 import media from 'styled-media-query';
+import { c } from '../color';
+import { CREATE_SUBJECT } from '../actions/index';
+
+import SubjectItem, { SubjectMenuItem } from './SubjectItem';
 
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 import MenuIcon from '@material-ui/icons/Menu';
-import { CREATE_SUBJECT } from '../actions';
 
 const SideMenus = () => {
    const [title, setTitle] = useState('');

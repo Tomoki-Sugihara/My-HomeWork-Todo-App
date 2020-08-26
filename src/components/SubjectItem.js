@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
 import AppContext from '../contexts/AppContext';
-import { c } from '../color';
-
 import styled from 'styled-components';
 // import media from 'styled-media-query';
+import { c } from '../color';
 
 // import Badge from '@material-ui/core/Badge';
 
@@ -25,9 +24,6 @@ const SubjectItem = props => {
       <>
          <Wrapper>
             <SubjectMenuItem
-               // onMouseDown={e => {
-               //    handleMouseDown(e);
-               // }}
                onClick={handleClickSetActiveSubjectIndex}
             >
                {/* <Badge badgeContent={displayEachNumberOfTodo()} fontSize="small"> */}
