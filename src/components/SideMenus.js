@@ -140,11 +140,6 @@ const Container = styled.aside`
     transition: all 0.2s;
   `}
 `;
-// const SubjectMenuList = styled.div`
-//    .selected {
-//       background-color: ${c.grayOfSelectedItem};
-//    }
-// `;
 const Form = styled.form`
    display: flex;
    height: 36px;
