@@ -9,6 +9,19 @@ import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined'
 const MenuWindow = () => {
    const { dispatch, activeIndex, setActiveIndex } = useContext(AppContext);
 
+   const handleClickDeleteSubject = () => {
+      if (activeIndex === -2) {
+         deleteTasks();
+      } else {
+         deleteSubject();
+      }
+   };
+   const deleteTasks = () => {
+      dispatch({
+         type: PERGE_TODO_ITEM,
+         subjectIndex: -1,
+      });
+   };
    const deleteSubject = () => {
       dispatch({
          type: PERGE_TODO_ITEM,
@@ -25,7 +38,7 @@ const MenuWindow = () => {
    return (
       <>
          <Wrapper style={{ display: isThisDisplayed() ? 'block' : 'none' }}>
-            <DeleteSubject onClick={deleteSubject}>
+            <DeleteSubject onClick={handleClickDeleteSubject}>
                <div className="container">
                   <DeleteIcon>
                      <DeleteOutlineOutlinedIcon
@@ -33,7 +46,7 @@ const MenuWindow = () => {
                         fontSize="small"
                      ></DeleteOutlineOutlinedIcon>
                   </DeleteIcon>
-                  <p>このsubjectを削除</p>
+                  <p>このリストを削除</p>
                </div>
             </DeleteSubject>
          </Wrapper>

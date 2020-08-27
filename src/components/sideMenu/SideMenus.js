@@ -58,7 +58,7 @@ const SideMenus = () => {
                   </IconButton>
                   <InputOfTitle
                      type="text"
-                     placeholder="Subjectを追加"
+                     placeholder="リストを追加"
                      value={title}
                      onChange={handleChangeSetTitle}
                   />

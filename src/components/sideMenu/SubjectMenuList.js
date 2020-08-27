@@ -13,7 +13,7 @@ const SubjectMenuList = () => {
       setActiveIndex(-1);
    };
    const handleClickDisplayTasks = () => {
-      setActiveIndex(-1);
+      setActiveIndex(-2);
    };
    const isSelected = num => {
       return activeIndex === num;
@@ -21,7 +21,7 @@ const SubjectMenuList = () => {
    const subjects = state.subjectList.map((subjectItem, index) => {
       return <SubjectItem subject={subjectItem} key={index} index={index} />;
    });
-   
+
    return (
       <Wrapper>
          <SubjectMenuItem
@@ -34,7 +34,7 @@ const SubjectMenuList = () => {
             onClick={handleClickDisplayTasks}
             className={isSelected(-2) ? 'selected' : ''}
          >
-            <p style={{ color: '#20b2aa' }}>タスク</p>
+            <p style={{ color: '#20b2aa' }}>Tasks</p>
          </SubjectMenuItem>
          {subjects}
       </Wrapper>

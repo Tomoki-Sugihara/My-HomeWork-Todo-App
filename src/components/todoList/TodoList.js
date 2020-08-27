@@ -16,6 +16,8 @@ const TodoList = () => {
          const todo = comp.props.todo;
          if (activeIndex === -1) {
             return true;
+         } else if (activeIndex === -2) {
+            return todo.subjectIndex === -1;
          } else {
             return todo.subjectIndex === activeIndex;
          }
