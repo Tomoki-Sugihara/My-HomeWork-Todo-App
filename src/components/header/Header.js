@@ -14,6 +14,8 @@ const Header = () => {
    const displayTitleName = () => {
       if (activeIndex === -1) {
          return 'My HomeWork Todo';
+      } else if (activeIndex === -2) {
+         return 'Tasks';
       } else {
          return state.subjectList[activeIndex].title;
       }

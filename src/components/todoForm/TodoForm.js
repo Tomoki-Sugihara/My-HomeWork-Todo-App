@@ -20,11 +20,13 @@ const TodoForm = () => {
       if (title.trim() === '') {
          return;
       }
+      const subjectIndex = activeIndex === -2 ? -1 : activeIndex;
       dispatch({
          type: CREATE_TODO_ITEM,
          title,
          isImportant,
-         subjectIndex: activeIndex,
+         subjectIndex,
+         // subjectIndex: activeIndex,
       });
       setTitle('');
       setIsImportant(false);
