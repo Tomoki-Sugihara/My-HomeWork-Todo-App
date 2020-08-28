@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/My-HomeWork-Todo-App/precache-manifest.e3c19139366b66a3b5fa788c057be457.js"
+  "/My-HomeWork-Todo-App/precache-manifest.a54239eaf903ccdd87d84a4b5790a08f.js"
 );
 
 self.addEventListener('message', (event) => {
