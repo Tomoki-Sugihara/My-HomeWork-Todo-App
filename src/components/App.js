@@ -22,16 +22,21 @@ const App = () => {
 
    useEffect(() => {
       (async () => {
-         let todoList;
-         let subjectList;
          const apiUrl = `${process.env.REACT_APP_SERVER_URL}api/`;
          const sortFunc = (a, b) => (a.id > b.id ? 1 : -1);
-         await axios.get(apiUrl + 'subject_lists/').then(res => {
-            subjectList = res.data.sort(sortFunc);
-         });
-         await axios.get(apiUrl + 'todo_lists/').then(res => {
-            todoList = res.data.sort(sortFunc);
-         });
+
+         const getSubjectList = axios
+            .get(apiUrl + 'subject_lists/')
+            .then(res => res.data.sort(sortFunc));
+         const getTodoList = axios
+            .get(apiUrl + 'todo_lists/')
+            .then(res => res.data.sort(sortFunc));
+
+         const [subjectList, todoList] = await Promise.all([
+            getSubjectList,
+            getTodoList,
+         ]);
+
          await dispatch({
             type: MOUNT_SUBJECT_LIST,
             data: subjectList,
