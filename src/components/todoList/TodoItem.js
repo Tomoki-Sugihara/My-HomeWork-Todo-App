@@ -71,32 +71,27 @@ const TodoItem = props => {
                <p>{displaySubjectName()}</p>
             </SubjectName>
          </div>
-         <Checkbox
-            style={{ marginLeft: 'auto' }}
-            icon={<StarBorderIcon color="primary" fontSize="small" />}
-            checkedIcon={<StarIcon color="primary" fontSize="small" />}
-            color="primary"
-            checked={props.todo.isImportant}
-            onClick={handleClickIsImportant}
-         />
+         <_StarIcon>
+            <Checkbox
+               icon={<StarBorderIcon color="primary" fontSize="small" />}
+               checkedIcon={<StarIcon color="primary" fontSize="small" />}
+               color="primary"
+               checked={props.todo.isImportant}
+               onClick={handleClickIsImportant}
+            />
+         </_StarIcon>
          <Tooltip
-            title="Delete"
+            title="削除"
             enterDelay={600}
             leaveDelay={100}
             TransitionComponent={Zoom}
          >
-            <DeleteIcon onClick={deleteTodo}>
-               <IconButton
+            <IconButton onClick={deleteTodo} style={{ height: '100%' }}>
+               <DeleteOutlineOutlinedIcon
                   color="secondary"
                   fontSize="small"
-                  style={{ height: '100%' }}
-               >
-                  <DeleteOutlineOutlinedIcon
-                     color="secondary"
-                     fontSize="small"
-                  ></DeleteOutlineOutlinedIcon>
-               </IconButton>
-            </DeleteIcon>
+               ></DeleteOutlineOutlinedIcon>
+            </IconButton>
          </Tooltip>
       </Wrapper>
    );
@@ -106,7 +101,6 @@ const Wrapper = styled.div`
    display: flex;
    max-width: 100%;
    min-height: 45px;
-   /* height: 45px; */
    list-style: none;
    background-color: ${c.grayOfItem};
    border-radius: 5px;
@@ -122,15 +116,9 @@ const Wrapper = styled.div`
    }
 `;
 const TodoTitle = styled.p`
-   /* max-width: 1fr; */
    margin: auto 0 auto 3.5px;
    font-size: 16.5px;
-   /* word-wrap: break-word; */
    word-break: break-all;
-
-   /* white-space: nowrap;
-   overflow: hidden;
-   text-overflow: ellipsis; */
 
    display: -webkit-box;
    -webkit-box-orient: vertical;
@@ -150,13 +138,16 @@ const SubjectName = styled.div`
    margin: auto 0 auto 6px;
   `}
 
-   >p {
+   > p {
       margin-top: 2px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
    }
 `;
-const DeleteIcon = styled.div``;
+const _StarIcon = styled.div`
+   margin-left: auto;
+   z-index: 0;
+`;
 
 export default TodoItem;
