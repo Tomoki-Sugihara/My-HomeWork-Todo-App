@@ -26,23 +26,25 @@ const TodoForm = () => {
          title,
          isImportant,
          subjectIndex,
-         // subjectIndex: activeIndex,
       });
       setTitle('');
       setIsImportant(false);
    };
+   const handleSubmitCreateTodo = e => {
+      e.preventDefault();
+      createTodo();
+   };
    const handleClickIsImportant = () => {
       setIsImportant(prev => !prev);
+   };
+   const handleChangeSetTitle = e => {
+      const inputTitle = e.target.value;
+      setTitle(inputTitle);
    };
 
    return (
       <Wrapper>
-         <Form
-            onSubmit={e => {
-               e.preventDefault();
-               createTodo();
-            }}
-         >
+         <Form onSubmit={handleSubmitCreateTodo}>
             <IconButton color="primary" type="submit">
                <AddIcon color="primary" />
             </IconButton>
@@ -50,10 +52,7 @@ const TodoForm = () => {
                type="text"
                placeholder="タスクを追加"
                value={title}
-               onChange={e => {
-                  const inputTitle = e.target.value;
-                  setTitle(inputTitle);
-               }}
+               onChange={handleChangeSetTitle}
             />
             <Checkbox
                style={{ marginLeft: 'auto' }}

@@ -71,7 +71,7 @@ const TodoItem = props => {
                <p>{displaySubjectName()}</p>
             </SubjectName>
          </div>
-         <_StarIcon>
+         <StarIconContainer>
             <Checkbox
                icon={<StarBorderIcon color="primary" fontSize="small" />}
                checkedIcon={<StarIcon color="primary" fontSize="small" />}
@@ -79,7 +79,7 @@ const TodoItem = props => {
                checked={props.todo.isImportant}
                onClick={handleClickIsImportant}
             />
-         </_StarIcon>
+         </StarIconContainer>
          <Tooltip
             title="削除"
             enterDelay={600}
@@ -145,7 +145,7 @@ const SubjectName = styled.div`
       text-overflow: ellipsis;
    }
 `;
-const _StarIcon = styled.div`
+const StarIconContainer = styled.div`
    margin-left: auto;
    z-index: 0;
 `;
