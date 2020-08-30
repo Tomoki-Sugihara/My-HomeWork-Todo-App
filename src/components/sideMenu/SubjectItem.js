@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import AppContext from '../../contexts/AppContext';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 // import { color as c } from '../color';
 
 import { SubjectMenuItem, NumberOfTodo } from './SubjectMenuList';
@@ -17,19 +17,16 @@ const SubjectItem = props => {
       return todoItem.subjectIndex === props.index;
    }).length;
    return (
-      <>
-         <SubjectMenuItem
-            onClick={handleClickSetActiveIndex}
-            className={isSelected() ? 'selected' : ''}
-         >
-            <p>{props.subject.title}</p>
-            <NumberOfTodo>
-               <p>{eachNumberOfTodo}</p>
-            </NumberOfTodo>
-         </SubjectMenuItem>
-      </>
+      <SubjectMenuItem
+         onClick={handleClickSetActiveIndex}
+         className={isSelected() ? 'selected' : ''}
+      >
+         <p>{props.subject.title}</p>
+         <NumberOfTodo>
+            <p>{eachNumberOfTodo}</p>
+         </NumberOfTodo>
+      </SubjectMenuItem>
    );
 };
-
 
 export default SubjectItem;

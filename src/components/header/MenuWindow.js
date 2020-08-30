@@ -36,21 +36,19 @@ const MenuWindow = () => {
 
    const isThisDisplayed = () => activeIndex !== -1;
    return (
-      <>
-         <Wrapper style={{ display: isThisDisplayed() ? 'block' : 'none' }}>
-            <DeleteSubject onClick={handleClickDeleteSubject}>
-               <div className="container">
-                  <DeleteIcon>
-                     <DeleteOutlineOutlinedIcon
-                        color="secondary"
-                        fontSize="small"
-                     ></DeleteOutlineOutlinedIcon>
-                  </DeleteIcon>
-                  <p>このリストを削除</p>
-               </div>
-            </DeleteSubject>
-         </Wrapper>
-      </>
+      <Wrapper style={{ display: isThisDisplayed() ? 'block' : 'none' }}>
+         <DeleteSubject onClick={handleClickDeleteSubject}>
+            <div className="container">
+               <DeleteIcon>
+                  <DeleteOutlineOutlinedIcon
+                     color="secondary"
+                     fontSize="small"
+                  ></DeleteOutlineOutlinedIcon>
+               </DeleteIcon>
+               <p>このリストを削除</p>
+            </div>
+         </DeleteSubject>
+      </Wrapper>
    );
 };
 

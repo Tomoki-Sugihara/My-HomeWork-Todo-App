@@ -66,25 +66,23 @@ const App = () => {
    }
 
    return (
-      <>
-         <AppContext.Provider
-            value={{
-               state,
-               dispatch,
-               activeIndex,
-               setActiveIndex,
-            }}
-         >
-            <Wrapper>
-               <SideMenus />
-               <Container>
-                  <Header />
-                  <TodoList />
-                  <TodoForm />
-               </Container>
-            </Wrapper>
-         </AppContext.Provider>
-      </>
+      <AppContext.Provider
+         value={{
+            state,
+            dispatch,
+            activeIndex,
+            setActiveIndex,
+         }}
+      >
+         <Wrapper>
+            <SideMenus />
+            <Container>
+               <Header />
+               <TodoList />
+               <TodoForm />
+            </Container>
+         </Wrapper>
+      </AppContext.Provider>
    );
 };
 const LoadingWindow = styled.div`

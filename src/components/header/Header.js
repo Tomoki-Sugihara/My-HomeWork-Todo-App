@@ -28,28 +28,26 @@ const Header = () => {
       }
    }, [activeIndex]);
    return (
-      <>
-         <Wrapper>
-            <TitleBar>
-               <h3>{displayTitleName()}</h3>
-            </TitleBar>
-            <SettingMenu>
-               <IconButton color="primary" style={{ position: 'relative' }}>
-                  <MoreVertIcon color="primary" fontSize="small"></MoreVertIcon>
-                  <label
-                     htmlFor="menu"
-                     className="open"
-                     style={{ display: isThisDisplayed() ? 'block' : 'none' }}
-                  ></label>
-               </IconButton>
-               <input type="checkbox" id="menu" />
-               <label htmlFor="menu" className="back"></label>
-               <label className="menuWindow" htmlFor="menu">
-                  <MenuWindow />
-               </label>
-            </SettingMenu>
-         </Wrapper>
-      </>
+      <Wrapper>
+         <TitleBar>
+            <h3>{displayTitleName()}</h3>
+         </TitleBar>
+         <SettingMenu>
+            <IconButton color="primary" style={{ position: 'relative' }}>
+               <MoreVertIcon color="primary" fontSize="small"></MoreVertIcon>
+               <label
+                  htmlFor="menu"
+                  className="open"
+                  style={{ display: isThisDisplayed() ? 'block' : 'none' }}
+               ></label>
+            </IconButton>
+            <input type="checkbox" id="menu" />
+            <label htmlFor="menu" className="back"></label>
+            <label className="menuWindow" htmlFor="menu">
+               <MenuWindow />
+            </label>
+         </SettingMenu>
+      </Wrapper>
    );
 };
 

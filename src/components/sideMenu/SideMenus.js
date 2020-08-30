@@ -36,37 +36,35 @@ const SideMenus = () => {
       setTitle('');
    };
    return (
-      <>
-         <Wrapper>
-            <input id="clickSidebar" type="checkbox" />
-            <label htmlFor="clickSidebar" className="open">
-               <div>
-                  <MenuIcon className="menuIcon"></MenuIcon>
-               </div>
+      <Wrapper>
+         <input id="clickSidebar" type="checkbox" />
+         <label htmlFor="clickSidebar" className="open">
+            <div>
+               <MenuIcon className="menuIcon"></MenuIcon>
+            </div>
+         </label>
+         <label htmlFor="clickSidebar" className="back"></label>
+         <Container id="sideMenuContainer">
+            <label id="firstLabel">
+               <SubjectMenuList />
             </label>
-            <label htmlFor="clickSidebar" className="back"></label>
-            <Container id="sideMenuContainer">
-               <label id="firstLabel">
-                  <SubjectMenuList />
-               </label>
-               <label htmlFor="clickSidebar" id="secondLabel">
-                  <SubjectMenuList />
-               </label>
-               {/*↑ダサすぎる */}
-               <Form onSubmit={handleSubmitCreateSubject}>
-                  <IconButton color="primary" type="submit">
-                     <AddIcon color="primary" />
-                  </IconButton>
-                  <InputOfTitle
-                     type="text"
-                     placeholder="リストを追加"
-                     value={title}
-                     onChange={handleChangeSetTitle}
-                  />
-               </Form>
-            </Container>
-         </Wrapper>
-      </>
+            <label htmlFor="clickSidebar" id="secondLabel">
+               <SubjectMenuList />
+            </label>
+            {/*↑ダサすぎる */}
+            <Form onSubmit={handleSubmitCreateSubject}>
+               <IconButton color="primary" type="submit">
+                  <AddIcon color="primary" />
+               </IconButton>
+               <InputOfTitle
+                  type="text"
+                  placeholder="リストを追加"
+                  value={title}
+                  onChange={handleChangeSetTitle}
+               />
+            </Form>
+         </Container>
+      </Wrapper>
    );
 };
 const Wrapper = styled.div`
