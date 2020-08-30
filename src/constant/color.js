@@ -29,7 +29,7 @@ const colorTemplate = {
 };
 
 //color
-export const c = {
+export const color = {
    blackOfBackground: colorTemplate.black,
    blackOfMenuBackground: colorTemplate.black,
    grayOfItem: colorTemplate.gray43,

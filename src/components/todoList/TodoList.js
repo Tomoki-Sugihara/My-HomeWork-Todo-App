@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import AppContext from '../../contexts/AppContext';
 import styled from 'styled-components';
-// import { c } from '../color';
+// import { color as c } from '../color';
 
 import TodoItem from './TodoItem';
 

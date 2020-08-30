@@ -2,7 +2,7 @@ import React from 'react';
 import { useContext } from 'react';
 import AppContext from '../../contexts/AppContext';
 import styled from 'styled-components';
-import { c } from '../../constant/color';
+import { color as c } from '../../constant/color';
 
 import SubjectItem from './SubjectItem';
 
@@ -18,6 +18,10 @@ const SubjectMenuList = () => {
    const isSelected = num => {
       return activeIndex === num;
    };
+   const numberOfTodo = state.todoList.length;
+   const numberOfTask = state.todoList.filter(todoItem => {
+      return todoItem.subjectIndex === -1;
+   }).length;
    const subjects = state.subjectList.map((subjectItem, index) => {
       return <SubjectItem subject={subjectItem} key={index} index={index} />;
    });
@@ -29,12 +33,18 @@ const SubjectMenuList = () => {
             className={isSelected(-1) ? 'selected' : ''}
          >
             <p style={{ color: 'tomato' }}>すべて</p>
+            <NumberOfTodo>
+               <p>{numberOfTodo}</p>
+            </NumberOfTodo>
          </SubjectMenuItem>
          <SubjectMenuItem
             onClick={handleClickDisplayTasks}
             className={isSelected(-2) ? 'selected' : ''}
          >
             <p style={{ color: '#20b2aa' }}>Tasks</p>
+            <NumberOfTodo>
+               <p>{numberOfTask}</p>
+            </NumberOfTodo>
          </SubjectMenuItem>
          {subjects}
       </Wrapper>
@@ -61,6 +71,17 @@ export const SubjectMenuItem = styled.div`
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+   }
+`;
+export const NumberOfTodo = styled.div`
+   height: 44px;
+   width: 44px;
+   display: flex;
+   align-items: center;
+   margin-left: auto;
+   > p {
+      color: rgb(115, 115, 115);
+      margin: 0 auto;
    }
 `;
 export default SubjectMenuList;

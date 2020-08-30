@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import AppContext from '../../contexts/AppContext';
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { c } from '../../constant/color';
+import { color as c } from '../../constant/color';
 
 import MenuWindow from './MenuWindow';
 

@@ -5,7 +5,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import { initialState } from '../constant/constant';
-import { c } from '../constant/color';
+import { color as c } from '../constant/color';
 import { MOUNT_SUBJECT_LIST, MOUNT_TODO_LIST } from '../actions/index';
 
 import SideMenus from './sideMenu/SideMenus';

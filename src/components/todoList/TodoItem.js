@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import AppContext from '../../contexts/AppContext';
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { c } from '../../constant/color';
+import { color as c } from '../../constant/color';
 import {
    TOGGLE_IS_DONE,
    TOGGLE_IS_IMPORTANT,

@@ -3,7 +3,7 @@ import AppContext from '../../contexts/AppContext';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import { CREATE_TODO_ITEM } from '../../actions/index';
-import { c } from '../../constant/color';
+import { color as c } from '../../constant/color';
 
 import Checkbox from '@material-ui/core/Checkbox';
 import StarIcon from '@material-ui/icons/Star';

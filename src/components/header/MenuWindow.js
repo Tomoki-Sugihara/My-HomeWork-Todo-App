@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import AppContext from '../../contexts/AppContext';
 import styled from 'styled-components';
 import { PERGE_TODO_ITEM, DELETE_SUBJECT_ITEM } from '../../actions/index';
-// import { c } from '../color';
+// import { color as c } from '../color';
 
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 
