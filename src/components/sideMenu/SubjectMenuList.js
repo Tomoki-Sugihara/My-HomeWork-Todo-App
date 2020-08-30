@@ -3,17 +3,18 @@ import { useContext } from 'react';
 import AppContext from '../../contexts/AppContext';
 import styled from 'styled-components';
 import { color as c } from '../../constant/color';
+import { SET_ACTIVE_INDEX } from '../../actions/index';
 
 import SubjectItem from './SubjectItem';
 
 const SubjectMenuList = () => {
-   const { state} = useContext(AppContext);
+   const { state, dispatch } = useContext(AppContext);
 
    const handleClickDisplayAllTodo = () => {
-      setActiveIndex(-1);
+      dispatch({ type: SET_ACTIVE_INDEX, index: -1 });
    };
    const handleClickDisplayTasks = () => {
-      setActiveIndex(-2);
+      dispatch({ type: SET_ACTIVE_INDEX, index: -2 });
    };
    const isSelected = num => {
       return state.config.activeIndex === num;

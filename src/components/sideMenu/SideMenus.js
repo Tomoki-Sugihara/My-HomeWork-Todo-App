@@ -3,7 +3,7 @@ import AppContext from '../../contexts/AppContext';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import { color as c } from '../../constant/color';
-import { CREATE_SUBJECT } from '../../actions/index';
+import { CREATE_SUBJECT, SET_ACTIVE_INDEX } from '../../actions/index';
 
 import SubjectMenuList from './SubjectMenuList';
 
@@ -14,7 +14,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 const SideMenus = () => {
    const [title, setTitle] = useState('');
    const [message, setMessage] = useState('');
-   const { state, dispatch, setActiveIndex } = useContext(AppContext);
+   const { state, dispatch } = useContext(AppContext);
 
    const handleSubmitCreateSubject = e => {
       e.preventDefault();
@@ -48,7 +48,7 @@ const SideMenus = () => {
          title,
       });
       setTitle('');
-      setActiveIndex(state.subjectList.length);
+      dispatch({ type: SET_ACTIVE_INDEX, index: state.subjectList.length });
    };
    return (
       <Wrapper>

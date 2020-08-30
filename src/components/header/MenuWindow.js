@@ -1,13 +1,17 @@
 import React, { useContext } from 'react';
 import AppContext from '../../contexts/AppContext';
 import styled from 'styled-components';
-import { PERGE_TODO_ITEM, DELETE_SUBJECT_ITEM } from '../../actions/index';
+import {
+   PERGE_TODO_ITEM,
+   DELETE_SUBJECT_ITEM,
+   SET_ACTIVE_INDEX,
+} from '../../actions/index';
 // import { color as c } from '../color';
 
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 
 const MenuWindow = () => {
-   const { state, dispatch} = useContext(AppContext);
+   const { state, dispatch } = useContext(AppContext);
    const activeIndex = state.config.activeIndex;
 
    const handleClickDeleteSubject = () => {
@@ -32,7 +36,7 @@ const MenuWindow = () => {
          type: DELETE_SUBJECT_ITEM,
          subjectIndex: activeIndex,
       });
-      setActiveIndex(-1);
+      dispatch({ type: SET_ACTIVE_INDEX, index: -1 });
    };
 
    const isThisDisplayed = () => activeIndex !== -1;

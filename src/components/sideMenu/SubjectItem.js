@@ -2,13 +2,14 @@ import React, { useContext } from 'react';
 import AppContext from '../../contexts/AppContext';
 // import styled from 'styled-components';
 import { color as c } from '../../constant/color';
+import { SET_ACTIVE_INDEX } from '../../actions/index';
 
 import { SubjectMenuItem, NumberOfTodo } from './SubjectMenuList';
 
 const SubjectItem = props => {
-   const { state } = useContext(AppContext);
+   const { state, dispatch } = useContext(AppContext);
    const handleClickSetActiveIndex = () => {
-      setActiveIndex(props.index);
+      dispatch({ type: SET_ACTIVE_INDEX, index: props.index });
    };
    const isSelected = props.index === state.config.activeIndex;
 
