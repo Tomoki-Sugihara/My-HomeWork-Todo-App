@@ -61,6 +61,8 @@ const SubjectMenuList = () => {
 };
 
 const Wrapper = styled.div`
+   max-height: 80%;
+   overflow: auto;
    .selected {
       background-color: ${c.grayOfSelectedItem};
    }

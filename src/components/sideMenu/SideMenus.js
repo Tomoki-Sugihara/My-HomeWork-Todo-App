@@ -125,9 +125,17 @@ const Wrapper = styled.div`
    }
 `;
 const Container = styled.aside`
+   ::-webkit-scrollbar {
+      width: 3px;
+   }
+   ::-webkit-scrollbar-thumb {
+      background-color: rgba(22, 22, 22);
+      border-radius: 3px;
+   }
+   max-height: 100%;
+   overflow: auto;
    position: fixed;
    z-index: 6;
-   height: 100%;
    width: 230px;
    padding-top: 10px;
    background-color: ${c.grayOfSideMenuBackground};
