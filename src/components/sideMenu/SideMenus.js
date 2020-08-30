@@ -13,11 +13,12 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 const SideMenus = () => {
    const [title, setTitle] = useState('');
-   const { dispatch } = useContext(AppContext);
+   const { state, dispatch, setActiveIndex } = useContext(AppContext);
 
    const handleSubmitCreateSubject = e => {
       e.preventDefault();
       createSubject();
+      setActiveIndex(state.subjectList.length);
    };
    const handleChangeSetTitle = e => {
       const inputTitle = e.target.value;

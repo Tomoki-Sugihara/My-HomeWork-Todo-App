@@ -19,15 +19,22 @@ const App = () => {
    const [state, dispatch] = useReducer(reducer, initialState);
    const [activeIndex, setActiveIndex] = useState(-1);
    const [isLoading, setIsLoading] = useState(true);
+   const [message, setMessage] = useState('');
 
    useEffect(() => {
       (async () => {
+         setTimeout(() => {
+            setMessage('サーバーを起動中です。しばらくお待ち下さい。');
+         }, 2500);
+
          const apiUrl = `${process.env.REACT_APP_SERVER_URL}api/`;
          const sortFunc = (a, b) => (a.id > b.id ? 1 : -1);
-
          const getSubjectList = axios
             .get(apiUrl + 'subject_lists/')
-            .then(res => res.data.sort(sortFunc));
+            .then(res => res.data.sort(sortFunc))
+            .catch(() => {
+               setMessage('サーバーとの通信に失敗しました。');
+            });
          const getTodoList = axios
             .get(apiUrl + 'todo_lists/')
             .then(res => res.data.sort(sortFunc));
@@ -53,6 +60,7 @@ const App = () => {
       return (
          <LoadingWindow>
             <CircularProgress size="50px" />
+            <p>{message}</p>
          </LoadingWindow>
       );
    }
@@ -85,6 +93,10 @@ const LoadingWindow = styled.div`
    display: flex;
    justify-content: center;
    align-items: center;
+   flex-direction: column;
+   > p {
+      margin-top: 20px;
+   }
 `;
 
 const Wrapper = styled.div`
