@@ -13,12 +13,12 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 const SideMenus = () => {
    const [title, setTitle] = useState('');
+   const [message, setMessage] = useState('');
    const { state, dispatch, setActiveIndex } = useContext(AppContext);
 
    const handleSubmitCreateSubject = e => {
       e.preventDefault();
       createSubject();
-      setActiveIndex(state.subjectList.length);
    };
    const handleChangeSetTitle = e => {
       const inputTitle = e.target.value;
@@ -26,7 +26,21 @@ const SideMenus = () => {
    };
 
    const createSubject = () => {
+      const hasSameTitle = state.subjectList.some(subject => {
+         return subject.title === title;
+      });
+      const deleteMessage = () => {
+         setTimeout(() => {
+            setMessage('');
+         }, 2000);
+      };
       if (title.trim() === '') {
+         setMessage('空白文字では追加できません');
+         deleteMessage();
+         return;
+      } else if (hasSameTitle) {
+         setMessage('同じリスト名は追加できません');
+         deleteMessage();
          return;
       }
       dispatch({
@@ -34,6 +48,7 @@ const SideMenus = () => {
          title,
       });
       setTitle('');
+      setActiveIndex(state.subjectList.length);
    };
    return (
       <Wrapper>
@@ -52,6 +67,9 @@ const SideMenus = () => {
                <SubjectMenuList />
             </label>
             {/*↑ダサすぎる */}
+            <ErrorMessage>
+               <p>{message}</p>
+            </ErrorMessage>
             <Form onSubmit={handleSubmitCreateSubject}>
                <IconButton color="primary" type="submit">
                   <AddIcon color="primary" />
@@ -145,11 +163,19 @@ const Container = styled.aside`
   `}
    }
 `;
+const ErrorMessage = styled.div`
+   height: 18px;
+   display: flex;
+   justify-content: center;
+   > p {
+      font-size: 10px;
+      color: ${c.redOfErrorMessage};
+   }
+`;
 const Form = styled.form`
    display: flex;
    height: 44px;
    width: 100%;
-   margin-top: 15px;
    background-color: ${c.grayOfForm};
    :hover {
       background-color: ${c.grayOfHoverForm};

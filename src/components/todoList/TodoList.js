@@ -41,7 +41,8 @@ const Message = styled.div`
    display: flex;
    justify-content: center;
    > p {
-      margin-top: 30px;
+      margin-top: 20px;
+      font-size: 12px;
    }
 `;
 export default TodoList;

@@ -20,4 +20,5 @@ export const color = {
    grayOfBorder: colorTemplate.gray115,
    grayOfCountNumber: colorTemplate.gray115,
    redOfCountNumber: colorTemplate.red,
+   redOfErrorMessage: colorTemplate.red,
 };
