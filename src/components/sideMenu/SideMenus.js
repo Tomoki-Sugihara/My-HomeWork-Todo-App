@@ -70,7 +70,7 @@ const SideMenus = () => {
    );
 };
 const Wrapper = styled.div`
-   width: 300px;
+   width: 230px;
    height: 100%;
    background-color: ${c.grayOfSideMenuBackground};
 
@@ -115,6 +115,17 @@ const Container = styled.aside`
    width: 230px;
    padding-top: 10px;
    background-color: ${c.grayOfSideMenuBackground};
+   transition: all 0.2s;
+
+   ${media.lessThan('medium')`
+   width: 50%;
+    left: -50%;
+  `}
+
+   ${media.lessThan('small')`
+      width: 70%;
+      left: -70%;
+  `}
    .close {
       display: none;
       width: 24px;
@@ -135,11 +146,6 @@ const Container = styled.aside`
       display: block;
   `}
    }
-
-   ${media.lessThan('medium')`
-    left: -300px;
-    transition: all 0.2s;
-  `}
 `;
 const Form = styled.form`
    display: flex;
