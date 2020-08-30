@@ -6,11 +6,11 @@ import { color as c } from '../../constant/color';
 import { SubjectMenuItem, NumberOfTodo } from './SubjectMenuList';
 
 const SubjectItem = props => {
-   const { state, activeIndex, setActiveIndex } = useContext(AppContext);
+   const { state } = useContext(AppContext);
    const handleClickSetActiveIndex = () => {
       setActiveIndex(props.index);
    };
-   const isSelected = props.index === activeIndex;
+   const isSelected = props.index === state.config.activeIndex;
 
    const hasImportant = todos => {
       return todos.some(todo => !todo.isDone && todo.isImportant);

@@ -7,7 +7,8 @@ import { PERGE_TODO_ITEM, DELETE_SUBJECT_ITEM } from '../../actions/index';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 
 const MenuWindow = () => {
-   const { dispatch, activeIndex, setActiveIndex } = useContext(AppContext);
+   const { state, dispatch} = useContext(AppContext);
+   const activeIndex = state.config.activeIndex;
 
    const handleClickDeleteSubject = () => {
       if (activeIndex === -2) {

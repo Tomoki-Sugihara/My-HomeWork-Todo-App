@@ -7,7 +7,7 @@ import { color as c } from '../../constant/color';
 import SubjectItem from './SubjectItem';
 
 const SubjectMenuList = () => {
-   const { state, activeIndex, setActiveIndex } = useContext(AppContext);
+   const { state} = useContext(AppContext);
 
    const handleClickDisplayAllTodo = () => {
       setActiveIndex(-1);
@@ -16,13 +16,12 @@ const SubjectMenuList = () => {
       setActiveIndex(-2);
    };
    const isSelected = num => {
-      return activeIndex === num;
+      return state.config.activeIndex === num;
    };
    const allTodos = state.todoList;
    const tasks = state.todoList.filter(todoItem => {
       return todoItem.subjectIndex === -1;
    });
-   console.log(tasks);
    const hasImportant = todos => {
       return todos.some(todo => !todo.isDone && todo.isImportant);
    };

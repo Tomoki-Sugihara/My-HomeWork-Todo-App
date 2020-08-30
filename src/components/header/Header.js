@@ -10,7 +10,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import IconButton from '@material-ui/core/IconButton';
 
 const Header = () => {
-   const { state, activeIndex } = useContext(AppContext);
+   const { state } = useContext(AppContext);
+   const activeIndex = state.config.activeIndex;
    const displayTitleName = () => {
       if (activeIndex === -1) {
          return 'My HomeWork Todo';

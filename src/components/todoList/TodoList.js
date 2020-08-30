@@ -6,7 +6,8 @@ import styled from 'styled-components';
 import TodoItem from './TodoItem';
 
 const TodoList = () => {
-   const { state, activeIndex } = useContext(AppContext);
+   const { state} = useContext(AppContext);
+   const activeIndex = state.config.activeIndex;
 
    const todos = state.todoList
       .map((todo, index) => {

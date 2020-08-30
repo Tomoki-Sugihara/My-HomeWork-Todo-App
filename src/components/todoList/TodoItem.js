@@ -21,7 +21,8 @@ import Zoom from '@material-ui/core/Zoom';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 
 const TodoItem = props => {
-   const { state, dispatch, activeIndex } = useContext(AppContext);
+   const { state, dispatch } = useContext(AppContext);
+   const activeIndex = state.config.activeIndex;
    const handleClickIsDone = () => {
       dispatch({
          type: TOGGLE_IS_DONE,

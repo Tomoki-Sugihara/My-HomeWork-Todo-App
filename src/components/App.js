@@ -17,7 +17,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 const App = () => {
    const [state, dispatch] = useReducer(reducer, initialState);
-   const [activeIndex, setActiveIndex] = useState(-1);
+   // const [activeIndex, setActiveIndex] = useState(-1);
    const [isLoading, setIsLoading] = useState(true);
    const [message, setMessage] = useState('');
 
@@ -70,8 +70,8 @@ const App = () => {
          value={{
             state,
             dispatch,
-            activeIndex,
-            setActiveIndex,
+            // activeIndex,
+            // setActiveIndex,
          }}
       >
          <Wrapper>
