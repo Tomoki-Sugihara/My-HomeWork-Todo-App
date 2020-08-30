@@ -22,8 +22,9 @@ const SubjectMenuList = () => {
    const tasks = state.todoList.filter(todoItem => {
       return todoItem.subjectIndex === -1;
    });
+   console.log(tasks);
    const hasImportant = todos => {
-      return todos.some(todo => todo.isImportant);
+      return todos.some(todo => !todo.isDone && todo.isImportant);
    };
    const grayOrRed = todos => {
       return {

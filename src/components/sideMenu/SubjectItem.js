@@ -13,7 +13,7 @@ const SubjectItem = props => {
    const isSelected = props.index === activeIndex;
 
    const hasImportant = todos => {
-      return todos.some(todo => todo.isImportant);
+      return todos.some(todo => !todo.isDone && todo.isImportant);
    };
    const grayOrRed = todos => {
       return {
