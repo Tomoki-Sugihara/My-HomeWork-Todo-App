@@ -132,7 +132,7 @@ const Container = styled.aside`
       background-color: rgba(22, 22, 22);
       border-radius: 3px;
    }
-   max-height: 100%;
+   height: 100%;
    overflow: auto;
    position: fixed;
    z-index: 6;
