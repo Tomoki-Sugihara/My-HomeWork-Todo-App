@@ -46,6 +46,7 @@ const SubjectMenuList = () => {
                <p>{numberOfTask}</p>
             </NumberOfTodo>
          </SubjectMenuItem>
+         <Border></Border>
          {subjects}
       </Wrapper>
    );
@@ -83,5 +84,9 @@ export const NumberOfTodo = styled.div`
       color: rgb(115, 115, 115);
       margin: 0 auto;
    }
+`;
+const Border = styled.div`
+   margin: 0 10px;
+   border-top: 0.3px solid rgb(115, 115, 115);
 `;
 export default SubjectMenuList;
