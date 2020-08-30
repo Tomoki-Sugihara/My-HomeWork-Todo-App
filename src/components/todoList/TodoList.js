@@ -22,16 +22,26 @@ const TodoList = () => {
             return todo.subjectIndex === activeIndex;
          }
       });
-
-   return <Wrapper>{todos}</Wrapper>;
-   // return <Wrapper>{todos === {} ? <p>タスクがありません</p> : todos}</Wrapper>;
+   const message = (
+      <Message>
+         <p>タスクがありません</p>
+      </Message>
+   );
+   return <Wrapper>{todos.length === 0 ? message : todos}</Wrapper>;
 };
 
 const Wrapper = styled.div`
    margin: 48px 0 58.5px 0;
    width: 100%;
    position: relative;
-   width: 100%;
 `;
-
+const Message = styled.div`
+   width: 100%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   > p {
+      margin-top: 30px;
+   }
+`;
 export default TodoList;
