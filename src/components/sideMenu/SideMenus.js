@@ -149,7 +149,7 @@ const Container = styled.aside`
 `;
 const Form = styled.form`
    display: flex;
-   height: 36px;
+   height: 44px;
    width: 100%;
    margin-top: 15px;
    background-color: ${c.grayOfForm};
