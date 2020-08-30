@@ -5,7 +5,6 @@ const colorTemplate = {
    gray53: 'rgb(53,53,53)',
    gray115: 'rgb(115, 115, 115)',
    red: 'tomato'
-
 };
 
 export const color = {

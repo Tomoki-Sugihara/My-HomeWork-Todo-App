@@ -94,6 +94,7 @@ const LoadingWindow = styled.div`
    flex-direction: column;
    > p {
       margin-top: 20px;
+      font-size: 15px;
    }
 `;
 
