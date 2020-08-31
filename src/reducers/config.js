@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 import { initialConfig } from '../constant/constant';
 import { SET_ACTIVE_INDEX, TOGGLE_SEPARATE } from '../actions/index';
 

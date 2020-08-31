@@ -35,13 +35,16 @@ const TodoList = () => {
          const doneTodos = comps.filter(comp => {
             return comp.props.todo.isDone;
          });
-         const separater = <div>------------</div>;
-
+         const border = (
+            <Border>
+               <p>------------</p>
+            </Border>
+         );
          return (
             <>
                {notDoneTodos}
-               {separater}
-               {doneTodos}
+               {border}
+               {doneTodos.reverse()}
             </>
          );
       } else {
@@ -58,7 +61,6 @@ const TodoList = () => {
          {displayedTodos(todos).length === 0 ? message : displayedTodos(todos)}
       </Wrapper>
    );
-   // return <Wrapper>{todos.length === 0 ? message : todos}</Wrapper>;
 };
 
 const Wrapper = styled.div`
@@ -75,5 +77,9 @@ const Message = styled.div`
       margin-top: 20px;
       font-size: 12px;
    }
+`;
+const Border = styled.div`
+   display: flex;
+   justify-content: center;
 `;
 export default TodoList;

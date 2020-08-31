@@ -5,9 +5,12 @@ import {
    PERGE_TODO_ITEM,
    DELETE_SUBJECT_ITEM,
    SET_ACTIVE_INDEX,
+   TOGGLE_SEPARATE,
 } from '../../actions/index';
 // import { color as c } from '../color';
 
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 
 const MenuWindow = () => {
@@ -38,19 +41,41 @@ const MenuWindow = () => {
       });
       dispatch({ type: SET_ACTIVE_INDEX, index: -1 });
    };
+   const handleClickToggleSeparate = () => {
+      dispatch({ type: TOGGLE_SEPARATE });
+   };
 
    const isThisDisplayed = () => activeIndex !== -1;
    return (
-      <Wrapper style={{ display: isThisDisplayed() ? 'block' : 'none' }}>
-         <DeleteSubject onClick={handleClickDeleteSubject}>
+      <Wrapper>
+         {/* <ToggleSeparate> */}
+         <ToggleSeparate onClick={handleClickToggleSeparate}>
             <div className="container">
+               <p>完了済みを{state.config.separate ? '分けない' : '分ける'}</p>
+               {/* <FormControlLabel
+                  control={
+               <Switch
+                  checked={state.config.separate}
+                  onClick={handleClickToggleSeparate}
+                  color="primary"
+                  size="small"
+               />
+               }
+            /> */}
+            </div>
+         </ToggleSeparate>
+         <DeleteSubject
+            onClick={handleClickDeleteSubject}
+            style={{ display: isThisDisplayed() ? 'block' : 'none' }}
+         >
+            <div className="container">
+               <p>このリストを削除</p>
                <DeleteIcon>
                   <DeleteOutlineOutlinedIcon
                      color="secondary"
                      fontSize="small"
                   ></DeleteOutlineOutlinedIcon>
                </DeleteIcon>
-               <p>このリストを削除</p>
             </div>
          </DeleteSubject>
       </Wrapper>
@@ -58,22 +83,37 @@ const MenuWindow = () => {
 };
 
 const Wrapper = styled.div``;
-const DeleteSubject = styled.div`
+const MenuItem = styled.div`
    background-color: rgb(25, 25, 25);
-   :hover {
-      cursor: pointer;
-      background-color: rgb(50, 50, 50);
-   }
    .container {
       display: flex;
       width: 92%;
       height: 42px;
       margin: 0 auto;
-      p {
+      > p {
          margin: auto;
          font-size: 12px;
-         color: red;
       }
+   }
+`;
+const DeleteSubject = styled(MenuItem)`
+   :hover {
+      cursor: pointer;
+      background-color: rgb(70, 20, 0);
+      transition: 0.3s;
+   }
+   .container {
+      > p {
+         color: red;
+         /* margin-left: 20px; */
+      }
+   }
+`;
+const ToggleSeparate = styled(MenuItem)`
+   :hover {
+      cursor: pointer;
+      background-color: rgb(50, 50, 50);
+      transition: 0.3s;
    }
 `;
 const DeleteIcon = styled.div`
