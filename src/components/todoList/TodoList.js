@@ -25,7 +25,10 @@ const TodoList = () => {
       });
 
    const displayedTodos = comps => {
-      if (state.config.separate) {
+      const hasDoneTodo = comps.some(comp => {
+         return comp.props.todo.isDone;
+      });
+      if (state.config.separate && hasDoneTodo) {
          const notDoneTodos = comps.filter(comp => {
             return !comp.props.todo.isDone;
          });
@@ -33,6 +36,7 @@ const TodoList = () => {
             return comp.props.todo.isDone;
          });
          const separater = <div>------------</div>;
+
          return (
             <>
                {notDoneTodos}
