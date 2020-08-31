@@ -1,7 +1,7 @@
 export const initialState = {
    todoList: [],
    subjectList: [],
-   config: { activeIndex: -1, separate: false },
+   config: { activeIndex: -1, separate: true },
 };
 export const initialConfig = {
    activeIndex: -1,

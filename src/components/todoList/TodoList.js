@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import TodoItem from './TodoItem';
 
 const TodoList = () => {
-   const { state} = useContext(AppContext);
+   const { state } = useContext(AppContext);
    const activeIndex = state.config.activeIndex;
 
    const todos = state.todoList
@@ -23,12 +23,38 @@ const TodoList = () => {
             return todo.subjectIndex === activeIndex;
          }
       });
+
+   const displayedTodos = comps => {
+      if (state.config.separate) {
+         const notDoneTodos = comps.filter(comp => {
+            return !comp.props.todo.isDone;
+         });
+         const doneTodos = comps.filter(comp => {
+            return comp.props.todo.isDone;
+         });
+         const separater = <div>------------</div>;
+         return (
+            <>
+               {notDoneTodos}
+               {separater}
+               {doneTodos}
+            </>
+         );
+      } else {
+         return comps;
+      }
+   };
    const message = (
       <Message>
          <p>タスクがありません</p>
       </Message>
    );
-   return <Wrapper>{todos.length === 0 ? message : todos}</Wrapper>;
+   return (
+      <Wrapper>
+         {displayedTodos(todos).length === 0 ? message : displayedTodos(todos)}
+      </Wrapper>
+   );
+   // return <Wrapper>{todos.length === 0 ? message : todos}</Wrapper>;
 };
 
 const Wrapper = styled.div`
