@@ -9,8 +9,6 @@ import {
 } from '../../actions/index';
 // import { color as c } from '../color';
 
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 
 const MenuWindow = () => {
@@ -48,20 +46,9 @@ const MenuWindow = () => {
    const isThisDisplayed = () => activeIndex !== -1;
    return (
       <Wrapper>
-         {/* <ToggleSeparate> */}
          <ToggleSeparate onClick={handleClickToggleSeparate}>
             <div className="container">
                <p>完了済みを{state.config.separate ? '分けない' : '分ける'}</p>
-               {/* <FormControlLabel
-                  control={
-               <Switch
-                  checked={state.config.separate}
-                  onClick={handleClickToggleSeparate}
-                  color="primary"
-                  size="small"
-               />
-               }
-            /> */}
             </div>
          </ToggleSeparate>
          <DeleteSubject
@@ -105,7 +92,6 @@ const DeleteSubject = styled(MenuItem)`
    .container {
       > p {
          color: red;
-         /* margin-left: 20px; */
       }
    }
 `;
