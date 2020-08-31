@@ -42,9 +42,15 @@ const TodoItem = props => {
    const deleteTodo = () => {
       dispatch({ type: DELETE_TODO_ITEM, index: props.index, activeIndex });
    };
-
+   const opacity = () => {
+      if (state.config.separate) {
+         return { opacity: props.todo.isDone ? 0.6 : 1 };
+      } else {
+         return { opacity: 1 };
+      }
+   };
    return (
-      <Wrapper>
+      <Wrapper style={opacity()}>
          <Checkbox
             icon={<RadioButtonUncheckedIcon color="primary" fontSize="small" />}
             checkedIcon={<CheckCircleIcon color="primary" fontSize="small" />}

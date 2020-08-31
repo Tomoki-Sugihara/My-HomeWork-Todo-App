@@ -28,16 +28,20 @@ const TodoList = () => {
       const hasDoneTodo = comps.some(comp => {
          return comp.props.todo.isDone;
       });
-      if (state.config.separate && hasDoneTodo) {
-         const notDoneTodos = comps.filter(comp => {
-            return !comp.props.todo.isDone;
-         });
-         const doneTodos = comps.filter(comp => {
-            return comp.props.todo.isDone;
-         });
+      const notDoneTodos = comps.filter(comp => {
+         return !comp.props.todo.isDone;
+      });
+      const doneTodos = comps.filter(comp => {
+         return comp.props.todo.isDone;
+      });
+      if (
+         state.config.separate &&
+         hasDoneTodo &&
+         !(notDoneTodos.length === 0)
+      ) {
          const border = (
             <Border>
-               <p>------------</p>
+               <div></div>
             </Border>
          );
          return (
@@ -79,7 +83,15 @@ const Message = styled.div`
    }
 `;
 const Border = styled.div`
+   width: 100%;
+   height: 15px;
    display: flex;
-   justify-content: center;
+   align-items: center;
+   > div {
+      margin: auto;
+      width: 100px;
+      height: 0.3px;
+      border-top: 0.3px solid rgb(115, 115, 115);
+   }
 `;
 export default TodoList;

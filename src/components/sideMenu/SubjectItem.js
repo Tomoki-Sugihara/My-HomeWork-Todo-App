@@ -21,8 +21,8 @@ const SubjectItem = props => {
          color: hasImportant(todos) ? c.redOfCountNumber : c.grayOfCountNumber,
       };
    };
-   const eachTodos = state.todoList.filter(todoItem => {
-      return todoItem.subjectIndex === props.index;
+   const notDoneTodos = state.todoList.filter(todoItem => {
+      return todoItem.subjectIndex === props.index && !todoItem.isDone;
    });
    return (
       <SubjectMenuItem
@@ -31,7 +31,7 @@ const SubjectItem = props => {
       >
          <p>{props.subject.title}</p>
          <NumberOfTodo>
-            <p style={grayOrRed(eachTodos)}>{eachTodos.length}</p>
+            <p style={grayOrRed(notDoneTodos)}>{notDoneTodos.length}</p>
          </NumberOfTodo>
       </SubjectMenuItem>
    );

@@ -12,7 +12,8 @@ import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 
 const TodoForm = () => {
-   const { dispatch, activeIndex } = useContext(AppContext);
+   const { state, dispatch } = useContext(AppContext);
+   const activeIndex = state.config.activeIndex;
    const [title, setTitle] = useState('');
    const [isImportant, setIsImportant] = useState(false);
 

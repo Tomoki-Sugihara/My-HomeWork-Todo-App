@@ -43,7 +43,7 @@ const todoList = (todoList = [], action) => {
 
       case TOGGLE_IS_IMPORTANT: {
          const newTodoList = _.cloneDeep(todoList);
-         const focusedTodoItem = newTodoList[action.index]
+         const focusedTodoItem = newTodoList[action.index];
          focusedTodoItem.isImportant = !focusedTodoItem.isImportant;
 
          const key = focusedTodoItem.key;
@@ -53,11 +53,10 @@ const todoList = (todoList = [], action) => {
 
          return newTodoList;
       }
-      
 
       case TOGGLE_IS_DONE: {
          const newTodoList = _.cloneDeep(todoList);
-         const focusedTodoItem = newTodoList[action.index]
+         const focusedTodoItem = newTodoList[action.index];
          focusedTodoItem.isDone = !focusedTodoItem.isDone;
 
          const key = focusedTodoItem.key;

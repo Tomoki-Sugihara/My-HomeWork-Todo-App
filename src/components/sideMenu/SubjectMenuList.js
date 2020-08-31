@@ -19,12 +19,14 @@ const SubjectMenuList = () => {
    const isSelected = num => {
       return state.config.activeIndex === num;
    };
-   const allTodos = state.todoList;
-   const tasks = state.todoList.filter(todoItem => {
-      return todoItem.subjectIndex === -1;
+   const notDoneAllTodos = state.todoList.filter(todoItem => {
+      return !todoItem.isDone;
+   });
+   const notDoneTasks = state.todoList.filter(todoItem => {
+      return todoItem.subjectIndex === -1 && !todoItem.isDone;
    });
    const hasImportant = todos => {
-      return todos.some(todo => !todo.isDone && todo.isImportant);
+      return todos.some(todo => todo.isImportant);
    };
    const grayOrRed = todos => {
       return {
@@ -43,7 +45,7 @@ const SubjectMenuList = () => {
          >
             <p style={{ color: 'tomato' }}>すべて</p>
             <NumberOfTodo>
-               <p>{allTodos.length}</p>
+               <p>{notDoneAllTodos.length}</p>
             </NumberOfTodo>
          </SubjectMenuItem>
          <SubjectMenuItem
@@ -52,7 +54,7 @@ const SubjectMenuList = () => {
          >
             <p style={{ color: '#20b2aa' }}>Tasks</p>
             <NumberOfTodo>
-               <p style={grayOrRed(tasks)}>{tasks.length}</p>
+               <p style={grayOrRed(notDoneTasks)}>{notDoneTasks.length}</p>
             </NumberOfTodo>
          </SubjectMenuItem>
          <Border></Border>
