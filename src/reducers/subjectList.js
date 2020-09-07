@@ -27,13 +27,13 @@ const subjectList = (subjectList = [], action) => {
          return action.data;
       }
       case DELETE_SUBJECT_ITEM: {
-         const key = subjectList[action.subjectIndex].key;
+         const key = subjectList[action.activeIndex].key;
          axios.delete(apiUrl, { data: { key } }).then(res => {
             console.log(res);
          });
 
          const newSubjectList = _.cloneDeep(subjectList);
-         newSubjectList.splice(action.subjectIndex, 1);
+         newSubjectList.splice(action.activeIndex, 1);
 
          return newSubjectList;
       }

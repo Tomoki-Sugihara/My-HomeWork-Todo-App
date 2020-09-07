@@ -37,7 +37,7 @@ const MenuWindow = () => {
       });
       dispatch({
          type: DELETE_SUBJECT_ITEM,
-         subjectIndex: activeIndex,
+         activeIndex: activeIndex,
       });
       dispatch({ type: SET_ACTIVE_INDEX, index: -1 });
    };

@@ -21,15 +21,14 @@ const TodoForm = () => {
       if (title.trim() === '') {
          return;
       }
-      const subjectIndex = activeIndex === -2 ? -1 : activeIndex;
-      const subjectKey =
-         subjectIndex === -1 ? '' : state.subjectList[activeIndex].key;
+      const isTask = activeIndex === -2 || activeIndex === -1 ? true : false;
+      const subjectKey = isTask ? '' : state.subjectList[activeIndex].key;
       dispatch({
          type: CREATE_TODO_ITEM,
          title,
          isImportant,
-         subjectIndex,
          subjectKey,
+         isTask,
       });
       setTitle('');
       setIsImportant(false);

@@ -30,13 +30,12 @@ const TodoItem = props => {
       });
    };
    const displaySubjectName = () => {
-      if (props.todo.subjectIndex === -1) {
+      if (props.todo.isTask) {
          return 'Task';
       } else {
          const subject = state.subjectList.find(subjectItem => {
             return subjectItem.key === props.todo.subjectKey;
          });
-         console.log(subject);
          return subject.title;
       }
    };

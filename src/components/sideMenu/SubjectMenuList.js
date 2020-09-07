@@ -23,7 +23,7 @@ const SubjectMenuList = () => {
       return !todoItem.isDone;
    });
    const notDoneTasks = state.todoList.filter(todoItem => {
-      return todoItem.subjectIndex === -1 && !todoItem.isDone;
+      return todoItem.isTask && !todoItem.isDone;
    });
    const hasImportant = todos => {
       return todos.some(todo => todo.isImportant);

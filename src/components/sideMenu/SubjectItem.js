@@ -23,7 +23,6 @@ const SubjectItem = props => {
    };
    const notDoneTodos = state.todoList.filter(todoItem => {
       return todoItem.subjectKey === props.subject.key && !todoItem.isDone;
-      // return todoItem.subjectIndex === props.index && !todoItem.isDone;
    });
    return (
       <SubjectMenuItem

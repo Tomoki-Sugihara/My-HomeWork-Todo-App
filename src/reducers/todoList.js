@@ -22,8 +22,8 @@ const todoList = (todoList = [], action) => {
             title: action.title,
             isImportant: action.isImportant,
             isDone: false,
-            subjectIndex: action.subjectIndex,
-            subjectKey: action.subjectKey
+            subjectKey: action.subjectKey,
+            isTask: action.isTask,
          };
          axios.post(apiUrl, newTodoItem).then(res => {
             console.log(res);
@@ -73,9 +73,8 @@ const todoList = (todoList = [], action) => {
       }
 
       case PERGE_TODO_ITEM: {
-         const newTodoList = todoList.filter(element => {
-            return element.subjectKey !== action.subjectKey;
-            // return element.subjectIndex !== action.subjectIndex;
+         const newTodoList = todoList.filter(todoItem => {
+            return todoItem.subjectKey !== action.subjectKey;
          });
 
          axios
@@ -89,14 +88,15 @@ const todoList = (todoList = [], action) => {
          return newTodoList;
       }
       case PERGE_TASKS: {
-         const newTodoList = todoList.filter(element => {
-            return element.subjectIndex !== -1;
+         const newTodoList = todoList.filter(todoItem => {
+            return !todoItem.isTask;
          });
 
          axios
-            .post(apiUrl + 'perge_tasks/', {
-               subjectKey: action.subjectKey,
-            })
+            .post(apiUrl + 'perge_tasks/')
+            // .post(apiUrl + 'perge_tasks/', {
+            //    subjectKey: action.subjectKey,
+            // })
             .then(res => {
                console.log(res);
             });

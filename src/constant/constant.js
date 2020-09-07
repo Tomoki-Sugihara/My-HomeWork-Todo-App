@@ -13,7 +13,7 @@ export const todoListTemplate = {
    title: '',
    isDone: false,
    isImportant: false,
-   subjectIndex: -1,
+   isTask: false,
 };
 
 export const subjectListTemplate = {
