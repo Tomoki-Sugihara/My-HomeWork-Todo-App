@@ -22,6 +22,7 @@ const todoList = (todoList = [], action) => {
             isImportant: action.isImportant,
             isDone: false,
             subjectIndex: action.subjectIndex,
+            subjectKey: action.subjectKey
          };
          axios.post(apiUrl, newTodoItem).then(res => {
             console.log(res);
@@ -72,12 +73,13 @@ const todoList = (todoList = [], action) => {
 
       case PERGE_TODO_ITEM: {
          const newTodoList = todoList.filter(element => {
-            return element.subjectIndex !== action.subjectIndex;
+            return element.subjectKey !== action.subjectKey;
+            // return element.subjectIndex !== action.subjectIndex;
          });
 
          axios
             .post(apiUrl + 'delete_subject/', {
-               subjectIndex: action.subjectIndex,
+               subjectKey: action.subjectKey,
             })
             .then(res => {
                console.log(res);

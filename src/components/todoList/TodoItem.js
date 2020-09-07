@@ -33,7 +33,11 @@ const TodoItem = props => {
       if (props.todo.subjectIndex === -1) {
          return 'Task';
       } else {
-         return state.subjectList[props.todo.subjectIndex].title;
+         const subject = state.subjectList.find(subjectItem => {
+            return subjectItem.key === props.todo.subjectKey;
+         });
+         console.log(subject);
+         return subject.title;
       }
    };
    const handleClickIsImportant = () => {

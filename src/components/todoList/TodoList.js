@@ -20,7 +20,8 @@ const TodoList = () => {
          } else if (activeIndex === -2) {
             return todo.subjectIndex === -1;
          } else {
-            return todo.subjectIndex === activeIndex;
+            return todo.subjectKey === state.subjectList[activeIndex].key;
+            // return todo.subjectIndex === activeIndex;
          }
       });
 
