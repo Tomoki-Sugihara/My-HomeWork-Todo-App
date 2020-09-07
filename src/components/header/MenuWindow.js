@@ -6,6 +6,7 @@ import {
    DELETE_SUBJECT_ITEM,
    SET_ACTIVE_INDEX,
    TOGGLE_SEPARATE,
+   PERGE_TASKS,
 } from '../../actions/index';
 // import { color as c } from '../../constant/color';
 
@@ -25,8 +26,7 @@ const MenuWindow = () => {
 
    const deleteTasks = () => {
       dispatch({
-         type: PERGE_TODO_ITEM,
-         subjectIndex: -1,
+         type: PERGE_TASKS,
       });
    };
 

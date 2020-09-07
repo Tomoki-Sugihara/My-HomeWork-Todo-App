@@ -7,6 +7,7 @@ import {
    TOGGLE_IS_DONE,
    MOUNT_TODO_LIST,
    PERGE_TODO_ITEM,
+   PERGE_TASKS,
 } from '../actions/index';
 
 const todoList = (todoList = [], action) => {
@@ -79,6 +80,21 @@ const todoList = (todoList = [], action) => {
 
          axios
             .post(apiUrl + 'delete_subject/', {
+               subjectKey: action.subjectKey,
+            })
+            .then(res => {
+               console.log(res);
+            });
+
+         return newTodoList;
+      }
+      case PERGE_TASKS: {
+         const newTodoList = todoList.filter(element => {
+            return element.subjectIndex !== -1;
+         });
+
+         axios
+            .post(apiUrl + 'perge_tasks/', {
                subjectKey: action.subjectKey,
             })
             .then(res => {

@@ -7,6 +7,7 @@ export const initialConfig = {
    activeIndex: -1,
    separate: false,
 };
+
 export const todoListTemplate = {
    key: '',
    title: '',
