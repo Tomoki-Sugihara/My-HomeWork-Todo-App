@@ -22,7 +22,8 @@ const TodoForm = () => {
          return;
       }
       const subjectIndex = activeIndex === -2 ? -1 : activeIndex;
-      const subjectKey = state.subjectList[activeIndex].key;
+      const subjectKey =
+         subjectIndex === -1 ? '' : state.subjectList[activeIndex].key;
       dispatch({
          type: CREATE_TODO_ITEM,
          title,
