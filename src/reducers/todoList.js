@@ -94,9 +94,6 @@ const todoList = (todoList = [], action) => {
 
          axios
             .post(apiUrl + 'perge_tasks/')
-            // .post(apiUrl + 'perge_tasks/', {
-            //    subjectKey: action.subjectKey,
-            // })
             .then(res => {
                console.log(res);
             });
