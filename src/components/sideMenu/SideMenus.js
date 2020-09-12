@@ -43,12 +43,9 @@ const SideMenus = () => {
          deleteMessage();
          return;
       }
-      dispatch({
-         type: CREATE_SUBJECT,
-         title,
-      });
-      setTitle('');
+      dispatch({ type: CREATE_SUBJECT, title });
       dispatch({ type: SET_ACTIVE_INDEX, index: state.subjectList.length });
+      setTitle('');
    };
    return (
       <Wrapper>
@@ -66,7 +63,7 @@ const SideMenus = () => {
             <label htmlFor="clickSidebar" id="secondLabel">
                <SubjectMenuList />
             </label>
-            {/*↑ダサすぎる */}
+            {/*↑ダサすぎる スマホ、pcに応じてdisplay: block or none;*/}
             <ErrorMessage>
                <p>{message}</p>
             </ErrorMessage>
