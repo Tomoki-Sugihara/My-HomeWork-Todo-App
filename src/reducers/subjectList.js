@@ -18,9 +18,7 @@ const subjectList = (subjectList = [], action) => {
             title: action.title,
          };
 
-         axios.post(apiUrl, newSubjectItem).then(res => {
-            console.log(res);
-         });
+         axios.post(apiUrl, newSubjectItem);
          return [...subjectList, newSubjectItem];
       }
       case MOUNT_SUBJECT_LIST: {
@@ -28,9 +26,7 @@ const subjectList = (subjectList = [], action) => {
       }
       case DELETE_SUBJECT_ITEM: {
          const key = subjectList[action.activeIndex].key;
-         axios.delete(apiUrl, { data: { key } }).then(res => {
-            console.log(res);
-         });
+         axios.delete(apiUrl, { data: { key } });
 
          const newSubjectList = _.cloneDeep(subjectList);
          newSubjectList.splice(action.activeIndex, 1);

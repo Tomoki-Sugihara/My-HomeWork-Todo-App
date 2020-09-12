@@ -25,9 +25,7 @@ const todoList = (todoList = [], action) => {
             subjectKey: action.subjectKey,
             isTask: action.isTask,
          };
-         axios.post(apiUrl, newTodoItem).then(res => {
-            console.log(res);
-         });
+         axios.post(apiUrl, newTodoItem);
 
          return [...todoList, newTodoItem];
       }
@@ -36,9 +34,7 @@ const todoList = (todoList = [], action) => {
          newTodoList.splice(action.index, 1);
 
          const key = todoList[action.index].key;
-         axios.delete(apiUrl, { data: { key } }).then(res => {
-            console.log(res);
-         });
+         axios.delete(apiUrl, { data: { key } });
 
          return newTodoList;
       }
@@ -49,9 +45,7 @@ const todoList = (todoList = [], action) => {
          focusedTodoItem.isImportant = !focusedTodoItem.isImportant;
 
          const key = focusedTodoItem.key;
-         axios.patch(apiUrl + 'is_important/', { key }).then(res => {
-            console.log(res);
-         });
+         axios.patch(apiUrl + 'is_important/', { key });
 
          return newTodoList;
       }
@@ -62,9 +56,7 @@ const todoList = (todoList = [], action) => {
          focusedTodoItem.isDone = !focusedTodoItem.isDone;
 
          const key = focusedTodoItem.key;
-         axios.patch(apiUrl + 'is_done/', { key }).then(res => {
-            console.log(res);
-         });
+         axios.patch(apiUrl + 'is_done/', { key });
 
          return newTodoList;
       }
@@ -77,13 +69,9 @@ const todoList = (todoList = [], action) => {
             return todoItem.subjectKey !== action.subjectKey;
          });
 
-         axios
-            .post(apiUrl + 'delete_subject/', {
-               subjectKey: action.subjectKey,
-            })
-            .then(res => {
-               console.log(res);
-            });
+         axios.post(apiUrl + 'delete_subject/', {
+            subjectKey: action.subjectKey,
+         });
 
          return newTodoList;
       }
@@ -92,11 +80,7 @@ const todoList = (todoList = [], action) => {
             return !todoItem.isTask;
          });
 
-         axios
-            .post(apiUrl + 'perge_tasks/')
-            .then(res => {
-               console.log(res);
-            });
+         axios.post(apiUrl + 'perge_tasks/');
 
          return newTodoList;
       }
