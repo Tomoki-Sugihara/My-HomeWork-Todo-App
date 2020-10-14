@@ -15,7 +15,7 @@ https://sugihara10969.github.io/My-HomeWork-Todo-App/
 #### ライブラリ、パッケージ
 - Redux
 - axios
-- loadash
+- lodash
 - Styled-Components
 - Styled-Media-Query
 - Material-UI
