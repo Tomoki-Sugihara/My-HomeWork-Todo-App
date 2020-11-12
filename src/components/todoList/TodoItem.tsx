@@ -42,7 +42,11 @@ const TodoItem: FC<TodoItemProps> = props => {
          const subject = state.subjectList.find(subjectItem => {
             return subjectItem.key === props.todo.subjectKey;
          });
-         return subject.title;
+         if (subject) {
+            return subject.title;
+         } else {
+            return 'no title';
+         }
       }
    };
    const handleClickIsImportant = () => {

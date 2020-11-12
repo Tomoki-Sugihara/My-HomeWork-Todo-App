@@ -6,8 +6,16 @@ import {
    MOUNT_SUBJECT_LIST,
    DELETE_SUBJECT_ITEM,
 } from '../actions/index';
-
-const subjectList = (subjectList: subjectListState[] = [], action) => {
+type subjectListActionType = {
+   type: string;
+   title?: string;
+   data?: subjectListState;
+   activeIndex?: number;
+};
+const subjectList = (
+   subjectList: subjectListState[] = [],
+   action: subjectListActionType
+) => {
    const apiUrl = `${process.env.REACT_APP_SERVER_URL}api/subject_lists/`;
    switch (action.type) {
       case CREATE_SUBJECT: {
@@ -26,11 +34,11 @@ const subjectList = (subjectList: subjectListState[] = [], action) => {
          return action.data;
       }
       case DELETE_SUBJECT_ITEM: {
-         const key = subjectList[action.activeIndex].key;
+         const key = subjectList[action.activeIndex as number].key;
          axios.delete(apiUrl, { data: { key } });
 
          const newSubjectList = _.cloneDeep(subjectList);
-         newSubjectList.splice(action.activeIndex, 1);
+         newSubjectList.splice(action.activeIndex as number, 1);
 
          return newSubjectList;
       }

@@ -1,7 +1,6 @@
 import _ from 'lodash';
 import axios from 'axios';
 import { todoListState } from '../types/types';
-import { todoListTemplate } from '../constant/constant';
 import {
    CREATE_TODO_ITEM,
    DELETE_TODO_ITEM,
@@ -11,8 +10,16 @@ import {
    PERGE_TODO_ITEM,
    PERGE_TASKS,
 } from '../actions/index';
+type todoListActionType = {
+   type: string;
+   index: number;
+   data?: todoListState;
+} & Partial<todoListState>;
 
-const todoList = (todoList: todoListState[] = [], action) => {
+const todoList = (
+   todoList: todoListState[] = [],
+   action: todoListActionType
+) => {
    const apiUrl = `${process.env.REACT_APP_SERVER_URL}api/todo_lists/`;
    switch (action.type) {
       case CREATE_TODO_ITEM: {
