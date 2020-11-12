@@ -1,22 +1,28 @@
-import React, { useContext } from 'react';
+import React, { FC, useContext } from 'react';
 import AppContext from '../../contexts/AppContext';
 // import styled from 'styled-components';
 import { color as c } from '../../constant/color';
 import { SET_ACTIVE_INDEX } from '../../actions/index';
 
 import { SubjectMenuItem, NumberOfTodo } from './SubjectMenuList';
+import { subjectListState, todoListState } from '../../types/types';
 
-const SubjectItem = props => {
+type SubjectItemProps = {
+   subject: subjectListState
+   index: number;
+}
+
+const SubjectItem: FC<SubjectItemProps> = props => {
    const { state, dispatch } = useContext(AppContext);
    const handleClickSetActiveIndex = () => {
       dispatch({ type: SET_ACTIVE_INDEX, index: props.index });
    };
    const isSelected = props.index === state.config.activeIndex;
 
-   const hasImportant = todos => {
+   const hasImportant = (todos: todoListState[]) => {
       return todos.some(todo => !todo.isDone && todo.isImportant);
    };
-   const grayOrRed = todos => {
+   const grayOrRed = (todos: todoListState[]) => {
       return {
          color: hasImportant(todos) ? c.redOfCountNumber : c.grayOfCountNumber,
       };

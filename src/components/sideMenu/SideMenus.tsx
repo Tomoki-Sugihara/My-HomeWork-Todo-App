@@ -16,11 +16,11 @@ const SideMenus = () => {
    const [message, setMessage] = useState('');
    const { state, dispatch } = useContext(AppContext);
 
-   const handleSubmitCreateSubject = e => {
+   const handleSubmitCreateSubject = (e: React.FormEvent) => {
       e.preventDefault();
       createSubject();
    };
-   const handleChangeSetTitle = e => {
+   const handleChangeSetTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
       const inputTitle = e.target.value;
       setTitle(inputTitle);
    };

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { FC, useContext } from 'react';
 import AppContext from '../../contexts/AppContext';
 import styled from 'styled-components';
 import media from 'styled-media-query';
@@ -19,8 +19,14 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import Tooltip from '@material-ui/core/Tooltip';
 import Zoom from '@material-ui/core/Zoom';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
+import { todoListState } from '../../types/types';
 
-const TodoItem = props => {
+type TodoItemProps = {
+   todo: todoListState;
+   index: number;
+};
+
+const TodoItem: FC<TodoItemProps> = props => {
    const { state, dispatch } = useContext(AppContext);
    const activeIndex = state.config.activeIndex;
    const handleClickIsDone = () => {

@@ -8,6 +8,7 @@ import MenuWindow from './MenuWindow';
 
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import IconButton from '@material-ui/core/IconButton';
+import { RootState } from '../../types/types';
 
 const Header = () => {
    const { state } = useContext(AppContext);
@@ -22,7 +23,7 @@ const Header = () => {
       }
    };
    useEffect(() => {
-      const checkbox = document.getElementById('menu');
+      const checkbox = document.getElementById('menu') as HTMLInputElement;
       if (checkbox.checked) {
          checkbox.checked = false;
       }
@@ -95,7 +96,7 @@ const SettingMenu = styled.div`
       width: 180px;
       height: auto;
       border: 0.1px solid rgb(50, 50, 50);
-      background-color: ${c.blackOfMenuBackground};
+      background-color: ${c.blackOfMenuBackground()};
    }
    input[type='checkbox'] {
       position: fixed;

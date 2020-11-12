@@ -1,13 +1,13 @@
 import _ from 'lodash';
 import axios from 'axios';
-import { subjectListState } from '../types/index';
+import { subjectListState } from '../types/types';
 import {
    CREATE_SUBJECT,
    MOUNT_SUBJECT_LIST,
    DELETE_SUBJECT_ITEM,
 } from '../actions/index';
 
-const subjectList = (subjectList:subjectListState = [], action) => {
+const subjectList = (subjectList: subjectListState[] = [], action) => {
    const apiUrl = `${process.env.REACT_APP_SERVER_URL}api/subject_lists/`;
    switch (action.type) {
       case CREATE_SUBJECT: {

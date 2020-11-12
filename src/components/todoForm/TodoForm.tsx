@@ -33,14 +33,14 @@ const TodoForm = () => {
       setTitle('');
       setIsImportant(false);
    };
-   const handleSubmitCreateTodo = e => {
+   const handleSubmitCreateTodo = (e: React.FormEvent) => {
       e.preventDefault();
       createTodo();
    };
    const handleClickIsImportant = () => {
       setIsImportant(prev => !prev);
    };
-   const handleChangeSetTitle = e => {
+   const handleChangeSetTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
       const inputTitle = e.target.value;
       setTitle(inputTitle);
    };

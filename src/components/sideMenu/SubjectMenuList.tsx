@@ -6,6 +6,7 @@ import { color as c } from '../../constant/color';
 import { SET_ACTIVE_INDEX } from '../../actions/index';
 
 import SubjectItem from './SubjectItem';
+import { todoListState } from '../../types/types';
 
 const SubjectMenuList = () => {
    const { state, dispatch } = useContext(AppContext);
@@ -16,7 +17,7 @@ const SubjectMenuList = () => {
    const handleClickDisplayTasks = () => {
       dispatch({ type: SET_ACTIVE_INDEX, index: -2 });
    };
-   const isSelected = num => {
+   const isSelected = (num: number) => {
       return state.config.activeIndex === num;
    };
    const notDoneAllTodos = state.todoList.filter(todoItem => {
@@ -25,10 +26,10 @@ const SubjectMenuList = () => {
    const notDoneTasks = state.todoList.filter(todoItem => {
       return todoItem.isTask && !todoItem.isDone;
    });
-   const hasImportant = todos => {
+   const hasImportant = (todos: todoListState[]) => {
       return todos.some(todo => todo.isImportant);
    };
-   const grayOrRed = todos => {
+   const grayOrRed = (todos: todoListState[]) => {
       return {
          color: hasImportant(todos) ? c.redOfCountNumber : c.grayOfCountNumber,
       };

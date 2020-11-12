@@ -1,5 +1,12 @@
 import { createContext } from 'react';
+import { RootState } from '../types/types';
+import { initialState } from '../constant/constant';
 
-const AppContext = createContext();
+type initialContextProps = {
+   state: RootState;
+   dispatch: any;
+};
+
+const AppContext = createContext({} as initialContextProps);
 
 export default AppContext;

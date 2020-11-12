@@ -14,9 +14,10 @@ import TodoList from './todoList/TodoList';
 import TodoForm from './todoForm/TodoForm';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { subjectListState, RootState } from '../types/types';
 
 const App = () => {
-   const [state, dispatch] = useReducer(reducer, initialState);
+   const [state, dispatch]= useReducer(reducer, initialState);
    const [isLoading, setIsLoading] = useState(true);
    const [message, setMessage] = useState('');
 
@@ -26,8 +27,13 @@ const App = () => {
             setMessage('サーバーを起動中です。しばらくお待ち下さい。');
          }, 2500);
 
+         type resSubjectListType = subjectListState & {
+            id: number;
+         };
+
          const apiUrl = `${process.env.REACT_APP_SERVER_URL}api/`;
-         const sortFunc = (a, b) => (a.id > b.id ? 1 : -1);
+         const sortFunc = (a: resSubjectListType, b: resSubjectListType) =>
+            a.id > b.id ? 1 : -1;
          const getSubjectList = axios
             .get(apiUrl + 'subject_lists/')
             .then(res => res.data.sort(sortFunc))
@@ -101,7 +107,7 @@ const Wrapper = styled.div`
       / 230px 4% 1fr 4%;
    height: 100%;
    width: 100%;
-   background-color: ${c.BlackOfBackground};
+   background-color: ${c.blackOfBackground()};
    color: rgb(228, 226, 226);
    ${media.lessThan('medium')`
    grid-template:
