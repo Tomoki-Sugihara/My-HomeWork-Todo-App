@@ -4,10 +4,13 @@ import styled from 'styled-components';
 // import { color as c } from '../color';
 
 import TodoItem from './TodoItem';
+import { useSelector } from 'react-redux';
+import { getActiveIndex, getSeparate } from '../../selector';
 
 const TodoList = () => {
-   const { state } = useContext(AppContext);
-   const activeIndex = state.config.activeIndex;
+   const state = useSelector(state => state);
+   const activeIndex = getActiveIndex(state);
+   const separate = getSeparate(state);
 
    const todos = state.todoList
       .map((todo, index) => {
@@ -34,11 +37,7 @@ const TodoList = () => {
       const doneTodos = comps.filter(comp => {
          return comp.props.todo.isDone;
       });
-      if (
-         state.config.separate &&
-         hasDoneTodo &&
-         !(notDoneTodos.length === 0)
-      ) {
+      if (separate && hasDoneTodo && !(notDoneTodos.length === 0)) {
          const border = (
             <Border>
                <div></div>

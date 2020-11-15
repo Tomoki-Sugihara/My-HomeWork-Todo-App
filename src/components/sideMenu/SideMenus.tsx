@@ -12,11 +12,13 @@ import AddIcon from '@material-ui/icons/Add';
 import MenuIcon from '@material-ui/icons/Menu';
 import { addSubject } from '../../reducers/subjectList';
 import { setActiveIndex } from '../../reducers/config';
+import { useSelector, useDispatch } from 'react-redux';
 
 const SideMenus = () => {
+   const subjectList = useSelector(state => state.subjectList);
    const [title, setTitle] = useState('');
    const [message, setMessage] = useState('');
-   const { state, dispatch } = useContext(AppContext);
+   const dispatch = useDispatch();
 
    const handleSubmitCreateSubject = (e: React.FormEvent) => {
       e.preventDefault();
@@ -28,7 +30,7 @@ const SideMenus = () => {
    };
 
    const createSubject = () => {
-      const hasSameTitle = state.subjectList.some(subject => {
+      const hasSameTitle = subjectList.some(subject => {
          return subject.title === title;
       });
       const deleteMessage = () => {
@@ -47,7 +49,7 @@ const SideMenus = () => {
       }
       dispatch(addSubject({ title }));
       // dispatch({ type: CREATE_SUBJECT, payload: { title }});
-      dispatch(setActiveIndex({ activeIndex: state.subjectList.length }));
+      dispatch(setActiveIndex({ activeIndex: subjectList.length }));
       // dispatch({
       //    type: SET_ACTIVE_INDEX,
       //    payload: { index: state.subjectList.length },

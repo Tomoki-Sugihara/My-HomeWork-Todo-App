@@ -20,6 +20,13 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Zoom from '@material-ui/core/Zoom';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import { todoListState } from '../../types/types';
+import { useSelector, useDispatch } from 'react-redux';
+import { getActiveIndex, getSeparate } from '../../selector';
+import {
+   toggleIsDone,
+   toggleIsImportant,
+   deleteTodo as deleteTodoItem,
+} from '../../reducers/todoList';
 
 type TodoItemProps = {
    todo: todoListState;
@@ -27,19 +34,20 @@ type TodoItemProps = {
 };
 
 const TodoItem: FC<TodoItemProps> = props => {
-   const { state, dispatch } = useContext(AppContext);
-   const activeIndex = state.config.activeIndex;
+   const selector = useSelector(state => state);
+   const activeIndex = getActiveIndex(selector);
+   const separate = getSeparate(selector);
+   const subjectList = useSelector(state => state.subjectList);
+   const dispatch = useDispatch();
+
    const handleClickIsDone = () => {
-      dispatch({
-         type: TOGGLE_IS_DONE,
-         payload: { index: props.index },
-      });
+      dispatch(toggleIsDone({ index: props.index }));
    };
    const displaySubjectName = () => {
       if (props.todo.isTask) {
          return 'Task';
       } else {
-         const subject = state.subjectList.find(subjectItem => {
+         const subject = subjectList.find(subjectItem => {
             return subjectItem.key === props.todo.subjectKey;
          });
          if (subject) {
@@ -50,13 +58,13 @@ const TodoItem: FC<TodoItemProps> = props => {
       }
    };
    const handleClickIsImportant = () => {
-      dispatch({ type: TOGGLE_IS_IMPORTANT, payload: { index: props.index }});
+      dispatch(toggleIsImportant({ index: props.index }));
    };
    const deleteTodo = () => {
-      dispatch({ type: DELETE_TODO_ITEM, payload: { index: props.index, activeIndex }});
+      dispatch(deleteTodoItem({ index: props.index }));
    };
    const opacity = () => {
-      if (state.config.separate) {
+      if (separate) {
          return { opacity: props.todo.isDone ? 0.6 : 1 };
       } else {
          return { opacity: 1 };

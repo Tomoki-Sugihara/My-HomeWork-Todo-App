@@ -145,7 +145,7 @@ const todoListSlice = createSlice({
       mountTodoList(state, action: PayloadAction<{ data: todoListState[] }>) {
          state = action.payload.data;
       },
-      deleteSubject(state, action: PayloadAction<{ subjectKey: string }>) {
+      pergeTodoItem(state, action: PayloadAction<{ subjectKey: string }>) {
          const newTodoList = state.filter(todoItem => {
             return todoItem.subjectKey !== action.payload.subjectKey;
          });
@@ -178,8 +178,9 @@ export const {
    addTodo,
    deleteTodo,
    toggleIsImportant,
+   toggleIsDone,
    mountTodoList,
-   deleteSubject,
+   pergeTodoItem,
    pergeTasks,
 } = todoListSlice.actions;
 

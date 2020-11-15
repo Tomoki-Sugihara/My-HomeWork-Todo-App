@@ -14,8 +14,8 @@ import { useSelector } from 'react-redux';
 
 const Header = () => {
    // const { state } = useContext(AppContext);
-   const selector = useSelector(state => state)
-   const subjectList = selector.subjectList
+   const selector = useSelector(state => state);
+   const subjectList = selector.subjectList;
    const activeIndex = getActiveIndex(selector);
    // const activeIndex = state.config.activeIndex;
    const displayTitleName = () => {

@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect, Dispatch } from 'react';
+import React, { useState, useReducer, useEffect } from 'react';
 // import reducer from '../reducers';
 import AppContext from '../contexts/AppContext';
 import axios from 'axios';
@@ -17,6 +17,8 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { subjectListState, RootState } from '../types/types';
 import { Actions } from '../contexts/AppContext';
 import { useDispatch } from 'react-redux';
+import { mountSubjectList } from '../reducers/subjectList';
+import { mountTodoList } from '../reducers/todoList';
 
 const App = () => {
    // const [state, dispatch] = useReducer(reducer, initialState);
@@ -57,14 +59,14 @@ const App = () => {
          ]);
 
          if (subjectList !== undefined) {
-            await dispatch({ data: subjectList });
+            await dispatch(mountSubjectList({ data: subjectList }));
             // await dispatch({
             //    type: MOUNT_SUBJECT_LIST,
             //    payload: { data: subjectList },
             // });
          }
          if (todoList !== undefined) {
-            await dispatch({ data: todoList });
+            await dispatch(mountTodoList({ data: todoList }));
             // await dispatch({
             //    type: MOUNT_TODO_LIST,
             //    payload: { data: todoList },

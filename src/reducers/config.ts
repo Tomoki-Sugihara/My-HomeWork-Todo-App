@@ -36,8 +36,8 @@ const configSlice = createSlice({
       setActiveIndex(state, action: PayloadAction<{ activeIndex: number }>) {
          state.activeIndex = action.payload.activeIndex;
       },
-      toggleSeparate(state, action: PayloadAction<{ separate: boolean }>) {
-         state.separate = action.payload.separate;
+      toggleSeparate(state) {
+         state.separate = !state.separate;
       },
    },
 });

@@ -10,10 +10,15 @@ import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
+import { getActiveIndex } from '../../selector';
+import { useSelector, useDispatch } from 'react-redux';
+import { addTodo } from '../../reducers/todoList';
 
 const TodoForm = () => {
-   const { state, dispatch } = useContext(AppContext);
-   const activeIndex = state.config.activeIndex;
+   const selector = useSelector(state => state);
+   const activeIndex = getActiveIndex(selector);
+   const subjectList = useSelector(state => state.subjectList);
+   const dispatch = useDispatch();
    const [title, setTitle] = useState('');
    const [isImportant, setIsImportant] = useState(false);
 
@@ -22,16 +27,15 @@ const TodoForm = () => {
          return;
       }
       const isTask = activeIndex === -2 || activeIndex === -1 ? true : false;
-      const subjectKey = isTask ? '' : state.subjectList[activeIndex].key;
-      dispatch({
-         type: CREATE_TODO_ITEM,
-         payload: {
+      const subjectKey = isTask ? '' : subjectList[activeIndex].key;
+      dispatch(
+         addTodo({
             title,
             isImportant,
             subjectKey,
             isTask,
-         },
-      });
+         })
+      );
       setTitle('');
       setIsImportant(false);
    };

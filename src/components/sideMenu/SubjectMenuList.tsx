@@ -7,15 +7,18 @@ import { SET_ACTIVE_INDEX } from '../../actions/index';
 
 import SubjectItem from './SubjectItem';
 import { todoListState } from '../../types/types';
+import { useSelector, useDispatch } from 'react-redux';
+import { setActiveIndex } from '../../reducers/config';
 
 const SubjectMenuList = () => {
-   const { state, dispatch } = useContext(AppContext);
+   const state = useSelector(state => state);
+   const dispatch = useDispatch();
 
    const handleClickDisplayAllTodo = () => {
-      dispatch({ type: SET_ACTIVE_INDEX, payload: { index: -1 } });
+      dispatch(setActiveIndex({ activeIndex: -1 }));
    };
    const handleClickDisplayTasks = () => {
-      dispatch({ type: SET_ACTIVE_INDEX, payload: { index: -2 } });
+      dispatch(setActiveIndex({ activeIndex: -2 } ));
    };
    const isSelected = (num: number) => {
       return state.config.activeIndex === num;

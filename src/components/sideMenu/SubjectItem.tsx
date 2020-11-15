@@ -6,18 +6,25 @@ import { SET_ACTIVE_INDEX } from '../../actions/index';
 
 import { SubjectMenuItem, NumberOfTodo } from './SubjectMenuList';
 import { subjectListState, todoListState } from '../../types/types';
+import { useSelector, useDispatch } from 'react-redux';
+import { getActiveIndex } from '../../selector';
+import { setActiveIndex } from '../../reducers/config';
 
 type SubjectItemProps = {
-   subject: subjectListState
+   subject: subjectListState;
    index: number;
-}
+};
 
 const SubjectItem: FC<SubjectItemProps> = props => {
-   const { state, dispatch } = useContext(AppContext);
+   const todoList = useSelector(state => state.todoList);
+   const selector = useSelector(state => state);
+   const activeIndex = getActiveIndex(selector);
+   const dispatch = useDispatch();
+
    const handleClickSetActiveIndex = () => {
-      dispatch({ type: SET_ACTIVE_INDEX, payload: { index: props.index }});
+      dispatch(setActiveIndex({ activeIndex: props.index }));
    };
-   const isSelected = props.index === state.config.activeIndex;
+   const isSelected = props.index === activeIndex;
 
    const hasImportant = (todos: todoListState[]) => {
       return todos.some(todo => !todo.isDone && todo.isImportant);
@@ -27,7 +34,7 @@ const SubjectItem: FC<SubjectItemProps> = props => {
          color: hasImportant(todos) ? c.redOfCountNumber : c.grayOfCountNumber,
       };
    };
-   const notDoneTodos = state.todoList.filter(todoItem => {
+   const notDoneTodos = todoList.filter(todoItem => {
       return todoItem.subjectKey === props.subject.key && !todoItem.isDone;
    });
    return (
