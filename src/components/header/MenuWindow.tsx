@@ -33,13 +33,13 @@ const MenuWindow = () => {
    const deleteSubject = () => {
       dispatch({
          type: PERGE_TODO_ITEM,
-         subjectKey: state.subjectList[activeIndex].key,
+         payload: { subjectKey: state.subjectList[activeIndex].key },
       });
       dispatch({
          type: DELETE_SUBJECT_ITEM,
-         activeIndex: activeIndex,
+         payload: { activeIndex: activeIndex },
       });
-      dispatch({ type: SET_ACTIVE_INDEX, index: -1 });
+      dispatch({ type: SET_ACTIVE_INDEX, payload: { index: -1 }});
    };
    const handleClickToggleSeparate = () => {
       dispatch({ type: TOGGLE_SEPARATE });

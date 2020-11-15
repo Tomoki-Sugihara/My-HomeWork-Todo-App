@@ -15,7 +15,7 @@ type SubjectItemProps = {
 const SubjectItem: FC<SubjectItemProps> = props => {
    const { state, dispatch } = useContext(AppContext);
    const handleClickSetActiveIndex = () => {
-      dispatch({ type: SET_ACTIVE_INDEX, index: props.index });
+      dispatch({ type: SET_ACTIVE_INDEX, payload: { index: props.index }});
    };
    const isSelected = props.index === state.config.activeIndex;
 

@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import axios from 'axios';
 import { todoListState } from '../types/types';
+import { todoListTemplate } from '../constant/constant';
 import {
    CREATE_TODO_ITEM,
    DELETE_TODO_ITEM,
@@ -12,14 +13,16 @@ import {
 } from '../actions/index';
 type todoListActionType = {
    type: string;
-   index: number;
-   data?: todoListState;
-} & Partial<todoListState>;
+   payload: {
+      index: number;
+      data?: todoListState[];
+   } & Partial<todoListState>;
+};
 
 const todoList = (
-   todoList: todoListState[] = [],
+   state: todoListState[] = [],
    action: todoListActionType
-) => {
+): todoListState[] => {
    const apiUrl = `${process.env.REACT_APP_SERVER_URL}api/todo_lists/`;
    switch (action.type) {
       case CREATE_TODO_ITEM: {
@@ -28,29 +31,29 @@ const todoList = (
          };
          const newTodoItem = {
             key: getUniqueKey(),
-            title: action.title,
-            isImportant: action.isImportant,
+            title: action.payload.title!,
+            isImportant: action.payload.isImportant!,
             isDone: false,
-            subjectKey: action.subjectKey,
-            isTask: action.isTask,
+            subjectKey: action.payload.subjectKey!,
+            isTask: action.payload.isTask!,
          };
          axios.post(apiUrl, newTodoItem);
 
-         return [...todoList, newTodoItem];
+         return [...state, newTodoItem];
       }
       case DELETE_TODO_ITEM: {
-         const newTodoList = _.cloneDeep(todoList);
-         newTodoList.splice(action.index, 1);
+         const newTodoList = _.cloneDeep(state);
+         newTodoList.splice(action.payload.index, 1);
 
-         const key = todoList[action.index].key;
+         const key = state[action.payload.index].key;
          axios.delete(apiUrl, { data: { key } });
 
          return newTodoList;
       }
 
       case TOGGLE_IS_IMPORTANT: {
-         const newTodoList = _.cloneDeep(todoList);
-         const focusedTodoItem = newTodoList[action.index];
+         const newTodoList = _.cloneDeep(state);
+         const focusedTodoItem = newTodoList[action.payload.index];
          focusedTodoItem.isImportant = !focusedTodoItem.isImportant;
 
          const key = focusedTodoItem.key;
@@ -60,8 +63,8 @@ const todoList = (
       }
 
       case TOGGLE_IS_DONE: {
-         const newTodoList = _.cloneDeep(todoList);
-         const focusedTodoItem = newTodoList[action.index];
+         const newTodoList = _.cloneDeep(state);
+         const focusedTodoItem = newTodoList[action.payload.index];
          focusedTodoItem.isDone = !focusedTodoItem.isDone;
 
          const key = focusedTodoItem.key;
@@ -70,22 +73,22 @@ const todoList = (
          return newTodoList;
       }
       case MOUNT_TODO_LIST: {
-         return action.data;
+         return action.payload.data!;
       }
 
       case PERGE_TODO_ITEM: {
-         const newTodoList = todoList.filter(todoItem => {
-            return todoItem.subjectKey !== action.subjectKey;
+         const newTodoList = state.filter(todoItem => {
+            return todoItem.subjectKey !== action.payload.subjectKey;
          });
 
          axios.post(apiUrl + 'delete_subject/', {
-            subjectKey: action.subjectKey,
+            subjectKey: action.payload.subjectKey,
          });
 
          return newTodoList;
       }
       case PERGE_TASKS: {
-         const newTodoList = todoList.filter(todoItem => {
+         const newTodoList = state.filter(todoItem => {
             return !todoItem.isTask;
          });
 
@@ -95,7 +98,7 @@ const todoList = (
       }
 
       default: {
-         return todoList;
+         return state;
       }
    }
 };

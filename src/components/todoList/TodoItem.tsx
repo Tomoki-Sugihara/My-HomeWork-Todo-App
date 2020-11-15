@@ -32,7 +32,7 @@ const TodoItem: FC<TodoItemProps> = props => {
    const handleClickIsDone = () => {
       dispatch({
          type: TOGGLE_IS_DONE,
-         index: props.index,
+         payload: { index: props.index },
       });
    };
    const displaySubjectName = () => {
@@ -50,10 +50,10 @@ const TodoItem: FC<TodoItemProps> = props => {
       }
    };
    const handleClickIsImportant = () => {
-      dispatch({ type: TOGGLE_IS_IMPORTANT, index: props.index });
+      dispatch({ type: TOGGLE_IS_IMPORTANT, payload: { index: props.index }});
    };
    const deleteTodo = () => {
-      dispatch({ type: DELETE_TODO_ITEM, index: props.index, activeIndex });
+      dispatch({ type: DELETE_TODO_ITEM, payload: { index: props.index, activeIndex }});
    };
    const opacity = () => {
       if (state.config.separate) {

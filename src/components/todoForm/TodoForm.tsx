@@ -25,10 +25,12 @@ const TodoForm = () => {
       const subjectKey = isTask ? '' : state.subjectList[activeIndex].key;
       dispatch({
          type: CREATE_TODO_ITEM,
-         title,
-         isImportant,
-         subjectKey,
-         isTask,
+         payload: {
+            title,
+            isImportant,
+            subjectKey,
+            isTask,
+         },
       });
       setTitle('');
       setIsImportant(false);

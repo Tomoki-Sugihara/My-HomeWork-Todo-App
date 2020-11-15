@@ -12,10 +12,10 @@ const SubjectMenuList = () => {
    const { state, dispatch } = useContext(AppContext);
 
    const handleClickDisplayAllTodo = () => {
-      dispatch({ type: SET_ACTIVE_INDEX, index: -1 });
+      dispatch({ type: SET_ACTIVE_INDEX, payload: { index: -1 } });
    };
    const handleClickDisplayTasks = () => {
-      dispatch({ type: SET_ACTIVE_INDEX, index: -2 });
+      dispatch({ type: SET_ACTIVE_INDEX, payload: { index: -2 } });
    };
    const isSelected = (num: number) => {
       return state.config.activeIndex === num;

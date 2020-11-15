@@ -24,7 +24,7 @@ const TodoList = () => {
          }
       });
 
-   const displayedTodos = comps => {
+   const displayedTodos = (comps: JSX.Element[]) => {
       const hasDoneTodo = comps.some(comp => {
          return comp.props.todo.isDone;
       });
@@ -55,14 +55,21 @@ const TodoList = () => {
          return comps;
       }
    };
+   console.log(displayedTodos(todos));
    const message = (
       <Message>
          <p>タスクがありません</p>
       </Message>
    );
+   if (todos === []) {
+      return <Wrapper>{message}</Wrapper>;
+   }
    return (
       <Wrapper>
-         {displayedTodos(todos).length === 0 ? message : displayedTodos(todos)}
+         {/* {displayedTodos(todos)} */}
+         {/* {displayedTodos(todos) ? displayedTodos(todos) : message} */}
+         {displayedTodos(todos) === [] ? message : displayedTodos(todos)}
+         {/* {displayedTodos(todos).length === 0 ? message : displayedTodos(todos)} */}
       </Wrapper>
    );
 };

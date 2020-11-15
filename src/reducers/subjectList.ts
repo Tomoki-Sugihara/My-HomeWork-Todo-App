@@ -8,14 +8,16 @@ import {
 } from '../actions/index';
 type subjectListActionType = {
    type: string;
-   title?: string;
-   data?: subjectListState;
-   activeIndex?: number;
+   payload: {
+      title?: string;
+      data?: subjectListState[];
+      activeIndex?: number;
+   };
 };
 const subjectList = (
    subjectList: subjectListState[] = [],
    action: subjectListActionType
-) => {
+): subjectListState[] => {
    const apiUrl = `${process.env.REACT_APP_SERVER_URL}api/subject_lists/`;
    switch (action.type) {
       case CREATE_SUBJECT: {
@@ -24,21 +26,21 @@ const subjectList = (
          };
          const newSubjectItem = {
             key: getUniqueKey(),
-            title: action.title,
+            title: action.payload.title as string,
          };
 
          axios.post(apiUrl, newSubjectItem);
          return [...subjectList, newSubjectItem];
       }
       case MOUNT_SUBJECT_LIST: {
-         return action.data;
+         return action.payload.data!;
       }
       case DELETE_SUBJECT_ITEM: {
-         const key = subjectList[action.activeIndex as number].key;
+         const key = subjectList[action.payload.activeIndex as number].key;
          axios.delete(apiUrl, { data: { key } });
 
          const newSubjectList = _.cloneDeep(subjectList);
-         newSubjectList.splice(action.activeIndex as number, 1);
+         newSubjectList.splice(action.payload.activeIndex as number, 1);
 
          return newSubjectList;
       }

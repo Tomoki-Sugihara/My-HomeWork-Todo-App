@@ -43,8 +43,8 @@ const SideMenus = () => {
          deleteMessage();
          return;
       }
-      dispatch({ type: CREATE_SUBJECT, title });
-      dispatch({ type: SET_ACTIVE_INDEX, index: state.subjectList.length });
+      dispatch({ type: CREATE_SUBJECT, payload: { title }});
+      dispatch({ type: SET_ACTIVE_INDEX, payload: { index: state.subjectList.length }});
       setTitle('');
    };
    return (

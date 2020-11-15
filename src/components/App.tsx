@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect } from 'react';
+import React, { useState, useReducer, useEffect, Dispatch } from 'react';
 import reducer from '../reducers';
 import AppContext from '../contexts/AppContext';
 import axios from 'axios';
@@ -15,9 +15,14 @@ import TodoForm from './todoForm/TodoForm';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { subjectListState, RootState } from '../types/types';
+import { Actions } from '../contexts/AppContext';
 
 const App = () => {
-   const [state, dispatch]= useReducer(reducer, initialState);
+   const [state, dispatch] = useReducer(reducer, initialState);
+   // const [state, dispatch] = useReducer<Dispatch<Actions>, RootState>(
+   //    reducer,
+   //    initialState
+   // );
    const [isLoading, setIsLoading] = useState(true);
    const [message, setMessage] = useState('');
 
@@ -49,14 +54,18 @@ const App = () => {
             getTodoList,
          ]);
 
-         await dispatch({
-            type: MOUNT_SUBJECT_LIST,
-            data: subjectList,
-         });
-         await dispatch({
-            type: MOUNT_TODO_LIST,
-            data: todoList,
-         });
+         if (subjectList !== undefined) {
+            await dispatch({
+               type: MOUNT_SUBJECT_LIST,
+               payload: { data: subjectList },
+            });
+         }
+         if (todoList !== undefined) {
+            await dispatch({
+               type: MOUNT_TODO_LIST,
+               payload: { data: todoList },
+            });
+         }
          await setIsLoading(false);
       })();
    }, []);
