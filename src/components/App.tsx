@@ -1,5 +1,5 @@
 import React, { useState, useReducer, useEffect, Dispatch } from 'react';
-import reducer from '../reducers';
+// import reducer from '../reducers';
 import AppContext from '../contexts/AppContext';
 import axios from 'axios';
 import styled from 'styled-components';
@@ -16,15 +16,17 @@ import TodoForm from './todoForm/TodoForm';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { subjectListState, RootState } from '../types/types';
 import { Actions } from '../contexts/AppContext';
+import { useDispatch } from 'react-redux';
 
 const App = () => {
-   const [state, dispatch] = useReducer(reducer, initialState);
+   // const [state, dispatch] = useReducer(reducer, initialState);
    // const [state, dispatch] = useReducer<Dispatch<Actions>, RootState>(
    //    reducer,
    //    initialState
    // );
    const [isLoading, setIsLoading] = useState(true);
    const [message, setMessage] = useState('');
+   const dispatch = useDispatch();
 
    useEffect(() => {
       (async () => {
@@ -55,20 +57,22 @@ const App = () => {
          ]);
 
          if (subjectList !== undefined) {
-            await dispatch({
-               type: MOUNT_SUBJECT_LIST,
-               payload: { data: subjectList },
-            });
+            await dispatch({ data: subjectList });
+            // await dispatch({
+            //    type: MOUNT_SUBJECT_LIST,
+            //    payload: { data: subjectList },
+            // });
          }
          if (todoList !== undefined) {
-            await dispatch({
-               type: MOUNT_TODO_LIST,
-               payload: { data: todoList },
-            });
+            await dispatch({ data: todoList });
+            // await dispatch({
+            //    type: MOUNT_TODO_LIST,
+            //    payload: { data: todoList },
+            // });
          }
          await setIsLoading(false);
       })();
-   }, []);
+   }, [dispatch]);
 
    if (isLoading) {
       return (
@@ -80,16 +84,16 @@ const App = () => {
    }
 
    return (
-      <AppContext.Provider value={{ state, dispatch }}>
-         <Wrapper>
-            <SideMenus />
-            <Container>
-               <Header />
-               <TodoList />
-               <TodoForm />
-            </Container>
-         </Wrapper>
-      </AppContext.Provider>
+      // <AppContext.Provider value={{ state, dispatch }}>
+      <Wrapper>
+         <SideMenus />
+         <Container>
+            <Header />
+            <TodoList />
+            <TodoForm />
+         </Container>
+      </Wrapper>
+      // </AppContext.Provider>
    );
 };
 const LoadingWindow = styled.div`

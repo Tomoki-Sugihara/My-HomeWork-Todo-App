@@ -10,6 +10,8 @@ import SubjectMenuList from './SubjectMenuList';
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 import MenuIcon from '@material-ui/icons/Menu';
+import { addSubject } from '../../reducers/subjectList';
+import { setActiveIndex } from '../../reducers/config';
 
 const SideMenus = () => {
    const [title, setTitle] = useState('');
@@ -43,8 +45,13 @@ const SideMenus = () => {
          deleteMessage();
          return;
       }
-      dispatch({ type: CREATE_SUBJECT, payload: { title }});
-      dispatch({ type: SET_ACTIVE_INDEX, payload: { index: state.subjectList.length }});
+      dispatch(addSubject({ title }));
+      // dispatch({ type: CREATE_SUBJECT, payload: { title }});
+      dispatch(setActiveIndex({ activeIndex: state.subjectList.length }));
+      // dispatch({
+      //    type: SET_ACTIVE_INDEX,
+      //    payload: { index: state.subjectList.length },
+      // });
       setTitle('');
    };
    return (

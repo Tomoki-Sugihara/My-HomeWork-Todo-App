@@ -9,17 +9,22 @@ import MenuWindow from './MenuWindow';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import IconButton from '@material-ui/core/IconButton';
 import { RootState } from '../../types/types';
+import { getActiveIndex } from '../../selector';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
-   const { state } = useContext(AppContext);
-   const activeIndex = state.config.activeIndex;
+   // const { state } = useContext(AppContext);
+   const selector = useSelector(state => state)
+   const subjectList = selector.subjectList
+   const activeIndex = getActiveIndex(selector);
+   // const activeIndex = state.config.activeIndex;
    const displayTitleName = () => {
       if (activeIndex === -1) {
          return 'My HomeWork Todo';
       } else if (activeIndex === -2) {
          return 'Tasks';
       } else {
-         return state.subjectList[activeIndex].title;
+         return subjectList[activeIndex].title;
       }
    };
    useEffect(() => {
