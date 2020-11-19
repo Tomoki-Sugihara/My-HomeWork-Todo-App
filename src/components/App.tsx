@@ -1,12 +1,8 @@
-import React, { useState, useReducer, useEffect, FC } from 'react';
-// import reducer from '../reducers';
-import AppContext from '../contexts/AppContext';
+import React, { useState, useEffect, FC } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { initialState } from '../constant/constant';
 import { color as c } from '../constant/color';
-import { MOUNT_SUBJECT_LIST, MOUNT_TODO_LIST } from '../actions/index';
 
 import SideMenus from './sideMenu/SideMenus';
 import Header from './header/Header';
@@ -14,18 +10,12 @@ import TodoList from './todoList/TodoList';
 import TodoForm from './todoForm/TodoForm';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { subjectListState, RootState, todoListState } from '../types/types';
-import { Actions } from '../contexts/AppContext';
+import { subjectListState } from '../types/types';
 import { useDispatch } from 'react-redux';
 import { mountSubjectList } from '../reducers/subjectList';
 import { mountTodoList } from '../reducers/todoList';
 
 const App: FC = () => {
-   // const [state, dispatch] = useReducer(reducer, initialState);
-   // const [state, dispatch] = useReducer<Dispatch<Actions>, RootState>(
-   //    reducer,
-   //    initialState
-   // );
    const [isLoading, setIsLoading] = useState(true);
    const [message, setMessage] = useState('');
    const dispatch = useDispatch();
@@ -57,30 +47,12 @@ const App: FC = () => {
             getSubjectList,
             getTodoList,
          ]);
-         // const [subjectList, todoList] = (await Promise.all([
-         //    getSubjectList,
-         //    getTodoList,
-         // ])) as [subjectListState[] | undefined, todoListState[] | undefined];
 
-         // const [subjectList, todoList]: [
-         //    subjectListState[] | undefined,
-         //    todoListState[] | undefined
-         // ] = await Promise.all([getSubjectList, getTodoList]);
-
-         console.log(subjectList);
          if (subjectList !== undefined) {
             await dispatch(mountSubjectList({ data: subjectList }));
-            // await dispatch({
-            //    type: MOUNT_SUBJECT_LIST,
-            //    payload: { data: subjectList },
-            // });
          }
          if (todoList !== undefined) {
             await dispatch(mountTodoList({ data: todoList }));
-            // await dispatch({
-            //    type: MOUNT_TODO_LIST,
-            //    payload: { data: todoList },
-            // });
          }
          await setIsLoading(false);
       })();
@@ -96,7 +68,6 @@ const App: FC = () => {
    }
 
    return (
-      // <AppContext.Provider value={{ state, dispatch }}>
       <Wrapper>
          <SideMenus />
          <Container>
@@ -105,7 +76,6 @@ const App: FC = () => {
             <TodoForm />
          </Container>
       </Wrapper>
-      // </AppContext.Provider>
    );
 };
 const LoadingWindow = styled.div`

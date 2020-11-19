@@ -1,13 +1,7 @@
-import React, { FC, useContext } from 'react';
-import AppContext from '../../contexts/AppContext';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import { color as c } from '../../constant/color';
-import {
-   TOGGLE_IS_DONE,
-   TOGGLE_IS_IMPORTANT,
-   DELETE_TODO_ITEM,
-} from '../../actions/index';
 
 import Checkbox from '@material-ui/core/Checkbox';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';

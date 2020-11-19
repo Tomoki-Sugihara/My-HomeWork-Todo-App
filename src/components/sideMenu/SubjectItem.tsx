@@ -1,8 +1,5 @@
-import React, { FC, useContext } from 'react';
-import AppContext from '../../contexts/AppContext';
-// import styled from 'styled-components';
+import React, { FC } from 'react';
 import { color as c } from '../../constant/color';
-import { SET_ACTIVE_INDEX } from '../../actions/index';
 
 import { SubjectMenuItem, NumberOfTodo } from './SubjectMenuList';
 import { subjectListState, todoListState } from '../../types/types';

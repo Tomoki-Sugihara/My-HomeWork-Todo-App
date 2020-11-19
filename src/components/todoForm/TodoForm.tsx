@@ -1,8 +1,6 @@
-import React, { useState, useContext } from 'react';
-import AppContext from '../../contexts/AppContext';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { CREATE_TODO_ITEM } from '../../actions/index';
 import { color as c } from '../../constant/color';
 
 import Checkbox from '@material-ui/core/Checkbox';

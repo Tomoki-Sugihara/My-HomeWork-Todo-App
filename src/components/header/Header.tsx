@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from 'react';
-import AppContext from '../../contexts/AppContext';
+import React, {  useEffect } from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import { color as c } from '../../constant/color';
@@ -8,16 +7,13 @@ import MenuWindow from './MenuWindow';
 
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import IconButton from '@material-ui/core/IconButton';
-import { RootState } from '../../types/types';
 import { getActiveIndex } from '../../selector';
 import { useSelector } from 'react-redux';
 
 const Header = () => {
-   // const { state } = useContext(AppContext);
    const selector = useSelector(state => state);
    const subjectList = selector.subjectList;
    const activeIndex = getActiveIndex(selector);
-   // const activeIndex = state.config.activeIndex;
    const displayTitleName = () => {
       if (activeIndex === -1) {
          return 'My HomeWork Todo';

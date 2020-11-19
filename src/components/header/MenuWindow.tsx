@@ -1,13 +1,5 @@
-import React, { useContext } from 'react';
-import AppContext from '../../contexts/AppContext';
+import React from 'react';
 import styled from 'styled-components';
-import {
-   PERGE_TODO_ITEM,
-   DELETE_SUBJECT_ITEM,
-   SET_ACTIVE_INDEX,
-   TOGGLE_SEPARATE,
-   PERGE_TASKS,
-} from '../../actions/index';
 // import { color as c } from '../../constant/color';
 
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';

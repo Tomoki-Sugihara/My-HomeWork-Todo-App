@@ -1,7 +1,5 @@
-import React, { useContext } from 'react';
-import AppContext from '../../contexts/AppContext';
+import React from 'react';
 import styled from 'styled-components';
-// import { color as c } from '../color';
 
 import TodoItem from './TodoItem';
 import { useSelector } from 'react-redux';
@@ -64,10 +62,7 @@ const TodoList = () => {
    }
    return (
       <Wrapper>
-         {/* {displayedTodos(todos)} */}
-         {/* {displayedTodos(todos) ? displayedTodos(todos) : message} */}
          {displayedTodos(todos) === [] ? message : displayedTodos(todos)}
-         {/* {displayedTodos(todos).length === 0 ? message : displayedTodos(todos)} */}
       </Wrapper>
    );
 };

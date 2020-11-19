@@ -1,9 +1,7 @@
-import React, { useContext, useState } from 'react';
-import AppContext from '../../contexts/AppContext';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import { color as c } from '../../constant/color';
-import { CREATE_SUBJECT, SET_ACTIVE_INDEX } from '../../actions/index';
 
 import SubjectMenuList from './SubjectMenuList';
 
@@ -48,12 +46,7 @@ const SideMenus = () => {
          return;
       }
       dispatch(addSubject({ title }));
-      // dispatch({ type: CREATE_SUBJECT, payload: { title }});
       dispatch(setActiveIndex({ activeIndex: subjectList.length }));
-      // dispatch({
-      //    type: SET_ACTIVE_INDEX,
-      //    payload: { index: state.subjectList.length },
-      // });
       setTitle('');
    };
    return (

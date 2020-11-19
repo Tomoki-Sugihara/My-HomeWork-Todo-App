@@ -1,9 +1,6 @@
 import React from 'react';
-import { useContext } from 'react';
-import AppContext from '../../contexts/AppContext';
 import styled from 'styled-components';
 import { color as c } from '../../constant/color';
-import { SET_ACTIVE_INDEX } from '../../actions/index';
 
 import SubjectItem from './SubjectItem';
 import { todoListState } from '../../types/types';
@@ -18,7 +15,7 @@ const SubjectMenuList = () => {
       dispatch(setActiveIndex({ activeIndex: -1 }));
    };
    const handleClickDisplayTasks = () => {
-      dispatch(setActiveIndex({ activeIndex: -2 } ));
+      dispatch(setActiveIndex({ activeIndex: -2 }));
    };
    const isSelected = (num: number) => {
       return state.config.activeIndex === num;
