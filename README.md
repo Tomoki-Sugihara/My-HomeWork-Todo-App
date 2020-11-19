@@ -10,10 +10,12 @@ https://sugihara10969.github.io/My-HomeWork-Todo-App/
 #### 言語、フレームワーク
 - HTML/CSS
 - React(Hooks)
+- TypeScript
 - Ruby on Rails ([別リポジトリ](https://github.com/sugihara10969/My-HomeWork-Todo-API))
 
 #### ライブラリ、パッケージ
-- Redux
+- Redux-Toolkit
+- TypeScript
 - axios
 - lodash
 - Styled-Components
@@ -27,7 +29,9 @@ https://sugihara10969.github.io/My-HomeWork-Todo-App/
 - 初回更新時にデータをGET
 
 ## 工夫した点
-- Hooksの活用（useState, useReducer, useContext, useEffect）
+- Hooksの活用（useState, useEffect, useCallback）
+- TypeScriptによる型定義
+- Redux-Toolkitによるaction、reducerなどの簡略化
 - リスト名の横に未完了のタスクの数を表示
 - 重要タスクがある場合、数字を赤にする
 - 文字数が枠を超えた際、スタイルが崩れないように「...」を用いて省略
