@@ -1,32 +1,34 @@
-import React, { useContext, useState } from 'react';
-import AppContext from '../../contexts/AppContext';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import { color as c } from '../../constant/color';
-import { CREATE_SUBJECT, SET_ACTIVE_INDEX } from '../../actions/index';
 
 import SubjectMenuList from './SubjectMenuList';
 
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 import MenuIcon from '@material-ui/icons/Menu';
+import { addSubject } from '../../reducers/subjectList';
+import { setActiveIndex } from '../../reducers/config';
+import { useSelector, useDispatch } from 'react-redux';
 
 const SideMenus = () => {
+   const subjectList = useSelector(state => state.subjectList);
    const [title, setTitle] = useState('');
    const [message, setMessage] = useState('');
-   const { state, dispatch } = useContext(AppContext);
+   const dispatch = useDispatch();
 
-   const handleSubmitCreateSubject = e => {
+   const handleSubmitCreateSubject = (e: React.FormEvent) => {
       e.preventDefault();
       createSubject();
    };
-   const handleChangeSetTitle = e => {
+   const handleChangeSetTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
       const inputTitle = e.target.value;
       setTitle(inputTitle);
    };
 
    const createSubject = () => {
-      const hasSameTitle = state.subjectList.some(subject => {
+      const hasSameTitle = subjectList.some(subject => {
          return subject.title === title;
       });
       const deleteMessage = () => {
@@ -43,8 +45,8 @@ const SideMenus = () => {
          deleteMessage();
          return;
       }
-      dispatch({ type: CREATE_SUBJECT, title });
-      dispatch({ type: SET_ACTIVE_INDEX, index: state.subjectList.length });
+      dispatch(addSubject({ title }));
+      dispatch(setActiveIndex({ activeIndex: subjectList.length }));
       setTitle('');
    };
    return (

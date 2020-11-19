@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from 'react';
-import AppContext from '../../contexts/AppContext';
+import React, {  useEffect } from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import { color as c } from '../../constant/color';
@@ -8,21 +7,24 @@ import MenuWindow from './MenuWindow';
 
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import IconButton from '@material-ui/core/IconButton';
+import { getActiveIndex } from '../../selector';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
-   const { state } = useContext(AppContext);
-   const activeIndex = state.config.activeIndex;
+   const selector = useSelector(state => state);
+   const subjectList = selector.subjectList;
+   const activeIndex = getActiveIndex(selector);
    const displayTitleName = () => {
       if (activeIndex === -1) {
          return 'My HomeWork Todo';
       } else if (activeIndex === -2) {
          return 'Tasks';
       } else {
-         return state.subjectList[activeIndex].title;
+         return subjectList[activeIndex].title;
       }
    };
    useEffect(() => {
-      const checkbox = document.getElementById('menu');
+      const checkbox = document.getElementById('menu') as HTMLInputElement;
       if (checkbox.checked) {
          checkbox.checked = false;
       }
@@ -95,7 +97,7 @@ const SettingMenu = styled.div`
       width: 180px;
       height: auto;
       border: 0.1px solid rgb(50, 50, 50);
-      background-color: ${c.blackOfMenuBackground};
+      background-color: ${c.blackOfMenuBackground()};
    }
    input[type='checkbox'] {
       position: fixed;

@@ -1,13 +1,7 @@
-import React, { useContext } from 'react';
-import AppContext from '../../contexts/AppContext';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import { color as c } from '../../constant/color';
-import {
-   TOGGLE_IS_DONE,
-   TOGGLE_IS_IMPORTANT,
-   DELETE_TODO_ITEM,
-} from '../../actions/index';
 
 import Checkbox from '@material-ui/core/Checkbox';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
@@ -19,34 +13,52 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import Tooltip from '@material-ui/core/Tooltip';
 import Zoom from '@material-ui/core/Zoom';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
+import { todoListState } from '../../types/types';
+import { useSelector, useDispatch } from 'react-redux';
+import { getActiveIndex, getSeparate } from '../../selector';
+import {
+   toggleIsDone,
+   toggleIsImportant,
+   deleteTodo as deleteTodoItem,
+} from '../../reducers/todoList';
 
-const TodoItem = props => {
-   const { state, dispatch } = useContext(AppContext);
-   const activeIndex = state.config.activeIndex;
+type TodoItemProps = {
+   todo: todoListState;
+   index: number;
+};
+
+const TodoItem: FC<TodoItemProps> = props => {
+   const selector = useSelector(state => state);
+   const activeIndex = getActiveIndex(selector);
+   const separate = getSeparate(selector);
+   const subjectList = useSelector(state => state.subjectList);
+   const dispatch = useDispatch();
+
    const handleClickIsDone = () => {
-      dispatch({
-         type: TOGGLE_IS_DONE,
-         index: props.index,
-      });
+      dispatch(toggleIsDone({ index: props.index }));
    };
    const displaySubjectName = () => {
       if (props.todo.isTask) {
          return 'Task';
       } else {
-         const subject = state.subjectList.find(subjectItem => {
+         const subject = subjectList.find(subjectItem => {
             return subjectItem.key === props.todo.subjectKey;
          });
-         return subject.title;
+         if (subject) {
+            return subject.title;
+         } else {
+            return 'no title';
+         }
       }
    };
    const handleClickIsImportant = () => {
-      dispatch({ type: TOGGLE_IS_IMPORTANT, index: props.index });
+      dispatch(toggleIsImportant({ index: props.index }));
    };
    const deleteTodo = () => {
-      dispatch({ type: DELETE_TODO_ITEM, index: props.index, activeIndex });
+      dispatch(deleteTodoItem({ index: props.index }));
    };
    const opacity = () => {
-      if (state.config.separate) {
+      if (separate) {
          return { opacity: props.todo.isDone ? 0.6 : 1 };
       } else {
          return { opacity: 1 };

@@ -1,12 +1,8 @@
-import React, { useState, useReducer, useEffect } from 'react';
-import reducer from '../reducers';
-import AppContext from '../contexts/AppContext';
+import React, { useState, useEffect, FC } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { initialState } from '../constant/constant';
 import { color as c } from '../constant/color';
-import { MOUNT_SUBJECT_LIST, MOUNT_TODO_LIST } from '../actions/index';
 
 import SideMenus from './sideMenu/SideMenus';
 import Header from './header/Header';
@@ -14,11 +10,15 @@ import TodoList from './todoList/TodoList';
 import TodoForm from './todoForm/TodoForm';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { subjectListState } from '../types/types';
+import { useDispatch } from 'react-redux';
+import { mountSubjectList } from '../reducers/subjectList';
+import { mountTodoList } from '../reducers/todoList';
 
-const App = () => {
-   const [state, dispatch] = useReducer(reducer, initialState);
+const App: FC = () => {
    const [isLoading, setIsLoading] = useState(true);
    const [message, setMessage] = useState('');
+   const dispatch = useDispatch();
 
    useEffect(() => {
       (async () => {
@@ -26,8 +26,13 @@ const App = () => {
             setMessage('サーバーを起動中です。しばらくお待ち下さい。');
          }, 2500);
 
+         type resSubjectListType = subjectListState & {
+            id: number;
+         };
+
          const apiUrl = `${process.env.REACT_APP_SERVER_URL}api/`;
-         const sortFunc = (a, b) => (a.id > b.id ? 1 : -1);
+         const sortFunc = (a: resSubjectListType, b: resSubjectListType) =>
+            a.id > b.id ? 1 : -1;
          const getSubjectList = axios
             .get(apiUrl + 'subject_lists/')
             .then(res => res.data.sort(sortFunc))
@@ -43,17 +48,15 @@ const App = () => {
             getTodoList,
          ]);
 
-         await dispatch({
-            type: MOUNT_SUBJECT_LIST,
-            data: subjectList,
-         });
-         await dispatch({
-            type: MOUNT_TODO_LIST,
-            data: todoList,
-         });
+         if (subjectList !== undefined) {
+            await dispatch(mountSubjectList({ data: subjectList }));
+         }
+         if (todoList !== undefined) {
+            await dispatch(mountTodoList({ data: todoList }));
+         }
          await setIsLoading(false);
       })();
-   }, []);
+   }, [dispatch]);
 
    if (isLoading) {
       return (
@@ -65,16 +68,14 @@ const App = () => {
    }
 
    return (
-      <AppContext.Provider value={{ state, dispatch }}>
-         <Wrapper>
-            <SideMenus />
-            <Container>
-               <Header />
-               <TodoList />
-               <TodoForm />
-            </Container>
-         </Wrapper>
-      </AppContext.Provider>
+      <Wrapper>
+         <SideMenus />
+         <Container>
+            <Header />
+            <TodoList />
+            <TodoForm />
+         </Container>
+      </Wrapper>
    );
 };
 const LoadingWindow = styled.div`
@@ -101,7 +102,7 @@ const Wrapper = styled.div`
       / 230px 4% 1fr 4%;
    height: 100%;
    width: 100%;
-   background-color: ${c.BlackOfBackground};
+   background-color: ${c.blackOfBackground()};
    color: rgb(228, 226, 226);
    ${media.lessThan('medium')`
    grid-template:

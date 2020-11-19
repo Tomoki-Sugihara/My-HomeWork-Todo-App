@@ -1,22 +1,23 @@
 import React from 'react';
-import { useContext } from 'react';
-import AppContext from '../../contexts/AppContext';
 import styled from 'styled-components';
 import { color as c } from '../../constant/color';
-import { SET_ACTIVE_INDEX } from '../../actions/index';
 
 import SubjectItem from './SubjectItem';
+import { todoListState } from '../../types/types';
+import { useSelector, useDispatch } from 'react-redux';
+import { setActiveIndex } from '../../reducers/config';
 
 const SubjectMenuList = () => {
-   const { state, dispatch } = useContext(AppContext);
+   const state = useSelector(state => state);
+   const dispatch = useDispatch();
 
    const handleClickDisplayAllTodo = () => {
-      dispatch({ type: SET_ACTIVE_INDEX, index: -1 });
+      dispatch(setActiveIndex({ activeIndex: -1 }));
    };
    const handleClickDisplayTasks = () => {
-      dispatch({ type: SET_ACTIVE_INDEX, index: -2 });
+      dispatch(setActiveIndex({ activeIndex: -2 }));
    };
-   const isSelected = num => {
+   const isSelected = (num: number) => {
       return state.config.activeIndex === num;
    };
    const notDoneAllTodos = state.todoList.filter(todoItem => {
@@ -25,10 +26,10 @@ const SubjectMenuList = () => {
    const notDoneTasks = state.todoList.filter(todoItem => {
       return todoItem.isTask && !todoItem.isDone;
    });
-   const hasImportant = todos => {
+   const hasImportant = (todos: todoListState[]) => {
       return todos.some(todo => todo.isImportant);
    };
-   const grayOrRed = todos => {
+   const grayOrRed = (todos: todoListState[]) => {
       return {
          color: hasImportant(todos) ? c.redOfCountNumber : c.grayOfCountNumber,
       };

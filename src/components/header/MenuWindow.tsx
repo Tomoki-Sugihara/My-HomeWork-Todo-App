@@ -1,20 +1,23 @@
-import React, { useContext } from 'react';
-import AppContext from '../../contexts/AppContext';
+import React from 'react';
 import styled from 'styled-components';
-import {
-   PERGE_TODO_ITEM,
-   DELETE_SUBJECT_ITEM,
-   SET_ACTIVE_INDEX,
-   TOGGLE_SEPARATE,
-   PERGE_TASKS,
-} from '../../actions/index';
 // import { color as c } from '../../constant/color';
 
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
+import { getActiveIndex, getSeparate } from '../../selector';
+import { useSelector, useDispatch } from 'react-redux';
+import { pergeTasks, pergeTodoItem } from '../../reducers/todoList';
+import { deleteSubject as deleteSubjectItem } from '../../reducers/subjectList';
+import { setActiveIndex, toggleSeparate } from '../../reducers/config';
 
 const MenuWindow = () => {
-   const { state, dispatch } = useContext(AppContext);
-   const activeIndex = state.config.activeIndex;
+   // const { state, dispatch } = useContext(AppContext);
+   const selector = useSelector(state => state);
+   const subjectList = selector.subjectList;
+   const activeIndex = getActiveIndex(selector);
+   const separate = getSeparate(selector);
+
+   const dispatch = useDispatch();
+   // const activeIndex = state.config.activeIndex;
 
    const handleClickDeleteSubject = () => {
       if (activeIndex === -2) {
@@ -25,24 +28,16 @@ const MenuWindow = () => {
    };
 
    const deleteTasks = () => {
-      dispatch({
-         type: PERGE_TASKS,
-      });
+      dispatch(pergeTasks());
    };
 
    const deleteSubject = () => {
-      dispatch({
-         type: PERGE_TODO_ITEM,
-         subjectKey: state.subjectList[activeIndex].key,
-      });
-      dispatch({
-         type: DELETE_SUBJECT_ITEM,
-         activeIndex: activeIndex,
-      });
-      dispatch({ type: SET_ACTIVE_INDEX, index: -1 });
+      dispatch(pergeTodoItem({ subjectKey: subjectList[activeIndex].key }));
+      dispatch(deleteSubjectItem({ activeIndex }));
+      dispatch(setActiveIndex({ activeIndex: -1 }));
    };
    const handleClickToggleSeparate = () => {
-      dispatch({ type: TOGGLE_SEPARATE });
+      dispatch(toggleSeparate());
    };
 
    const isThisDisplayed = () => activeIndex !== -1;
@@ -50,7 +45,7 @@ const MenuWindow = () => {
       <Wrapper>
          <ToggleSeparate onClick={handleClickToggleSeparate}>
             <div className="container">
-               <p>完了済みを{state.config.separate ? '分けない' : '分ける'}</p>
+               <p>完了済みを{separate ? '分けない' : '分ける'}</p>
             </div>
          </ToggleSeparate>
          <DeleteSubject
