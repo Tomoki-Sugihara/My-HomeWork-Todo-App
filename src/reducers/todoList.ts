@@ -130,7 +130,7 @@ const todoListSlice = createSlice({
       },
       toggleIsDone(state, action: PayloadAction<{ index: number }>) {
          const focusedTodoItem = state[action.payload.index];
-         focusedTodoItem.isImportant = !focusedTodoItem.isImportant;
+         focusedTodoItem.isDone = !focusedTodoItem.isDone;
 
          const key = focusedTodoItem.key;
          axios.patch(apiUrl + 'is_done/', { key });
