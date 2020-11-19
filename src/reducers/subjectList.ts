@@ -79,7 +79,7 @@ const subjectListSlice = createSlice({
          state,
          action: PayloadAction<{ data: subjectListState[] }>
       ) {
-         state = action.payload.data;
+         return action.payload.data;
       },
    },
 });

@@ -143,7 +143,7 @@ const todoListSlice = createSlice({
          axios.patch(apiUrl + 'is_important/', { key });
       },
       mountTodoList(state, action: PayloadAction<{ data: todoListState[] }>) {
-         state = action.payload.data;
+         return action.payload.data;
       },
       pergeTodoItem(state, action: PayloadAction<{ subjectKey: string }>) {
          const newTodoList = state.filter(todoItem => {

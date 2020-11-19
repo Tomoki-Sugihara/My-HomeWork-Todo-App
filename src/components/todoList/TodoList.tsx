@@ -54,7 +54,6 @@ const TodoList = () => {
          return comps;
       }
    };
-   console.log(displayedTodos(todos));
    const message = (
       <Message>
          <p>タスクがありません</p>

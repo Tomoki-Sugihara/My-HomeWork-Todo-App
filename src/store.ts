@@ -1,5 +1,9 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { todoListReducer, subjectListReducer, configReducer } from './reducers/';
+import {
+   todoListReducer,
+   subjectListReducer,
+   configReducer,
+} from './reducers/';
 
 const rootReducer = combineReducers({
    todoList: todoListReducer,

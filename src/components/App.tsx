@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect } from 'react';
+import React, { useState, useReducer, useEffect, FC } from 'react';
 // import reducer from '../reducers';
 import AppContext from '../contexts/AppContext';
 import axios from 'axios';
@@ -14,13 +14,13 @@ import TodoList from './todoList/TodoList';
 import TodoForm from './todoForm/TodoForm';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { subjectListState, RootState } from '../types/types';
+import { subjectListState, RootState, todoListState } from '../types/types';
 import { Actions } from '../contexts/AppContext';
 import { useDispatch } from 'react-redux';
 import { mountSubjectList } from '../reducers/subjectList';
 import { mountTodoList } from '../reducers/todoList';
 
-const App = () => {
+const App: FC = () => {
    // const [state, dispatch] = useReducer(reducer, initialState);
    // const [state, dispatch] = useReducer<Dispatch<Actions>, RootState>(
    //    reducer,
@@ -57,7 +57,17 @@ const App = () => {
             getSubjectList,
             getTodoList,
          ]);
+         // const [subjectList, todoList] = (await Promise.all([
+         //    getSubjectList,
+         //    getTodoList,
+         // ])) as [subjectListState[] | undefined, todoListState[] | undefined];
 
+         // const [subjectList, todoList]: [
+         //    subjectListState[] | undefined,
+         //    todoListState[] | undefined
+         // ] = await Promise.all([getSubjectList, getTodoList]);
+
+         console.log(subjectList);
          if (subjectList !== undefined) {
             await dispatch(mountSubjectList({ data: subjectList }));
             // await dispatch({
