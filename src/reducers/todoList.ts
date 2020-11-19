@@ -22,9 +22,9 @@ const todoListSlice = createSlice({
          state.push(newTodoItem);
       },
       deleteTodo(state, action: PayloadAction<{ index: number }>) {
+         const key = state[action.payload.index].key;
          state.splice(action.payload.index, 1);
 
-         const key = state[action.payload.index].key;
          axios.delete(apiUrl, { data: { key } });
       },
       toggleIsDone(state, action: PayloadAction<{ index: number }>) {
